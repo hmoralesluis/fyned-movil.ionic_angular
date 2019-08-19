@@ -14,9 +14,9 @@
 	            </ion-avatar>
 
 	            <h2 ion-text class="text-white fw700 text-15x">
-	              João Firmino
+	              Hamlet Morales
 	            </h2>
-	            <p ion-text color="light">São Paulo, Brazil</p>
+	            <p ion-text color="light">La Habana, Cuba</p>
 
 					    <button ion-button icon-left round color="primary" menuClose (click)="openPage(accountMenuItems[1])">
 					      <ion-icon [name]="accountMenuItems[1].icon"></ion-icon>
@@ -39,12 +39,12 @@
 	    <ion-list class="user-list">
 	      <button menuClose ion-item (click)="openPage(homeItem)">
 	        <ion-icon item-left name="browsers"></ion-icon>
-	        Home
+	        Inicio
 	      </button>
 
 	      <button menuClose ion-item (click)="openPage(messagesItem)">
 	        <ion-icon item-left name="mail"></ion-icon>
-	        Messages
+	        Mensajes
 	        <ion-badge color="dark">
 	          2
 	        </ion-badge>
@@ -62,7 +62,7 @@
 	      </button>
 	    </ion-list>
 
-	    <ion-list class="user-list">
+	    <!-- <ion-list class="user-list">
 	      <ion-list-header no-margin>
 	        <span ion-text color="light" class="fw500">Your Restaurant</span>
 	      </ion-list-header>
@@ -70,11 +70,11 @@
 	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>
 	        {{menuItem.title}}
 	      </button>
-	    </ion-list>
+	    </ion-list> -->
 
 	    <ion-list class="user-list">
 	      <ion-list-header no-margin>
-	        <span ion-text color="light" class="fw500">Help & Settings</span>
+	        <span ion-text color="light" class="fw500">Contacto - Configuracion</span>
 	      </ion-list-header>
 	      <button menuClose ion-item *ngFor="let menuItem of helpMenuItems" (click)="openPage(menuItem)">
 	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>

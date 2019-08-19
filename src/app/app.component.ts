@@ -45,14 +45,14 @@ export class foodIonicApp {
 
 
         this.appMenuItems = [
-            {title: 'Restaurants', component: 'page-restaurant-list', icon: 'home'},
-            {title: 'Dish List', component: 'page-dish-list', icon: 'pizza'},
-            {title: 'Nearby', component: 'page-nearby', icon: 'compass'},
-            {title: 'By Category', component: 'page-category', icon: 'albums'},
-            {title: 'Latest Orders', component: 'page-orders', icon: 'list-box'},
-            {title: 'Cart', component: 'page-cart', icon: 'cart'},
-			{title: 'Favorite Restaurants', component: 'page-favorite-list', icon: 'heart'},
-			{title: 'Favorite Dishes', component: 'page-favorite-dish', icon: 'heart'}
+            {title: 'Restaurantes', component: 'page-restaurant-list', icon: 'home'},            
+            {title: '- Cercanos', component: 'page-nearby', icon: 'compass'},
+            {title: '- Por categorias', component: 'page-category', icon: 'albums'},
+            {title: 'Platos', component: 'page-dish-list', icon: 'pizza'},
+            {title: 'Ultimas ordenes', component: 'page-orders', icon: 'list-box'},
+            {title: 'Carro', component: 'page-cart', icon: 'cart'},
+			{title: 'Favorite Restaurantes Favoritos', component: 'page-favorite-list', icon: 'heart'},
+			{title: 'Platos Favoritos', component: 'page-favorite-dish', icon: 'heart'}
         ];
 
         this.yourRestaurantMenuItems = [
@@ -61,16 +61,16 @@ export class foodIonicApp {
 
 
         this.accountMenuItems = [
-            {title: 'Login', component: 'page-auth', icon: 'log-in'},
-            {title: 'My Account', component: 'page-my-account', icon: 'contact'},
-            {title: 'Logout', component: 'page-auth', icon: 'log-out'},
+            {title: 'Acceder', component: 'page-auth', icon: 'log-in'},
+            {title: 'Mi Perfil', component: 'page-my-account', icon: 'contact'},
+            {title: 'Salir', component: 'page-auth', icon: 'log-out'},
         ];
 
         this.helpMenuItems = [
-            {title: 'About', component: 'page-about', icon: 'information-circle'},
-            {title: 'Support', component: 'page-support', icon: 'call'},
-            {title: 'App Settings', component: 'page-settings', icon: 'cog'},
-            {title: 'Walkthrough', component: 'page-walkthrough', icon: 'photos'}
+            {title: 'Acerca', component: 'page-about', icon: 'information-circle'},
+            {title: 'Contacto', component: 'page-support', icon: 'call'},
+            {title: 'Configuracion', component: 'page-settings', icon: 'cog'},
+            // {title: 'Walkthrough', component: 'page-walkthrough', icon: 'photos'}
         ];
 
     }
