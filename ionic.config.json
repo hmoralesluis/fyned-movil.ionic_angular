@@ -1,0 +1,8 @@
+{
+  "name": "foodIonic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "id": "ef622600"
+}
