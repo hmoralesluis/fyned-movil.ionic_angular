@@ -2,37 +2,40 @@
 	<ion-grid no-padding fixed>
 		<ion-row no-padding>
 			<ion-col>
-
 			  <ion-slides pager="true" dir="{{dir}}">
 			    <ion-slide *ngFor="let slide of slideList">
 			      <ion-toolbar fixed>
-			        <ion-buttons end>
+			        <!-- <ion-buttons end>
 			          <button ion-button color="light" (click)="onLastSlide()">Skip</button>
-			        </ion-buttons>
-			      </ion-toolbar>
-			      <img [src]="slide.image" class="slide-image">
+			        </ion-buttons> -->
+						</ion-toolbar>
+						<div style="margin: 0px 40px 40px;  padding-top: 20px; border-bottom: 2px solid #fff">
+							<img [src]="slide.image" class="slide-image">
+						</div>
 			      <h3 class="slide-title text-white" [innerHTML]="slide.title"></h3>
 			      <p [innerHTML]="slide.description" class="text-white"></p>
 
 						<div padding>
-				      <button ion-button round block color="secondary" margin-top icon-end (click)="onSlideNext()">
-				      	Next
+				      <button ion-button round block color="secondaryfyned" margin-top icon-end (click)="onSlideNext()">
+				      	Siguiente
 				      	<ion-icon name="arrow-round-forward" color="light"></ion-icon>
 				    	</button>
 			    	</div>
 			    </ion-slide>
 			    <ion-slide>
 			      <ion-toolbar>
-			      </ion-toolbar>
-			      <img src="assets/img/foodIonic-ico.png" class="slide-image" margin-top>
-			      <h2 class="slide-title text-white">Ready to Lunch?</h2>
+						</ion-toolbar>
+						<div style="margin: 0px 40px 40px;  padding-top: 20px; border-bottom: 2px solid #fff">
+							<img src="assets/img/logo.svg" class="slide-image">
+						</div>
+			      <h2 class="slide-title text-white">Inicie la busqueda de nuestros platos!</h2>
 
-			      <div padding>
+			      <div padding style="margin-top: 96px">
 			        <button ion-button block round color="secondary" margin-top (click)="openAuthPage()">
-			          Sign In / Sign Up
+			          Entre / Registrese
 			        </button>
 			        <button ion-button block round color="dark" margin-top (click)="openHomePage()">
-			          Get Started
+			          Iniciar Busqueda
 			        </button>
 			      </div>
 			    </ion-slide>

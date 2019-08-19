@@ -18,11 +18,16 @@ $grid-max-widths: (
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #cd1e37,
-  secondary:  #ff9e21,
+	// primary:    #cd1e37,
+	// primary:    #2d442d,
+	primary:    #345749,
+	primaryfyned: #1a1a1a,
+	secondary:  #ff9e21,
+	secondaryfyned:  #008001,
   danger:     #dc3545,
   light:      #ffd1d7,
-  dark:       #96071a
+	// dark:       #96071a
+	dark:       #008001
 );
 
 // Shared Variables

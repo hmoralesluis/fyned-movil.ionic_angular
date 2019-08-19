@@ -17,7 +17,8 @@ export class NotificationsPage {
     this.viewCtrl.dismiss();
   }
 
-  messages () {
-  	this.navCtrl.push('page-message-list');
+  messages () {    
+    this.navCtrl.push('page-message-list');
+    // this.navCtrl.setRoot('page-message-list');
   }
 }

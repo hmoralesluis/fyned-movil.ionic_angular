@@ -37,7 +37,7 @@ export class RestaurantDetailPage {
         this.restaurantService.favorite(restaurant)
             .then(restaurant => {
                 let toast = this.toastCtrl.create({
-                    message: 'Restaurant added to your favorites',
+                    message: 'Restaurante agregado a favoritos',
                     cssClass: 'mytoast',
                     duration: 2000
                 });

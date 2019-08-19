@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <span ion-text>Restaurants</span>
+      <span ion-text>Restaurantes</span>
     </ion-title>
     <ion-buttons end>
       <button ion-button (click)="openFilterModal()">
@@ -14,7 +14,7 @@
   </ion-navbar>
 
   <ion-toolbar>
-    <ion-searchbar [(ngModel)]="searchKey" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar" [(ngModel)]="searchKey" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +23,7 @@
 
 	<ion-list *ngIf="from !== 'home'" no-margin>
 	  <ion-item>
-	    <ion-label class="fw700">Restaurant type:</ion-label>
+	    <ion-label class="fw700">Tipo de Restaurante</ion-label>
 	    <ion-select [(ngModel)]="proptype">
 	      <ion-option value="">All categories</ion-option>
 	      <ion-option value="Barbecue">Barbecue</ion-option>
@@ -44,13 +44,13 @@
 	<div *ngIf="from !== 'home'">
 	  <ion-segment [(ngModel)]="label">
 			<ion-segment-button value="">
-				All
+				Todos
 			</ion-segment-button>
 	    <ion-segment-button value="open">
-	      Open
+	      Abiertos
 	    </ion-segment-button>
 	    <ion-segment-button value="closed">
-	      Closed
+	      Cerrados
 	    </ion-segment-button>
 	  </ion-segment>
 	</div>

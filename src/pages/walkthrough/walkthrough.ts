@@ -18,20 +18,21 @@ export class WalkthroughPage {
 
   slideList: Array<any> = [
     {
-      title: "What is <strong>Food</strong>Ionic?",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, dui accumsan cursus lacinia, nisl risus.",
-      image: "assets/img/foodIonic-ico.png",
-    },
-    {
-      title: "Why FoodIonic?",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, dui accumsan cursus lacinia, nisl risus.",
-      image: "assets/img/foodIonic-ico.png",
-    },
-    {
-      title: "Your delicious dish is coming!",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, dui accumsan cursus lacinia, nisl risus.",
-      image: "assets/img/foodIonic-ico.png",
-    }
+      title: "Que ofrecemos en <strong>Fyned</strong>?",
+      description: "La ubicacion de nuestros restaurantes, la seleccion de sus magnificos platos y la entrega o recogida de estos platos a eleccion del usuario",
+      image: "assets/img/logo.svg",
+		}
+		// ,
+    // {
+    //   title: "Why FoodIonic?",
+    //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, dui accumsan cursus lacinia, nisl risus.",
+    //   image: "assets/img/foodIonic-ico.png",
+    // },
+    // {
+    //   title: "Your delicious dish is coming!",
+    //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, dui accumsan cursus lacinia, nisl risus.",
+    //   image: "assets/img/foodIonic-ico.png",
+    // }
   ];
 
   constructor(public navCtrl: NavController, public menu: MenuController) {
@@ -56,7 +57,8 @@ export class WalkthroughPage {
   }
 
   openAuthPage() {
-    this.navCtrl.setRoot('page-auth');
+		this.navCtrl.setRoot('page-auth');
+		// this.navCtrl.push('page-auth');
   }
 
   ionViewDidLoad() {

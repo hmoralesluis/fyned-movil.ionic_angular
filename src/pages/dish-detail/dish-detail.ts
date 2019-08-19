@@ -35,7 +35,7 @@ export class DishDetailPage {
   addcart(dish, qtd) {
   	this.cartService.addtoCart(dish, qtd).then(dish => {
       let toast = this.toastCtrl.create({
-          message: 'Dish added to Cart',
+          message: 'Plato agregado al carro',
           cssClass: 'mytoast',
           duration: 2000
       });
@@ -47,7 +47,7 @@ export class DishDetailPage {
 		this.dishService.favorite(dish)
 			.then(dish => {
 				let toast = this.toastCtrl.create({
-					message: 'Dish favorited!',
+					message: 'Agregado a favoritos!',
 					cssClass: 'mytoast',
 					duration: 2000
 				});

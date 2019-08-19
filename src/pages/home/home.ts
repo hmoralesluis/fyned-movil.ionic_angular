@@ -18,12 +18,12 @@ export class HomePage {
 
   restaurants: Array<any>;
   searchKey: string = "";
-  yourLocation: string = "463 Beacon Street Guest House";
+  yourLocation: string = "463 Beacon Street Guest House";  
 
   constructor(public navCtrl: NavController, public menuCtrl: MenuController, public popoverCtrl: PopoverController, public locationCtrl: AlertController, public modalCtrl: ModalController, public toastCtrl: ToastController, public service: RestaurantService) {
 		this.menuCtrl.swipeEnable(true, 'authenticated');
 		this.menuCtrl.enable(true);
-		this.findAll();
+    this.findAll();       
   }
 
   openRestaurantListPage(proptype) {
@@ -77,7 +77,7 @@ export class HomePage {
 	    this.findAll();
 	}
 
-	findAll() {
+	findAll() {    
 	    this.service.findAll()
 	        .then(data => this.restaurants = data)
 	        .catch(error => alert(error));
@@ -121,7 +121,7 @@ export class HomePage {
     changeLocation.present();
   }
 
-  presentNotifications(myEvent) {
+  presentNotifications(myEvent) {    
     console.log(myEvent);
     let popover = this.popoverCtrl.create('page-notifications');
     popover.present({
