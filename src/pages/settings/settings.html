@@ -6,7 +6,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <span ion-text>Settings</span>
+      <span ion-text>Configuracion</span>
     </ion-title>
   </ion-navbar>
 
@@ -19,9 +19,9 @@
 			<ion-col>
 				<!-- User settings-->
 				<ion-item-group>
-					<ion-item-divider color="dark" class="bold">User Settings</ion-item-divider>
+					<ion-item-divider color="dark" class="bold">Configuracion de usuario</ion-item-divider>
 					<ion-item>
-						<ion-label>Language</ion-label>
+						<ion-label>Idioma</ion-label>
 						<ion-select [(ngModel)]="language" cancelText="Cancel" okText="OK">
 							<ion-option value="en-US" selected="true">English (US)</ion-option>
 							<ion-option value="en-GB">English (UK)</ion-option>
@@ -40,7 +40,7 @@
 						</ion-select>
 					</ion-item>
 					<ion-item>
-						<ion-label>Currency</ion-label>
+						<ion-label>Moneda</ion-label>
 						<ion-select [(ngModel)]="currency" cancelText="Cancel" okText="OK">
 							<ion-option value="USD" selected="true">U.S Dollar (US$)</ion-option>
 							<ion-option value="EUR">Euro (€)</ion-option>
@@ -50,14 +50,14 @@
 						</ion-select>
 					</ion-item>
 					<ion-item>
-						<ion-label>Units</ion-label>
+						<ion-label>Unidades</ion-label>
 						<ion-select [(ngModel)]="munits" cancelText="Cancel" okText="OK">
 							<ion-option value="M" selected="true">Foots (ft²)</ion-option>
 							<ion-option value="K">Meters (m²)</ion-option>
 						</ion-select>
 					</ion-item>
 					<ion-item>
-						<ion-label>Profile Messages?</ion-label>
+						<ion-label>Mensajes de perfil?</ion-label>
 						<ion-toggle checked="true"></ion-toggle>
 					</ion-item>
 				</ion-item-group>
@@ -65,14 +65,14 @@
 				<ion-item-group>
 					<ion-item-divider color="dark" class="bold">App Settings</ion-item-divider>
 					<ion-item>
-						<span>Clear Private Data</span>
+						<span>Limpiar datos privados</span>
 					</ion-item>
 					<ion-item>
-						<ion-label>Push Notifications?</ion-label>
+						<ion-label>Subir notificaciones?</ion-label>
 						<ion-toggle checked="false"></ion-toggle>
 					</ion-item>
 					<ion-item>
-						<span>Privacy Policy</span>
+						<span>Politicas privadas</span>
 					</ion-item>
 				</ion-item-group>
 

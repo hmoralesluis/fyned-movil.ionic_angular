@@ -18,7 +18,7 @@
 	            </h2>
 	            <p ion-text color="light">La Habana, Cuba</p>
 
-					    <button ion-button icon-left round color="primary" menuClose (click)="openPage(accountMenuItems[1])">
+					    <button  ion-button icon-left round color="primary" menuClose (click)="openPage(accountMenuItems[1])">
 					      <ion-icon [name]="accountMenuItems[1].icon"></ion-icon>
 					      {{accountMenuItems[1].title}}
 					    </button>
@@ -31,7 +31,7 @@
 	  </ion-header>
 
 	  <ion-content color="dark" class="profile-bg">
-	    <button ion-button icon-left full color="secondary" no-margin menuClose (click)="openPage(accountMenuItems[2])">
+	    <button *ngIf="isLogging()" ion-button icon-left full color="secondary" no-margin menuClose (click)="openPage(accountMenuItems[2])">
 	      <ion-icon [name]="accountMenuItems[2].icon"></ion-icon>
 	      {{accountMenuItems[2].title}}
 	    </button>
@@ -42,7 +42,7 @@
 	        Inicio
 	      </button>
 
-	      <button menuClose ion-item (click)="openPage(messagesItem)">
+	      <button *ngIf="isLogging()" menuClose ion-item (click)="openPage(messagesItem)">
 	        <ion-icon item-left name="mail"></ion-icon>
 	        Mensajes
 	        <ion-badge color="dark">
@@ -56,10 +56,38 @@
 	      <ion-list-header no-margin>
 	        <span ion-text color="light" class="fw500">Menu</span>
 	      </ion-list-header>
-	      <button menuClose ion-item *ngFor="let menuItem of appMenuItems" (click)="openPage(menuItem)">
-	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>
-	        {{menuItem.title}}
-	      </button>
+	      <button menuClose ion-item (click)="openPage(restaurantsItem)">
+	        <ion-icon item-left [name]="restaurantsItem.icon"></ion-icon>
+	        Restaurantes
+				</button>
+				<button menuClose ion-item (click)="openPage(restaurantsNearItem)">
+						<ion-icon item-left [name]="restaurantsNearItem.icon"></ion-icon>
+						- Cercanos
+					</button>
+				<button menuClose ion-item (click)="openPage(restaurantsCatItem)">
+						<ion-icon item-left [name]="restaurantsCatItem.icon"></ion-icon>
+						- Por categorias
+					</button>
+				<button menuClose ion-item (click)="openPage(platosItem)">
+						<ion-icon item-left [name]="platosItem.icon"></ion-icon>
+						Platos
+					</button>	
+				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(ultimasOrdItem)">
+						<ion-icon item-left [name]="ultimasOrdItem.icon"></ion-icon>
+						Ultimas ordenes
+					</button>	
+				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(carroItem)">
+						<ion-icon item-left [name]="carroItem.icon"></ion-icon>
+						Carro
+					</button>	
+				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favRestItem)">
+						<ion-icon item-left [name]="favRestItem.icon"></ion-icon>
+						Restaurantes Favoritos
+					</button>	
+				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favPlatoItem)">
+						<ion-icon item-left [name]="favPlatoItem.icon"></ion-icon>
+						Platos Favoritos
+					</button>	
 	    </ion-list>
 
 	    <!-- <ion-list class="user-list">

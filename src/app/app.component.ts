@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
+import { RestBackendProvider } from '../providers/rest-backend';
 
 export interface MenuItem {
     title: string;
@@ -20,12 +21,29 @@ export class foodIonicApp {
 
     rootPage: any = 'page-walkthrough';
     showMenu: boolean = true;
+    private isloging: boolean;
 
     homeItem: any;
 
     initialItem: any;
 
     messagesItem: any;
+
+    restaurantsItem: any;
+
+    restaurantsNearItem: any;
+
+    restaurantsCatItem: any;
+
+    platosItem: any;
+
+    ultimasOrdItem: any;
+
+    carroItem: any;
+
+    favRestItem: any;
+
+    favPlatoItem: any;
 
     settingsItem: any;
 
@@ -37,12 +55,23 @@ export class foodIonicApp {
 
     helpMenuItems: Array<MenuItem>;
 
-    constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    constructor(public platform: Platform, 
+        public statusBar: StatusBar, 
+        public splashScreen: SplashScreen,
+        public serviceBackend: RestBackendProvider,
+        ) {
         this.initializeApp();
 
         this.homeItem = { component: 'page-home' };
         this.messagesItem = { component: 'page-message-list'};
-
+        this.restaurantsItem = { component: 'page-restaurant-list', icon: 'home'};
+        this.restaurantsNearItem = { component: 'page-nearby', icon: 'compass'};
+        this.restaurantsCatItem = { component: 'page-category', icon: 'albums'};
+        this.platosItem = { component: 'page-dish-list', icon: 'pizza'};
+        this.ultimasOrdItem = { component: 'page-orders', icon: 'list-box'};
+        this.carroItem = { component: 'page-cart', icon: 'cart'};
+        this.favRestItem = { component: 'page-favorite-list', icon: 'heart'};
+        this.favPlatoItem = { component: 'page-favorite-dish', icon: 'heart'};
 
         this.appMenuItems = [
             {title: 'Restaurantes', component: 'page-restaurant-list', icon: 'home'},            
@@ -51,7 +80,7 @@ export class foodIonicApp {
             {title: 'Platos', component: 'page-dish-list', icon: 'pizza'},
             {title: 'Ultimas ordenes', component: 'page-orders', icon: 'list-box'},
             {title: 'Carro', component: 'page-cart', icon: 'cart'},
-			{title: 'Favorite Restaurantes Favoritos', component: 'page-favorite-list', icon: 'heart'},
+			{title: 'Restaurantes Favoritos', component: 'page-favorite-list', icon: 'heart'},
 			{title: 'Platos Favoritos', component: 'page-favorite-dish', icon: 'heart'}
         ];
 
@@ -75,6 +104,10 @@ export class foodIonicApp {
 
     }
 
+    isLogging() {        
+        return this.serviceBackend.getIsLogging();        
+    }
+
     initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.overlaysWebView(false);
@@ -90,6 +123,7 @@ export class foodIonicApp {
     openPage(page) {
         // Reset the content nav to have just this page
         // we wouldn't want the back button to show in this scenario
+        // this.serviceBackend.logOut();
         this.nav.setRoot(page.component);
     }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {CategoryService} from '../../providers/category-service-mock';
+import { RestBackendProvider } from '../../providers/rest-backend';
 
 @IonicPage({
 	name: 'page-category',
@@ -15,14 +16,27 @@ import {CategoryService} from '../../providers/category-service-mock';
 export class CategoryPage {
 
 	categories: Array<any>;
+	catergoriesRest: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public service: CategoryService) {
-  	this.findAll();
+	constructor(public navCtrl: NavController, 
+		public navParams: NavParams, 
+		public service: CategoryService,
+		public serviceBackend: RestBackendProvider) {
+		this.findAll();
+		this.findAllRest();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoryPage');
-  }
+	}
+	
+	findAllRest() {
+		this.serviceBackend.getcategories()
+		.then(data => {
+			this.catergoriesRest = data;
+			this.catergoriesRest = this.catergoriesRest.categories;
+		});
+	}
 
 	findAll() {
 	    this.service.findAll()

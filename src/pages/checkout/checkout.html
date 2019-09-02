@@ -2,7 +2,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      <span ion-text>Checkout</span>
+      <span ion-text>Caja</span>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -16,15 +16,15 @@
 					<ion-card-content class="checkout-info" no-padding>
 
 						<ion-list no-margin>
-							<div ion-item *ngFor="let order of checkoutData">
-								<!-- (click)="itemTapped(favorite)" -->
+							<div ion-item *ngFor="let order of orderRest">
+								
 									<ion-thumbnail item-left>
-											<img src="{{order.order.picture}}"/>
+											<img src="../../assets/img/uploads/gig/{{order.picture}}"/>
 									</ion-thumbnail>
-										<h2 ion-text color="dark" class="fw700">{{order.order.name}}</h2>
-										<p ion-text color="primary">{{order.order.ingredients}}</p>
+										<h2 ion-text color="dark" class="fw700">{{order.title}}</h2>
+										<p ion-text color="primary">ingredientes</p>
 									<div item-right>
-										<ion-badge>{{ order.order.price * order.qtd | currency }}</ion-badge>
+										<ion-badge>{{ order.price * order.quantity | currency }}</ion-badge>
 									</div>
 							</div>
 						</ion-list>
@@ -41,11 +41,11 @@
 								</ion-card>
 							</ion-col>
 							<ion-col col-4 no-padding>
-								<span ion-text color="primary" class="text-11x">Order Number</span>
+								<span ion-text color="primary" class="text-11x"># Orden</span>
 								<br/>
 								<ion-badge color="light" class="text-primary">003454890</ion-badge>
 								<div>
-									<span ion-text color="primary" class="text-11x">Delivery Time:</span>
+									<span ion-text color="primary" class="text-11x">Tiempo de entrega:</span>
 									<br/>
 									<ion-badge color="light" class="text-primary">30 - 60min</ion-badge>
 								</div>
@@ -55,13 +55,13 @@
 					</ion-card-content>
 				</ion-card>
 
-				<!--payment info-->
+				
 				<div padding>
-					<h3>Payment Methods</h3>
+					<h3>Metodos de pago</h3>
 
 					<ion-segment color="dark" [(ngModel)]="paymethods">
 						<ion-segment-button value="creditcard">
-							Credit card
+							Tarjeta de credito
 						</ion-segment-button>
 						<ion-segment-button value="paypal">
 							PayPal
@@ -84,7 +84,7 @@
 									<ion-col>
 										<ion-item no-padding>
 											<ion-input type="text" placeholder="Card Holder"></ion-input>
-				<!--               <ion-icon name="person" item-end no-margin></ion-icon> -->
+				
 										</ion-item>
 									</ion-col>
 								</ion-row>
@@ -143,14 +143,14 @@
 								<ion-row>
 									<ion-col>
 										<ion-item no-padding>
-											<ion-input type="mail" placeholder="E-mail"></ion-input>
+											<ion-input type="mail" placeholder="Correo"></ion-input>
 										</ion-item>
 									</ion-col>
 								</ion-row>
 								<ion-row>
 									<ion-col>
 										<ion-item no-padding>
-											<ion-input placeholder="Password" type="password"></ion-input>
+											<ion-input placeholder="Contraseña" type="password"></ion-input>
 										</ion-item>
 									</ion-col>
 								</ion-row>
@@ -159,9 +159,9 @@
 
 					</ion-card>
 
-					<!--submit button-->
+					
 					<button ion-button color="secondary" margin-top icon-right full tappable (click)="send()">
-						Confirm
+						Confirmar
 						<ion-icon name="cash"></ion-icon>
 					</button>
 

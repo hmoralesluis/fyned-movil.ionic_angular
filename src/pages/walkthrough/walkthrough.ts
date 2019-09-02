@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Slides, NavController, MenuController } from 'ionic-angular';
+import { TestProvider } from '../../providers/test/test';
+import { Restaurant } from '../../models/restauran.model';
+import { Subscription } from 'rxjs';
 
 @IonicPage({
 	name: 'page-walkthrough',
@@ -15,6 +18,10 @@ export class WalkthroughPage {
 	@ViewChild(Slides) slides: Slides;
   showSkip = true;
   dir: string = 'ltr';
+  restaurant: Restaurant;
+	walksubs: Subscription;
+
+	testvar: any;
 
   slideList: Array<any> = [
     {
@@ -35,11 +42,26 @@ export class WalkthroughPage {
     // }
   ];
 
-  constructor(public navCtrl: NavController, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public service: TestProvider  ) {
     this.menu.swipeEnable(false);
-    this.menu.enable(false);
+		this.menu.enable(false);
+		// this.testingFuncion();
+
+    // this.walksubs = this.service.findRestaurantById().subscribe(data => {
+    //   this.restaurant = data;
+    // });
+
+    // let something = this.service.findRestaurantById().subscribe();
+    // console.log('the value is ' + something);
   }
 
+	testingFuncion() {
+		this.service.testapi()
+		.then(data => {
+			this.testvar = data;
+			this.testvar = this.testvar.restaurants;			
+		})
+	}
   onSlideNext() {
     this.slides.slideNext(300)
   }

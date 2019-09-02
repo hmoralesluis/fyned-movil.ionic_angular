@@ -28,7 +28,6 @@
 
 <ion-content>
 
-
 	<ion-grid no-padding fixed>
 		<ion-row no-padding>
 			<ion-col>
@@ -48,16 +47,16 @@
 		</ion-row>
 
 		<ion-list ion-row padding-horizontal>
-		  <button ion-item ion-col *ngFor="let restaurant of restaurants" (click)="openRestaurantDetail(restaurant)" col-12 col-md-6>
+		  <button ion-item ion-col *ngFor="let restaurant of restaurantsRest" (click)="openRestaurantDetail(restaurant)" col-12 col-md-6>
 		    <ion-thumbnail item-start>
-		        <img src="{{restaurant.thumbnail}}">
+		        <img src="../../assets/img/uploads/restaurant/{{restaurant.picture1}}">
 		    </ion-thumbnail>
-		    <h3 ion-text color="dark" class="fw500">{{restaurant.title}}</h3>
-		    <p ion-text class="text-12x"><span ion-text color="secondary" class="fw700">{{restaurant.tags}}</span> ∙ <span ion-text color="primary">{{ restaurant.price }}</span></p>
+		    <h3 ion-text color="dark" class="fw500">{{restaurant.name}}</h3>
+		    <p ion-text class="text-12x"><span ion-text color="secondary" class="fw700">{{restaurant.label}}</span> ∙ <span ion-text color="primary"></span></p>
 		    <p ion-text class="text-12x">1 mile<sup>sq</sup> ∙ 30 - 60min</p>
 				<ion-badge class="white-bg text-secondary" item-end>
 					<ion-icon name="star"></ion-icon>
-					{{ restaurant.rating | number:'1.1' }}
+					4.9
 				</ion-badge>
 		  </button>
 		</ion-list>

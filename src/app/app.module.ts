@@ -11,6 +11,7 @@ import { PipesModule } from '../pipes/pipes.module';
 
 import {MessageService} from "../providers/message-service-mock";
 import {RestaurantService} from "../providers/restaurant-service-mock";
+import { RestaurantServiceRest } from "../providers/restaurant-service-rest";
 import {DishService} from "../providers/dish-service-mock";
 import {CategoryService} from "../providers/category-service-mock";
 import {CartService} from "../providers/cart-service-mock";
@@ -19,6 +20,9 @@ import {OrdersService} from "../providers/orders-service-mock";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Keyboard } from '@ionic-native/keyboard';
+
+import { TestProvider } from '../providers/test/test';
+import { RestBackendProvider } from '../providers/rest-backend';
 
 @NgModule({
   declarations: [
@@ -50,13 +54,16 @@ import { Keyboard } from '@ionic-native/keyboard';
     StatusBar,
     SplashScreen,
     Keyboard,
+    RestBackendProvider,
     RestaurantService,
+    RestaurantServiceRest,    
     DishService,
     CategoryService,
     MessageService,
     CartService,
     OrdersService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    TestProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}

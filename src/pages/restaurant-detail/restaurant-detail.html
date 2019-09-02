@@ -5,7 +5,7 @@
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="favorite(restaurant)">
+      <button ion-button (click)="favorite(restId)">
         <ion-icon name="heart"></ion-icon>
       </button>
       <button ion-button (click)="share(restaurant)">
@@ -19,25 +19,26 @@
   <ion-card *ngIf="restaurant.id" class="full-width" no-margin>
   	<div class="card-img-wrap">
       <span ion-text class="card-img-status fw700 text-white" [ngClass]="{'closed': restaurant.label === 'closed', 'open': restaurant.label === 'open'}">
-        {{ restaurant.label }}
+        {{ restLabel }}
       </span>
 		  <ion-slides class="to-top primary-bg" pager>
-		    <ion-slide *ngFor="let image of restaurant.images">
-		      <img src="{{ image }}" alt="">
+		    <ion-slide>
+		      <img src="../../assets/img/uploads/restaurant/{{restPicture1}}" alt="">
 		    </ion-slide>
 		  </ion-slides>
 		</div>
     <!-- <img src="{{restaurant.picture}}"> -->
     <ion-card-content>
       <h1 ion-text color="dark" class="card-title fw700" text-center>
-      	{{restaurant.title}}
+      	{{restName}}
      	</h1>
-      <p ion-text color="primary" text-center>1 mile<sup>sq</sup> • 30 - 60min • {{restaurant.price}}</p>
+      <p ion-text color="primary" text-center>1 mile<sup>sq</sup> • 30 - 60min • price</p>
       <div text-center>
-		<ion-badge color="secondary">{{restaurant.tags}}</ion-badge>
+		<ion-badge color="secondary">tags</ion-badge>
       	<ion-badge color="dark" class="text-11x">
 					<ion-icon name="star"></ion-icon>
-        	{{ restaurant.rating | number:'1.1' }}
+					<!-- {{ restaurant.rating | number:'1.1' }} -->
+					ratings
         </ion-badge>
 			</div>
     </ion-card-content>
@@ -59,16 +60,15 @@
 
 				<div [ngSwitch]="restaurantopts" padding>
 					<div *ngSwitchCase="'menu'">
-
 						<ion-list>
-						  <ion-item no-padding *ngFor="let dish of dishes" tapplable (click)="openDishDetail(dish)">
-						    <ion-thumbnail item-start>
-						      <img src="{{dish.picture}}">
-						    </ion-thumbnail>
-			          <h2 ion-text color="dark" class="fw500">{{dish.name}}</h2>
-			          <p ion-text color="primary" class="text-11x">{{ dish.ingredients }}</p>
-						    <button ion-button clear class="green-bg text-white" item-end>{{ dish.price | currency }}</button>
-						  </ion-item>
+							<ion-item no-padding *ngFor="let restDish of restDishes" (click)="openDishDetail(restDish)">
+								<ion-thumbnail item-start>
+						      <img src="../../assets/img/uploads/gig/{{restDish.picture1}}">
+								</ion-thumbnail>
+								<h2 ion-text color="dark" class="fw500">{{restDish.title}}</h2>
+								<p ion-text color="primary" class="text-11x">ingredientes</p>
+								<button ion-button clear class="green-bg text-white" item-end>{{ restDish.price | currency }}</button>
+							</ion-item>
 						</ion-list>
 
 						<br><br><br><br>
@@ -129,8 +129,7 @@
 			</ion-col>
 		</ion-row>
 	</ion-grid>
-
-  </ion-card>
+</ion-card>
 
   <ion-fab bottom right>
     <button ion-fab round icon-only color="dark" (click)="openCart()">

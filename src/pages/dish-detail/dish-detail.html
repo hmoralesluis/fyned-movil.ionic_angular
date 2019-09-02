@@ -1,12 +1,12 @@
 <ion-header>
     <ion-navbar color="primary">
         <ion-title>
-            <span ion-text>{{dish.name}}</span>
+            <span ion-text>{{restTitle}}</span>
 				</ion-title>
 		</ion-navbar>
 
 		<ion-fab middle right>
-			<button ion-fab mini color="secondary" (click)="favorite(dish)">
+			<button ion-fab mini color="secondary" (click)="favorite(restDishId)">
 				<ion-icon name="heart" class="text-white"></ion-icon>
 			</button>
 		</ion-fab>
@@ -19,16 +19,22 @@
     <ion-card-content class="profiles-bg">
 			<!--slides-->
 			<ion-slides pager>
-				<ion-slide *ngFor="let image of dish.images">
-					<img src="{{ image }}">
+				<ion-slide>
+					<img src="../../assets/img/uploads/gig/{{restPicture1}}">
 				</ion-slide>
+				<ion-slide>
+						<img src="../../assets/img/uploads/gig/{{restPicture2}}">
+					</ion-slide>
+					<ion-slide>
+							<img src="../../assets/img/uploads/gig/{{restPicture3}}">
+						</ion-slide>
 			</ion-slides>
 			<div padding>
 	      <ion-grid class="filters" no-padding fixed>
 	        <ion-row margin-bottom>
 	          <ion-col text-center>
 	          	<h4 ion-text color="light">Precio</h4>
-	            <h1 ion-text class="text-white fw700">{{ dish.price | currency }}</h1>
+	            <h1 ion-text class="text-white fw700">{{ restPrecio | currency }}</h1>
 	            <hr margin-vertical>
 	          </ion-col>
 	        </ion-row>
@@ -47,9 +53,9 @@
 	        </ion-row>
 	        <ion-row>
 				<ion-col text-center>
-		      <button ion-button color="secondary" icon-left tappable (click)="addcart(dish, qtd)">
+		      <button ion-button color="secondary" icon-left tappable (click)="addcart(restDishId, qtd)">
 		      	<ion-icon name="cart"></ion-icon>
-		      	+ Carro ({{ dish.price * qtd | currency }})
+		      	+ Carro ({{ restPrecio * qtd | currency }})
 		      </button>
 				</ion-col>
 	        </ion-row>
@@ -62,10 +68,10 @@
   <ion-card>
     <ion-card-content>
       <h2 ion-text color="primary" class="fw500">Ingredientes</h2>
-      <p ion-text>{{dish.ingredients}}</p>
+      <p ion-text>ingredientes</p>
 			<hr>
       <h2 ion-text color="primary" class="fw500">Descripcion</h2>
-      <p ion-text>{{dish.description}}</p>
+      <p ion-text>{{dish.restDetails}}</p>
     </ion-card-content>
   </ion-card>
 

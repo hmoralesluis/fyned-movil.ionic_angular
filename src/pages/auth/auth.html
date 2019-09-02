@@ -83,7 +83,7 @@
 		        </ion-label>
 		        <ion-input type="text" formControlName="fullName"></ion-input>
 		      </ion-item>
-		      <p ion-text color="danger" class="text-12x has-error" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">This field is required</p>
+		      <p ion-text color="danger" class="text-12x has-error" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">Entre un valor</p>
 
 		      <ion-item>
 		        <ion-label floating>
@@ -92,7 +92,7 @@
 		        </ion-label>
 		        <ion-input type="email" formControlName="email"></ion-input>
 		      </ion-item>
-		      <p ion-text color="danger" class="text-12x has-error" *ngIf="onRegisterForm.get('email').touched && onRegisterForm.get('email').hasError('required')">This field is required</p>
+		      <p ion-text color="danger" class="text-12x has-error" *ngIf="onRegisterForm.get('email').touched && onRegisterForm.get('email').hasError('required')">Entre un valor</p>
 
 		      <ion-item>
 		        <ion-label floating>
@@ -105,7 +105,7 @@
 		    </form>
 
 		    <div margin-top>
-		      <button ion-button block color="secondary" (click)="login()" [disabled]="!onRegisterForm.valid">
+		      <button ion-button block color="secondary" (click)="registrarse()" [disabled]="!onRegisterForm.valid">
 		        Registrarse
 		      </button>
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OrdersService } from '../../providers/orders-service-mock';
+import { RestBackendProvider } from '../../providers/rest-backend';
 
 @IonicPage({
 	name: 'page-orders',
@@ -14,23 +15,32 @@ import { OrdersService } from '../../providers/orders-service-mock';
 
 export class OrdersPage {
 
-	lastOrders: Array<any> = [];
+  lastOrders: Array<any> = [];
+  orderrest: any;
+  responseRest: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public ordersService: OrdersService) {
-    this.getOrders();
-    // console.log(this.lastOrders);
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public ordersService: OrdersService,
+    public serviceBackend: RestBackendProvider) {
+    this.getOrdersRest();
   }
 
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad OrdersPage');
-  // }
-
-  getOrders() {
-      this.ordersService.getOrders()
-          .then(data => {
-          	console.log(data);
-          	this.lastOrders = data
-          });
+  getOrdersRest() {
+    this.serviceBackend.getorderbyuser()
+    .then(data => {
+      this.responseRest = data;
+      this.responseRest = this.responseRest.res;
+      
+      if(this.responseRest == true){
+        this.orderrest = data;
+        this.orderrest = this.orderrest.orders;
+      }
+    });
   }
+
+  ionViewWillEnter() {
+    this.getOrdersRest();
+  }  
 
 }

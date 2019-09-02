@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage, Config, NavController, NavParams, ToastController, ModalController} from 'ionic-angular';
 import {RestaurantService} from '../../providers/restaurant-service-mock';
+import { RestBackendProvider } from '../../providers/rest-backend';
+// import { SegmentChangeEventDetail } from '@ionic/co
 
 @IonicPage({
 	name: 'page-restaurant-list',
@@ -17,12 +19,25 @@ export class RestaurantListPage {
     searchKey: string = "";
     viewMode: string = "list";
 	proptype: string;
-	label: string = "";
+    label: string = "";
+    estado: string = "";
     from: string;
 	lat: number = 42.35663;
-	lng: number = -71.11095;
+    lng: number = -71.11095;
+    restaurantsRest: any;
+    catergoriesRest: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public service: RestaurantService, public toastCtrl: ToastController, public modalCtrl: ModalController, public config: Config) {
+    constructor(
+        public navCtrl: NavController, 
+        public navParams: NavParams, 
+        public service: RestaurantService,         
+        public toastCtrl: ToastController, 
+        public modalCtrl: ModalController, 
+        public config: Config,
+        public serviceBackend: RestBackendProvider,
+        ) 
+        {
+            console.log('el id es 0' +  this.serviceBackend.getIduserlogin());
         this.findAll();
         this.proptype = this.navParams.get('proptype') || "";
         this.from = this.navParams.get('from') || "";
@@ -36,23 +51,26 @@ export class RestaurantListPage {
 
     openRestaurantDetail(restaurant: any) {
   		this.navCtrl.push('page-restaurant-detail', {
-			'id': restaurant.id
+			'id': restaurant._id
 		});
     }
 
     favorite(restaurant) {
-        this.service.favorite(restaurant)
-            .then(restaurant => {
-                let toast = this.toastCtrl.create({
-                    message: 'Property added to your favorites',
-                    cssClass: 'mytoast',
-                    duration: 2000
-                });
-                toast.present(toast);
-            });
+        
+        if(this.serviceBackend.getIduserlogin() == '0') {
+            this.navCtrl.push('page-auth');
+        }else{
+            this.serviceBackend.addRestaurantToFavorite(restaurant._id);
+            let toast = this.toastCtrl.create({
+                            message: 'Restaurante adicionado',
+                            cssClass: 'mytoast',
+                            duration: 2000
+                        });
+                        toast.present(toast);
+        }
     }
 
-    onInput(event) {
+    onInput(event) {                
         this.service.findByName(this.searchKey)
             .then(data => {
                 this.restaurants = data;
@@ -60,14 +78,35 @@ export class RestaurantListPage {
             .catch(error => alert(JSON.stringify(error)));
     }
 
+    // onFilterUpdate(event) {
+    //     console.log(event.detail.value);
+    //     // if(event.detail.value == 'principal')
+    //     //   this.details = false;
+    //     // else
+    //     //   this.details = true;
+    //   }
+
     onCancel(event) {
         this.findAll();
     }
 
-    findAll() {
-        this.service.findAll()
-            .then(data => this.restaurants = data)
+    findAll() {      
+            this.serviceBackend.findAllRestaurants()
+            .then(
+                data => {
+                    this.restaurantsRest = data;   
+                    this.restaurantsRest = this.restaurantsRest.restaurants;             
+                }                    
+            )
             .catch(error => alert(error));
+
+            this.serviceBackend.getcategories()
+		.then(data => {
+			this.catergoriesRest = data;
+			this.catergoriesRest = this.catergoriesRest.categories;
+		});
+
+           
     }
 
 }

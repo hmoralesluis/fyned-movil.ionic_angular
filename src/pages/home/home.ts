@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, MenuController, ToastController, PopoverController, ModalController } from 'ionic-angular';
 
 import {RestaurantService} from '../../providers/restaurant-service-mock';
+import { RestBackendProvider } from '../../providers/rest-backend';
 
 @IonicPage({
 	name: 'page-home',
@@ -19,11 +20,20 @@ export class HomePage {
   restaurants: Array<any>;
   searchKey: string = "";
   yourLocation: string = "463 Beacon Street Guest House";  
+  restaurantsRest: any;
 
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController, public popoverCtrl: PopoverController, public locationCtrl: AlertController, public modalCtrl: ModalController, public toastCtrl: ToastController, public service: RestaurantService) {
+  constructor(public navCtrl: NavController, 
+    public menuCtrl: MenuController, 
+    public popoverCtrl: PopoverController, 
+    public locationCtrl: AlertController, 
+    public modalCtrl: ModalController, 
+    public toastCtrl: ToastController, 
+    public service: RestaurantService,
+    public serviceBackend: RestBackendProvider) {
 		this.menuCtrl.swipeEnable(true, 'authenticated');
 		this.menuCtrl.enable(true);
-    this.findAll();       
+    this.findAll();   
+    this.findAllRest();    
   }
 
   openRestaurantListPage(proptype) {
@@ -49,7 +59,7 @@ export class HomePage {
 
 	openRestaurantDetail(restaurant: any) {
   	this.navCtrl.push('page-restaurant-detail', {
-			'id': restaurant.id
+			'id': restaurant._id
 		});
 	}
 
@@ -81,7 +91,18 @@ export class HomePage {
 	    this.service.findAll()
 	        .then(data => this.restaurants = data)
 	        .catch(error => alert(error));
-	}
+  }
+  
+  findAllRest(){
+    this.serviceBackend.findAllRestaurants()
+            .then(
+                data => {
+                    this.restaurantsRest = data;   
+                    this.restaurantsRest = this.restaurantsRest.restaurants;             
+                }                    
+            )
+            .catch(error => alert(error));
+  }
 
   alertLocation() {
     let changeLocation = this.locationCtrl.create({

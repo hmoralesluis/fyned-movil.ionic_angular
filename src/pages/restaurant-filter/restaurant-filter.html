@@ -6,7 +6,7 @@
         </button>
     </ion-buttons>
     <ion-title>
-    	<span ion-text>Search Filter</span>
+    	<span ion-text>Filtros de busqueda</span>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,32 +15,32 @@
 <ion-content padding>
   <ion-item margin-bottom>
     <ion-label color="primary" stacked>
-    	<span ion-text color="dark" class="fw500">ZipCode Area</span>
+    	<span ion-text color="dark" class="fw500">Codigo Zip</span>
     </ion-label>
-    <ion-input type="number" placeholder="Put your zipcode preference area"></ion-input>
+    <ion-input type="number" placeholder="Entra el codigo zip del area de preferencia"></ion-input>
   </ion-item>
 
 	<ion-item>
 	  <ion-label class="no-margin-bottom">
-	  	<span ion-text color="dark" class="fw500">Radius:</span> <span ion-text color="primary"> {{radiusmiles}} Mile(s)</span></ion-label>
+	  	<span ion-text color="dark" class="fw500">Radius:</span> <span ion-text color="primary"> {{radiusmiles}} Milla(s)</span></ion-label>
 	  <ion-range min="1" max="50" step="1" value="1" class="no-padding-top" [(ngModel)]="radiusmiles">
 	  </ion-range>
 	</ion-item>
 
 	<ion-item>
-	  <ion-label class="fw500" color="dark">Organize by</ion-label>
+	  <ion-label class="fw500" color="dark">Organizar por</ion-label>
 	  <ion-select [(ngModel)]="organizeby">
-	    <ion-option>Most Relevant</ion-option>
-	    <ion-option>Closest</ion-option>
-	    <ion-option>Low Price</ion-option>
-	    <ion-option>High Price</ion-option>
-	    <ion-option>Shorter delivery time</ion-option>
-	    <ion-option>Most rating</ion-option>
+	    <ion-option>Mayor relevancia</ion-option>
+	    <ion-option>Cercano</ion-option>
+	    <ion-option>Precios bajos</ion-option>
+	    <ion-option>Precios altos</ion-option>
+	    <ion-option>Bajos tiempos de entrega</ion-option>
+	    <ion-option>Ranquiado</ion-option>
 	  </ion-select>
 	</ion-item>
 
 	<ion-item>
-	  <ion-label class="fw500" color="dark">Dish Type</ion-label>
+	  <ion-label class="fw500" color="dark">Tipo de plato</ion-label>
 	  <ion-select [(ngModel)]="dishtype" multiple="true">
 	    <ion-option>Health Food</ion-option>
 	    <ion-option>Veggie</ion-option>
@@ -55,25 +55,25 @@
 	</ion-item>
 
 	<ion-item>
-	  <ion-label class="fw500" color="dark">Nationalities</ion-label>
+	  <ion-label class="fw500" color="dark">Nacionalidades</ion-label>
 	  <ion-select [(ngModel)]="dishnationality" multiple="true">
-	    <ion-option>German</ion-option>
-	    <ion-option>Japanese</ion-option>
-	    <ion-option>Korean</ion-option>
-	    <ion-option>Indian</ion-option>
-	    <ion-option>Arabian</ion-option>
-	    <ion-option>Italian</ion-option>
-	    <ion-option>Chinese</ion-option>
-	    <ion-option>Brazilian</ion-option>
+	    <ion-option>Alemana</ion-option>
+	    <ion-option>Japonesa</ion-option>
+	    <ion-option>Koreana</ion-option>
+	    <ion-option>India</ion-option>
+	    <ion-option>Arabe</ion-option>
+	    <ion-option>Italiana</ion-option>
+	    <ion-option>China</ion-option>
+	    <ion-option>Brazilera</ion-option>
 	    <ion-option>Thai</ion-option>
 	  </ion-select>
 	</ion-item>
 
 	<ion-item margin-bottom>
 	  <ion-label class="no-margin-bottom">
-	  	<span ion-text color="dark" class="fw500">Min/Max Price:</span> <span ion-text color="primary"> $ {{minmaxprice.lower}} to $ {{minmaxprice.upper}}</span></ion-label>
+	  	<span ion-text color="dark" class="fw500">Precio Min/Max:</span> <span ion-text color="primary"> $ {{minmaxprice.lower}} to $ {{minmaxprice.upper}}</span></ion-label>
 	  	<ion-range dualKnobs="true" [(ngModel)]="minmaxprice" min="10" max="1000" step="10" class="no-padding-top"></ion-range>
 	</ion-item>
 
-	<button ion-button block color="primary" (click)="closeModal()">Filter Results</button>
+	<button ion-button block color="primary" (click)="closeModal()">Resultado del filtrado</button>
 </ion-content>
