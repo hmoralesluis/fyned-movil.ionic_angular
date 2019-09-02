@@ -313,11 +313,11 @@ webpackEmptyAsyncContext.id = 175;
 
 var map = {
 	"../pages/about/about.module": [
-		722,
+		721,
 		22
 	],
 	"../pages/auth/auth.module": [
-		721,
+		722,
 		21
 	],
 	"../pages/cart/cart.module": [
@@ -325,83 +325,83 @@ var map = {
 		20
 	],
 	"../pages/category/category.module": [
-		743,
+		724,
 		19
 	],
 	"../pages/checkout/checkout.module": [
-		724,
+		725,
 		18
 	],
 	"../pages/dish-detail/dish-detail.module": [
-		725,
+		726,
 		17
 	],
 	"../pages/dish-list/dish-list.module": [
-		726,
+		727,
 		16
 	],
 	"../pages/favorite-dish/favorite-dish.module": [
-		727,
+		728,
 		15
 	],
 	"../pages/favorite-list/favorite-list.module": [
-		730,
+		729,
 		14
 	],
 	"../pages/home/home.module": [
-		728,
+		730,
 		13
 	],
 	"../pages/message-detail/message-detail.module": [
-		729,
+		731,
 		12
 	],
 	"../pages/message-list/message-list.module": [
-		733,
+		732,
 		11
 	],
 	"../pages/my-account/my-account.module": [
-		731,
+		733,
 		10
 	],
 	"../pages/nearby/nearby.module": [
-		732,
+		734,
 		9
 	],
 	"../pages/notifications/notifications.module": [
-		736,
+		735,
 		8
 	],
 	"../pages/orders/orders.module": [
-		734,
+		737,
 		7
 	],
 	"../pages/restaurant-detail/restaurant-detail.module": [
-		735,
+		736,
 		6
 	],
 	"../pages/restaurant-filter/restaurant-filter.module": [
-		742,
+		738,
 		5
 	],
 	"../pages/restaurant-list/restaurant-list.module": [
-		737,
+		739,
 		4
 	],
 	"../pages/settings/settings.module": [
-		738,
+		740,
 		3
 	],
 	"../pages/support/support.module": [
-		739,
+		741,
 		2
 	],
 	"../pages/walkthrough/walkthrough.module": [
-		740,
+		742,
 		1
 	],
 	"../pages/your-restaurant/your-restaurant.module": [
-		741,
+		743,
 		0
 	]
 };
@@ -427,7 +427,7 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return api; });
 var api = {
-    SERVER_URL: 'http://localhost:3003/',
+    SERVER_URL: 'http://164.68.116.40:3003/',
     countriesApi: 'https://restcountries.eu/rest/v2/all'
 };
 //# sourceMappingURL=config.js.map
@@ -440,7 +440,7 @@ var api = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestaurantService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_restaurants__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_restaurants__ = __webpack_require__(403);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -603,7 +603,7 @@ var CartService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DishService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_dishes__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_dishes__ = __webpack_require__(402);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -699,7 +699,7 @@ var OrdersService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_messages__ = __webpack_require__(403);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_messages__ = __webpack_require__(404);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -756,14 +756,48 @@ var MessageService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_categories__ = __webpack_require__(401);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var CategoryService = /** @class */ (function () {
+    function CategoryService() {
+    }
+    CategoryService.prototype.findAll = function () {
+        return Promise.resolve(__WEBPACK_IMPORTED_MODULE_1__mock_categories__["a" /* default */]);
+    };
+    CategoryService.prototype.findById = function (id) {
+        return Promise.resolve(__WEBPACK_IMPORTED_MODULE_1__mock_categories__["a" /* default */][id - 1]);
+    };
+    CategoryService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
+    ], CategoryService);
+    return CategoryService;
+}());
+
+//# sourceMappingURL=category-service-mock.js.map
+
+/***/ }),
+
+/***/ 374:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* unused harmony export pipes */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__term_search__ = __webpack_require__(689);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__capitalize_pipe__ = __webpack_require__(690);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__orderby_pipe__ = __webpack_require__(691);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shorten_pipe__ = __webpack_require__(692);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__temperature_pipe__ = __webpack_require__(693);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__term_search__ = __webpack_require__(690);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__capitalize_pipe__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__orderby_pipe__ = __webpack_require__(692);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shorten_pipe__ = __webpack_require__(693);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__temperature_pipe__ = __webpack_require__(694);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -799,7 +833,7 @@ var PipesModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 374:
+/***/ 375:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -808,7 +842,7 @@ var PipesModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(316);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_restauran_model__ = __webpack_require__(694);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_restauran_model__ = __webpack_require__(695);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -878,40 +912,6 @@ var TestProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 375:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_categories__ = __webpack_require__(695);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var CategoryService = /** @class */ (function () {
-    function CategoryService() {
-    }
-    CategoryService.prototype.findAll = function () {
-        return Promise.resolve(__WEBPACK_IMPORTED_MODULE_1__mock_categories__["a" /* default */]);
-    };
-    CategoryService.prototype.findById = function (id) {
-        return Promise.resolve(__WEBPACK_IMPORTED_MODULE_1__mock_categories__["a" /* default */][id - 1]);
-    };
-    CategoryService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
-    ], CategoryService);
-    return CategoryService;
-}());
-
-//# sourceMappingURL=category-service-mock.js.map
-
-/***/ }),
-
 /***/ 376:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -942,18 +942,18 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(713);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__agm_core__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(715);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipes_pipes_module__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipes_pipes_module__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_message_service_mock__ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_restaurant_service_mock__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_restaurant_service_rest__ = __webpack_require__(719);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_dish_service_mock__ = __webpack_require__(369);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_category_service_mock__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_category_service_mock__ = __webpack_require__(373);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_cart_service_mock__ = __webpack_require__(368);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_orders_service_mock__ = __webpack_require__(371);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_status_bar__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_splash_screen__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_keyboard__ = __webpack_require__(720);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_test_test__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_test_test__ = __webpack_require__(375);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_rest_backend__ = __webpack_require__(164);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -999,29 +999,29 @@ var AppModule = /** @class */ (function () {
                     autoFocusAssist: false
                 }, {
                     links: [
-                        { loadChildren: '../pages/auth/auth.module#AuthPageModule', name: 'page-auth', segment: 'auth', priority: 'high', defaultHistory: [] },
                         { loadChildren: '../pages/about/about.module#AboutPageModule', name: 'page-about', segment: 'about', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/auth/auth.module#AuthPageModule', name: 'page-auth', segment: 'auth', priority: 'high', defaultHistory: [] },
                         { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'page-cart', segment: 'cart', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/category/category.module#CategoryPageModule', name: 'page-category', segment: 'category', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'page-checkout', segment: 'checkout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/dish-detail/dish-detail.module#DishDetailPageModule', name: 'page-dish-detail', segment: 'dish/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/dish-list/dish-list.module#DishListPageModule', name: 'page-dish-list', segment: 'dish-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/favorite-dish/favorite-dish.module#FavoriteDishPageModule', name: 'page-favorite-dish', segment: 'favoritedish', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/favorite-list/favorite-list.module#FavoriteListPageModule', name: 'page-favorite-list', segment: 'favorites', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'page-home', segment: 'home', priority: 'high', defaultHistory: [] },
                         { loadChildren: '../pages/message-detail/message-detail.module#MessageDetailPageModule', name: 'page-message-detail', segment: 'message/:id', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/favorite-list/favorite-list.module#FavoriteListPageModule', name: 'page-favorite-list', segment: 'favorites', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/message-list/message-list.module#MessageListPageModule', name: 'page-message-list', segment: 'message-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/my-account/my-account.module#MyAccountPageModule', name: 'page-my-account', segment: 'my-account', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/nearby/nearby.module#NearbyPageModule', name: 'page-nearby', segment: 'nearby', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/message-list/message-list.module#MessageListPageModule', name: 'page-message-list', segment: 'message-list', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'page-orders', segment: 'orders', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/restaurant-detail/restaurant-detail.module#RestaurantDetailPageModule', name: 'page-restaurant-detail', segment: 'restaurant/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notifications/notifications.module#NotificationsPageModule', name: 'page-notifications', segment: 'notifications', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/restaurant-detail/restaurant-detail.module#RestaurantDetailPageModule', name: 'page-restaurant-detail', segment: 'restaurant/:id', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'page-orders', segment: 'orders', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/restaurant-filter/restaurant-filter.module#RestaurantFilterPageModule', name: 'page-restaurant-filter', segment: 'restaurant-filter', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/restaurant-list/restaurant-list.module#RestaurantListPageModule', name: 'page-restaurant-list', segment: 'restaurant-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'page-settings', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'page-support', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/walkthrough/walkthrough.module#WalkthroughPageModule', name: 'page-walkthrough', segment: 'walkthrough', priority: 'high', defaultHistory: [] },
-                        { loadChildren: '../pages/your-restaurant/your-restaurant.module#YourRestaurantPageModule', name: 'page-your-restaurant', segment: 'your-restaurant', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/restaurant-filter/restaurant-filter.module#RestaurantFilterPageModule', name: 'page-restaurant-filter', segment: 'restaurant-filter', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/category/category.module#CategoryPageModule', name: 'page-category', segment: 'category', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/your-restaurant/your-restaurant.module#YourRestaurantPageModule', name: 'page-your-restaurant', segment: 'your-restaurant', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["a" /* IonicStorageModule */].forRoot({
@@ -1062,6 +1062,41 @@ var AppModule = /** @class */ (function () {
 /***/ }),
 
 /***/ 401:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var categories = [
+    {
+        id: 1,
+        name: "Pizza",
+        picture: "assets/img/restaurants/restaurant01.jpg",
+        quantity: 41
+    },
+    {
+        id: 2,
+        name: "Pasta",
+        picture: "assets/img/restaurants/restaurant02.jpg",
+        quantity: 64
+    },
+    {
+        id: 3,
+        name: "Variable",
+        picture: "assets/img/restaurants/restaurant03.jpg",
+        quantity: 64
+    },
+    {
+        id: 4,
+        name: "Barbecue",
+        picture: "assets/img/restaurants/restaurant04.jpg",
+        quantity: 28
+    }
+];
+/* harmony default export */ __webpack_exports__["a"] = (categories);
+//# sourceMappingURL=mock-categories.js.map
+
+/***/ }),
+
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1192,7 +1227,7 @@ var dishes = [
 
 /***/ }),
 
-/***/ 402:
+/***/ 403:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2035,7 +2070,7 @@ var restaurants = [
 
 /***/ }),
 
-/***/ 403:
+/***/ 404:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2086,7 +2121,7 @@ var messages = [
 
 /***/ }),
 
-/***/ 689:
+/***/ 690:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2127,7 +2162,7 @@ var TermSearchPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 690:
+/***/ 691:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2165,7 +2200,7 @@ var CapitalizePipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 691:
+/***/ 692:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2296,7 +2331,7 @@ var OrderByPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 692:
+/***/ 693:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2335,7 +2370,7 @@ var ShortenStringPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 693:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2369,7 +2404,7 @@ var TemperaturePipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 694:
+/***/ 695:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2387,41 +2422,6 @@ var Restaurant = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=restauran.model.js.map
-
-/***/ }),
-
-/***/ 695:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var categories = [
-    {
-        id: 1,
-        name: "Pizza",
-        picture: "assets/img/restaurants/restaurant01.jpg",
-        quantity: 41
-    },
-    {
-        id: 2,
-        name: "Pasta",
-        picture: "assets/img/restaurants/restaurant02.jpg",
-        quantity: 64
-    },
-    {
-        id: 3,
-        name: "Variable",
-        picture: "assets/img/restaurants/restaurant03.jpg",
-        quantity: 64
-    },
-    {
-        id: 4,
-        name: "Barbecue",
-        picture: "assets/img/restaurants/restaurant04.jpg",
-        quantity: 28
-    }
-];
-/* harmony default export */ __webpack_exports__["a"] = (categories);
-//# sourceMappingURL=mock-categories.js.map
 
 /***/ }),
 
