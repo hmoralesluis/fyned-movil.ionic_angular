@@ -150,6 +150,16 @@ var RestBackendProvider = /** @class */ (function () {
             });
         });
     };
+    RestBackendProvider.prototype.findSugerenciaDishes = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(__WEBPACK_IMPORTED_MODULE_2__config__["a" /* api */].SERVER_URL + 'apigigssugerencia').subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
+    };
     RestBackendProvider.prototype.addRestaurantToFavorite = function (restId) {
         var _this = this;
         return new Promise(function (resolve) {
@@ -282,9 +292,10 @@ var RestBackendProvider = /** @class */ (function () {
     };
     RestBackendProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], RestBackendProvider);
     return RestBackendProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=rest-backend.js.map
@@ -314,95 +325,99 @@ webpackEmptyAsyncContext.id = 175;
 var map = {
 	"../pages/about/about.module": [
 		721,
-		22
+		48
 	],
 	"../pages/auth/auth.module": [
 		722,
-		21
+		47
 	],
 	"../pages/cart/cart.module": [
 		723,
-		20
+		46
 	],
 	"../pages/category/category.module": [
 		724,
-		19
+		45
 	],
 	"../pages/checkout/checkout.module": [
 		725,
-		18
+		44
 	],
 	"../pages/dish-detail/dish-detail.module": [
 		726,
-		17
+		43
 	],
 	"../pages/dish-list/dish-list.module": [
 		727,
-		16
+		42
 	],
 	"../pages/favorite-dish/favorite-dish.module": [
 		728,
-		15
+		41
 	],
 	"../pages/favorite-list/favorite-list.module": [
 		729,
-		14
+		40
 	],
 	"../pages/home/home.module": [
 		730,
-		13
+		39
 	],
 	"../pages/message-detail/message-detail.module": [
 		731,
-		12
+		38
 	],
 	"../pages/message-list/message-list.module": [
 		732,
-		11
+		37
 	],
 	"../pages/my-account/my-account.module": [
 		733,
-		10
+		36
 	],
 	"../pages/nearby/nearby.module": [
 		734,
-		9
+		35
 	],
 	"../pages/notifications/notifications.module": [
 		735,
-		8
+		34
 	],
 	"../pages/orders/orders.module": [
-		737,
-		7
+		736,
+		33
 	],
 	"../pages/restaurant-detail/restaurant-detail.module": [
-		736,
-		6
+		737,
+		32
 	],
 	"../pages/restaurant-filter/restaurant-filter.module": [
 		738,
-		5
+		31
 	],
 	"../pages/restaurant-list/restaurant-list.module": [
 		739,
-		4
+		30
 	],
 	"../pages/settings/settings.module": [
 		740,
-		3
+		29
+	],
+	"../pages/sugerencia/sugerencia.module": [
+		767,
+		28
 	],
 	"../pages/support/support.module": [
 		741,
-		2
+		27
 	],
 	"../pages/walkthrough/walkthrough.module": [
 		742,
-		1
+		26
 	],
 	"../pages/your-restaurant/your-restaurant.module": [
 		743,
-		0
+		25
 	]
 };
 function webpackAsyncContext(req) {
@@ -427,7 +442,8 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return api; });
 var api = {
-    SERVER_URL: 'http://164.68.116.40:3003/',
+    // SERVER_URL: 'http://164.68.116.40:3003/',
+    SERVER_URL: 'http://localhost:3003/',
     countriesApi: 'https://restcountries.eu/rest/v2/all'
 };
 //# sourceMappingURL=config.js.map
@@ -1014,14 +1030,15 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/my-account/my-account.module#MyAccountPageModule', name: 'page-my-account', segment: 'my-account', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/nearby/nearby.module#NearbyPageModule', name: 'page-nearby', segment: 'nearby', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notifications/notifications.module#NotificationsPageModule', name: 'page-notifications', segment: 'notifications', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/restaurant-detail/restaurant-detail.module#RestaurantDetailPageModule', name: 'page-restaurant-detail', segment: 'restaurant/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'page-orders', segment: 'orders', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/restaurant-detail/restaurant-detail.module#RestaurantDetailPageModule', name: 'page-restaurant-detail', segment: 'restaurant/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/restaurant-filter/restaurant-filter.module#RestaurantFilterPageModule', name: 'page-restaurant-filter', segment: 'restaurant-filter', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/restaurant-list/restaurant-list.module#RestaurantListPageModule', name: 'page-restaurant-list', segment: 'restaurant-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'page-settings', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'page-support', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/walkthrough/walkthrough.module#WalkthroughPageModule', name: 'page-walkthrough', segment: 'walkthrough', priority: 'high', defaultHistory: [] },
-                        { loadChildren: '../pages/your-restaurant/your-restaurant.module#YourRestaurantPageModule', name: 'page-your-restaurant', segment: 'your-restaurant', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/your-restaurant/your-restaurant.module#YourRestaurantPageModule', name: 'page-your-restaurant', segment: 'your-restaurant', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/sugerencia/sugerencia.module#SugerenciaPageModule', name: 'page-sugerencia', segment: 'sugerencia', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["a" /* IonicStorageModule */].forRoot({
@@ -2466,6 +2483,7 @@ var foodIonicApp = /** @class */ (function () {
         this.restaurantsNearItem = { component: 'page-nearby', icon: 'compass' };
         this.restaurantsCatItem = { component: 'page-category', icon: 'albums' };
         this.platosItem = { component: 'page-dish-list', icon: 'pizza' };
+        this.sugerenciaItem = { component: 'page-sugerencia', icon: 'pizza' };
         this.ultimasOrdItem = { component: 'page-orders', icon: 'list-box' };
         this.carroItem = { component: 'page-cart', icon: 'cart' };
         this.favRestItem = { component: 'page-favorite-list', icon: 'heart' };
@@ -2475,6 +2493,7 @@ var foodIonicApp = /** @class */ (function () {
             { title: '- Cercanos', component: 'page-nearby', icon: 'compass' },
             { title: '- Por categorias', component: 'page-category', icon: 'albums' },
             { title: 'Platos', component: 'page-dish-list', icon: 'pizza' },
+            { title: 'Sugerencias', component: 'page-sugerencia', icon: 'pizza' },
             { title: 'Ultimas ordenes', component: 'page-orders', icon: 'list-box' },
             { title: 'Carro', component: 'page-cart', icon: 'cart' },
             { title: 'Restaurantes Favoritos', component: 'page-favorite-list', icon: 'heart' },
@@ -2516,17 +2535,15 @@ var foodIonicApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Nav */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Nav */]) === "function" && _a || Object)
     ], foodIonicApp.prototype, "nav", void 0);
     foodIonicApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_3\src\app\app.html"*/'<ion-split-pane when="lg">\n\n	<ion-menu side="left" id="authenticated" [content]="content" class="menu-bg">\n\n	  <ion-header>\n	    <ion-toolbar class="user-profile">\n\n	      <div class="user-profile">\n	        <ion-list no-margin>\n	          <ion-item>\n\n	            <ion-avatar item-left>\n	              <img src="assets/img/avatar.jpeg">\n	            </ion-avatar>\n\n	            <h2 ion-text class="text-white fw700 text-15x">\n	              Hamlet Morales\n	            </h2>\n	            <p ion-text color="light">La Habana, Cuba</p>\n\n					    <button  ion-button icon-left round color="primary" menuClose (click)="openPage(accountMenuItems[1])">\n					      <ion-icon [name]="accountMenuItems[1].icon"></ion-icon>\n					      {{accountMenuItems[1].title}}\n					    </button>\n\n	          </ion-item>\n	        </ion-list>\n	      </div>\n\n	    </ion-toolbar>\n	  </ion-header>\n\n	  <ion-content color="dark" class="profile-bg">\n	    <button *ngIf="isLogging()" ion-button icon-left full color="secondary" no-margin menuClose (click)="openPage(accountMenuItems[2])">\n	      <ion-icon [name]="accountMenuItems[2].icon"></ion-icon>\n	      {{accountMenuItems[2].title}}\n	    </button>\n\n	    <ion-list class="user-list">\n	      <button menuClose ion-item (click)="openPage(homeItem)">\n	        <ion-icon item-left name="browsers"></ion-icon>\n	        Inicio\n	      </button>\n\n	      <button *ngIf="isLogging()" menuClose ion-item (click)="openPage(messagesItem)">\n	        <ion-icon item-left name="mail"></ion-icon>\n	        Mensajes\n	        <ion-badge color="dark">\n	          2\n	        </ion-badge>\n	      </button>\n	    </ion-list>\n\n\n	    <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Menu</span>\n	      </ion-list-header>\n	      <button menuClose ion-item (click)="openPage(restaurantsItem)">\n	        <ion-icon item-left [name]="restaurantsItem.icon"></ion-icon>\n	        Restaurantes\n				</button>\n				<button menuClose ion-item (click)="openPage(restaurantsNearItem)">\n						<ion-icon item-left [name]="restaurantsNearItem.icon"></ion-icon>\n						- Cercanos\n					</button>\n				<button menuClose ion-item (click)="openPage(restaurantsCatItem)">\n						<ion-icon item-left [name]="restaurantsCatItem.icon"></ion-icon>\n						- Por categorias\n					</button>\n				<button menuClose ion-item (click)="openPage(platosItem)">\n						<ion-icon item-left [name]="platosItem.icon"></ion-icon>\n						Platos\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(ultimasOrdItem)">\n						<ion-icon item-left [name]="ultimasOrdItem.icon"></ion-icon>\n						Ultimas ordenes\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(carroItem)">\n						<ion-icon item-left [name]="carroItem.icon"></ion-icon>\n						Carro\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favRestItem)">\n						<ion-icon item-left [name]="favRestItem.icon"></ion-icon>\n						Restaurantes Favoritos\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favPlatoItem)">\n						<ion-icon item-left [name]="favPlatoItem.icon"></ion-icon>\n						Platos Favoritos\n					</button>	\n	    </ion-list>\n\n	    <!-- <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Your Restaurant</span>\n	      </ion-list-header>\n	      <button menuClose ion-item *ngFor="let menuItem of yourRestaurantMenuItems" (click)="openPage(menuItem)">\n	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>\n	        {{menuItem.title}}\n	      </button>\n	    </ion-list> -->\n\n	    <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Contacto - Configuracion</span>\n	      </ion-list-header>\n	      <button menuClose ion-item *ngFor="let menuItem of helpMenuItems" (click)="openPage(menuItem)">\n	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>\n	        {{menuItem.title}}\n	      </button>\n	    </ion-list>\n\n	  </ion-content>\n\n	</ion-menu>\n\n	<ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n\n</ion-split-pane>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_3\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\app\app.html"*/'<ion-split-pane when="lg">\n\n	<ion-menu side="left" id="authenticated" [content]="content" class="menu-bg">\n\n	  <ion-header>\n	    <ion-toolbar class="user-profile">\n\n	      <div class="user-profile">\n	        <ion-list no-margin>\n	          <ion-item>\n\n	            <ion-avatar item-left>\n	              <img src="assets/img/avatar.jpeg">\n	            </ion-avatar>\n\n	            <h2 ion-text class="text-white fw700 text-15x">\n	              Hamlet Morales\n	            </h2>\n	            <p ion-text color="light">La Habana, Cuba</p>\n\n					    <button  ion-button icon-left round color="primary" menuClose (click)="openPage(accountMenuItems[1])">\n					      <ion-icon [name]="accountMenuItems[1].icon"></ion-icon>\n					      {{accountMenuItems[1].title}}\n					    </button>\n\n	          </ion-item>\n	        </ion-list>\n	      </div>\n\n	    </ion-toolbar>\n	  </ion-header>\n\n	  <ion-content color="dark" class="profile-bg">\n	    <button *ngIf="isLogging()" ion-button icon-left full color="secondary" no-margin menuClose (click)="openPage(accountMenuItems[2])">\n	      <ion-icon [name]="accountMenuItems[2].icon"></ion-icon>\n	      {{accountMenuItems[2].title}}\n	    </button>\n\n	    <ion-list class="user-list">\n	      <button menuClose ion-item (click)="openPage(homeItem)">\n	        <ion-icon item-left name="browsers"></ion-icon>\n	        Inicio\n	      </button>\n\n	      <button *ngIf="isLogging()" menuClose ion-item (click)="openPage(messagesItem)">\n	        <ion-icon item-left name="mail"></ion-icon>\n	        Mensajes\n	        <ion-badge color="dark">\n	          2\n	        </ion-badge>\n	      </button>\n	    </ion-list>\n\n\n	    <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Menu</span>\n	      </ion-list-header>\n	      <button menuClose ion-item (click)="openPage(restaurantsItem)">\n	        <ion-icon item-left [name]="restaurantsItem.icon"></ion-icon>\n	        Restaurantes\n				</button>\n				<button menuClose ion-item (click)="openPage(restaurantsNearItem)">\n						<ion-icon item-left [name]="restaurantsNearItem.icon"></ion-icon>\n						- Cercanos\n					</button>\n				<button menuClose ion-item (click)="openPage(restaurantsCatItem)">\n						<ion-icon item-left [name]="restaurantsCatItem.icon"></ion-icon>\n						- Por categorias\n					</button>\n				<button menuClose ion-item (click)="openPage(platosItem)">\n						<ion-icon item-left [name]="platosItem.icon"></ion-icon>\n						Platos\n					</button>	\n					<button menuClose ion-item (click)="openPage(sugerenciaItem)">\n						<ion-icon item-left [name]="sugerenciaItem.icon"></ion-icon>\n						Sugerencias\n					</button>\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(ultimasOrdItem)">\n						<ion-icon item-left [name]="ultimasOrdItem.icon"></ion-icon>\n						Ultimas ordenes\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(carroItem)">\n						<ion-icon item-left [name]="carroItem.icon"></ion-icon>\n						Carro\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favRestItem)">\n						<ion-icon item-left [name]="favRestItem.icon"></ion-icon>\n						Restaurantes Favoritos\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favPlatoItem)">\n						<ion-icon item-left [name]="favPlatoItem.icon"></ion-icon>\n						Platos Favoritos\n					</button>	\n	    </ion-list>\n\n	    <!-- <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Your Restaurant</span>\n	      </ion-list-header>\n	      <button menuClose ion-item *ngFor="let menuItem of yourRestaurantMenuItems" (click)="openPage(menuItem)">\n	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>\n	        {{menuItem.title}}\n	      </button>\n	    </ion-list> -->\n\n	    <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Contacto - Configuracion</span>\n	      </ion-list-header>\n	      <button menuClose ion-item *ngFor="let menuItem of helpMenuItems" (click)="openPage(menuItem)">\n	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>\n	        {{menuItem.title}}\n	      </button>\n	    </ion-list>\n\n	  </ion-content>\n\n	</ion-menu>\n\n	<ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n\n</ion-split-pane>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_rest_backend__["a" /* RestBackendProvider */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_rest_backend__["a" /* RestBackendProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_rest_backend__["a" /* RestBackendProvider */]) === "function" && _e || Object])
     ], foodIonicApp);
     return foodIonicApp;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=app.component.js.map

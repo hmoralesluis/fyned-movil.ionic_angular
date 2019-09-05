@@ -1,3 +1,5 @@
 #Carpetas que se generan al instalar las dependencias
 node_modules
 .sourcemaps
+src/assets/img/uploads/
+www

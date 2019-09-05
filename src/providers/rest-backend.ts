@@ -143,6 +143,16 @@ export class RestBackendProvider {
     })
   }
 
+  findSugerenciaDishes() {
+    return new Promise(resolve => {
+      this.http.get(api.SERVER_URL+'apigigssugerencia').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    })
+  }
+
   addRestaurantToFavorite(restId: string) {
     return new Promise(resolve => {
       this.http.get(api.SERVER_URL+'apiaddresttolovedrest/'+this.idUserlogin+'/'+restId).subscribe(data => {

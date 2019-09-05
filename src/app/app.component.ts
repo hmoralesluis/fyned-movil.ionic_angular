@@ -37,6 +37,8 @@ export class foodIonicApp {
 
     platosItem: any;
 
+    sugerenciaItem: any;
+
     ultimasOrdItem: any;
 
     carroItem: any;
@@ -68,6 +70,7 @@ export class foodIonicApp {
         this.restaurantsNearItem = { component: 'page-nearby', icon: 'compass'};
         this.restaurantsCatItem = { component: 'page-category', icon: 'albums'};
         this.platosItem = { component: 'page-dish-list', icon: 'pizza'};
+        this.sugerenciaItem = { component: 'page-sugerencia', icon: 'pizza'};
         this.ultimasOrdItem = { component: 'page-orders', icon: 'list-box'};
         this.carroItem = { component: 'page-cart', icon: 'cart'};
         this.favRestItem = { component: 'page-favorite-list', icon: 'heart'};
@@ -78,6 +81,7 @@ export class foodIonicApp {
             {title: '- Cercanos', component: 'page-nearby', icon: 'compass'},
             {title: '- Por categorias', component: 'page-category', icon: 'albums'},
             {title: 'Platos', component: 'page-dish-list', icon: 'pizza'},
+            {title: 'Sugerencias', component: 'page-sugerencia', icon: 'pizza'},
             {title: 'Ultimas ordenes', component: 'page-orders', icon: 'list-box'},
             {title: 'Carro', component: 'page-cart', icon: 'cart'},
 			{title: 'Restaurantes Favoritos', component: 'page-favorite-list', icon: 'heart'},
