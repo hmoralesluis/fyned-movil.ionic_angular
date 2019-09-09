@@ -1,15 +1,14 @@
 webpackJsonp([9],{
 
-/***/ 734:
+/***/ 733:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NearbyPageModule", function() { return NearbyPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsPageModule", function() { return NotificationsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__agm_core__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nearby__ = __webpack_require__(757);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notifications__ = __webpack_require__(757);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,30 +18,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var NearbyPageModule = /** @class */ (function () {
-    function NearbyPageModule() {
+var NotificationsPageModule = /** @class */ (function () {
+    function NotificationsPageModule() {
     }
-    NearbyPageModule = __decorate([
+    NotificationsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__nearby__["a" /* NearbyPage */]
+                __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__nearby__["a" /* NearbyPage */]),
-                __WEBPACK_IMPORTED_MODULE_2__agm_core__["a" /* AgmCoreModule */].forRoot({
-                    apiKey: 'AIzaSyD9BxeSvt3u--Oj-_GD-qG2nPr1uODrR0Y'
-                })
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_3__nearby__["a" /* NearbyPage */]
+                __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]
             ]
         })
-    ], NearbyPageModule);
-    return NearbyPageModule;
+    ], NotificationsPageModule);
+    return NotificationsPageModule;
 }());
 
-//# sourceMappingURL=nearby.module.js.map
+//# sourceMappingURL=notifications.module.js.map
 
 /***/ }),
 
@@ -50,10 +45,9 @@ var NearbyPageModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NearbyPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_restaurant_service_mock__ = __webpack_require__(367);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,43 +59,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-var NearbyPage = /** @class */ (function () {
-    function NearbyPage(navCtrl, service, modalCtrl) {
+var NotificationsPage = /** @class */ (function () {
+    function NotificationsPage(navCtrl, viewCtrl) {
         this.navCtrl = navCtrl;
-        this.service = service;
-        this.modalCtrl = modalCtrl;
-        this.lat = 42.35663;
-        this.lng = -71.11095;
-        this.findAll();
+        this.viewCtrl = viewCtrl;
     }
-    NearbyPage.prototype.openRestaurantFilterPage = function () {
-        var modal = this.modalCtrl.create('page-restaurant-filter');
-        modal.present();
+    NotificationsPage.prototype.close = function () {
+        this.viewCtrl.dismiss();
     };
-    NearbyPage.prototype.openRestaurantDetail = function (restaurant) {
-        this.navCtrl.push('page-restaurant-detail', {
-            'id': restaurant.id
-        });
+    NotificationsPage.prototype.messages = function () {
+        this.navCtrl.push('page-message-list');
+        // this.navCtrl.setRoot('page-message-list');
     };
-    NearbyPage.prototype.findAll = function () {
-        var _this = this;
-        this.service.findAll()
-            .then(function (data) { return _this.restaurants = data; })
-            .catch(function (error) { return alert(error); });
-    };
-    NearbyPage.prototype.ionViewDidLoad = function () {
-    };
-    NearbyPage = __decorate([
+    NotificationsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-nearby',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\nearby\nearby.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <span ion-text>Cerca</span>\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="lightest-bg">\n\n  <div id="nearby-map" class="nearby-map">\n		<agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">\n			<agm-marker *ngFor="let restaurant of restaurants; let i = index"\n			 [latitude]="restaurant.lat" [longitude]="restaurant.long">\n				<agm-info-window>\n					<img src="{{restaurant.thumbnail}}" class="mw240" tappable (click)="openRestaurantDetail(restaurant)">\n					<h3 tappable (click)="openRestaurantDetail(restaurant)">\n						<strong>{{restaurant.title}}</strong>\n					</h3>\n					<p ion-text tappable (click)="openRestaurantDetail(restaurant)" color="primary" no-margin>\n						{{restaurant.city}}, {{restaurant.state}} •\n						<span ion-text class="fw700">{{ restaurant.price }}</span>\n					</p>\n				</agm-info-window>\n			</agm-marker>\n		</agm-map>\n	</div>\n\n</ion-content>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\nearby\nearby.html"*/
+            selector: 'page-notifications',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\notifications\notifications.html"*/'<ion-list class="no-margin">\n  <ion-list-header class="no-margin">\n  	<ion-icon name="notifications" color="primary"></ion-icon>\n  	<span ion-text color="primary" class="bold">Notificaciones</span>\n  </ion-list-header>\n  <button ion-item color="primary" class="text-11x" (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	New Offer 25% OFF 1\n  </button>\n  <button ion-item class="text-11x" (click)="messages()">\n  	<ion-icon name="mail-open"></ion-icon>\n  	New Offer 15% OFF by month!\n  </button>\n  <button ion-item class="text-11x" (click)="messages()">\n  	<ion-icon name="mail-open"></ion-icon>\n  	Visit our office today!\n  </button>\n  <button ion-item color="primary" class="text-11x" (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	You New property\n  </button>\n</ion-list>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\notifications\notifications.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_restaurant_service_mock__["a" /* RestaurantService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */]])
-    ], NearbyPage);
-    return NearbyPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */]])
+    ], NotificationsPage);
+    return NotificationsPage;
 }());
 
-//# sourceMappingURL=nearby.js.map
+//# sourceMappingURL=notifications.js.map
 
 /***/ })
 

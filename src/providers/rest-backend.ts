@@ -17,7 +17,7 @@ export class RestBackendProvider {
   private isLoggin: boolean = false;
   private idUserlogin: string = '0';
 
-  constructor(public http: HttpClient) {   
+  constructor(public http: HttpClient) {
   }
 
   setIduserlogin(userId: string) {
@@ -30,7 +30,17 @@ export class RestBackendProvider {
 
   getIsLogging() {
     return this.isLoggin;
-  }
+	}
+
+	test() {
+		return new Promise(resolve => {
+      this.http.post(api.SERVER_URL+'apitest', {todo: 'Hamlet'}).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+	}
 
   checkUserByEmail(email: string) {
     return new Promise(resolve => {
@@ -122,8 +132,8 @@ export class RestBackendProvider {
       });
     });
   }
-  
-  findAllRestaurants() {	
+
+  findAllRestaurants() {
     return new Promise(resolve => {
       this.http.get(restaurantsURL).subscribe(data => {
         resolve(data);
@@ -136,6 +146,16 @@ export class RestBackendProvider {
   findAllDishes() {
     return new Promise(resolve => {
       this.http.get(api.SERVER_URL+'apigigs').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    })
+  }
+
+  findSugerenciaDishes() {
+    return new Promise(resolve => {
+      this.http.get(api.SERVER_URL+'apigigssugerencia').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -161,7 +181,7 @@ export class RestBackendProvider {
         console.log(err);
       });
     });
-  } 
+  }
 
   delFavoriteRestaurantByUserId(idRest: string) {
     return new Promise(resolve => {

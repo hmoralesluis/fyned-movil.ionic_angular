@@ -5,11 +5,10 @@ webpackJsonp([6],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RestaurantDetailPageModule", function() { return RestaurantDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RestaurantFilterPageModule", function() { return RestaurantFilterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__agm_core__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__restaurant_detail__ = __webpack_require__(759);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__restaurant_filter__ = __webpack_require__(760);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,44 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var RestaurantDetailPageModule = /** @class */ (function () {
-    function RestaurantDetailPageModule() {
+var RestaurantFilterPageModule = /** @class */ (function () {
+    function RestaurantFilterPageModule() {
     }
-    RestaurantDetailPageModule = __decorate([
+    RestaurantFilterPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__restaurant_detail__["a" /* RestaurantDetailPage */]
+                __WEBPACK_IMPORTED_MODULE_2__restaurant_filter__["a" /* RestaurantFilterPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__restaurant_detail__["a" /* RestaurantDetailPage */]),
-                __WEBPACK_IMPORTED_MODULE_2__agm_core__["a" /* AgmCoreModule */].forRoot({
-                    apiKey: 'AIzaSyD9BxeSvt3u--Oj-_GD-qG2nPr1uODrR0Y'
-                })
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__restaurant_filter__["a" /* RestaurantFilterPage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_3__restaurant_detail__["a" /* RestaurantDetailPage */]
+                __WEBPACK_IMPORTED_MODULE_2__restaurant_filter__["a" /* RestaurantFilterPage */]
             ]
         })
-    ], RestaurantDetailPageModule);
-    return RestaurantDetailPageModule;
+    ], RestaurantFilterPageModule);
+    return RestaurantFilterPageModule;
 }());
 
-//# sourceMappingURL=restaurant-detail.module.js.map
+//# sourceMappingURL=restaurant-filter.module.js.map
 
 /***/ }),
 
-/***/ 759:
+/***/ 760:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestaurantDetailPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestaurantFilterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_restaurant_service_mock__ = __webpack_require__(367);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_dish_service_mock__ = __webpack_require__(369);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_cart_service_mock__ = __webpack_require__(368);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_rest_backend__ = __webpack_require__(164);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,105 +59,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-var RestaurantDetailPage = /** @class */ (function () {
-    function RestaurantDetailPage(actionSheetCtrl, navCtrl, navParams, cartService, restaurantService, dishService, toastCtrl, serviceBackend) {
-        this.actionSheetCtrl = actionSheetCtrl;
+var RestaurantFilterPage = /** @class */ (function () {
+    function RestaurantFilterPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.cartService = cartService;
-        this.restaurantService = restaurantService;
-        this.dishService = dishService;
-        this.toastCtrl = toastCtrl;
-        this.serviceBackend = serviceBackend;
-        this.restaurantopts = 'menu';
-        this.param = this.navParams.get('id');
-        this.restaurant = this.restaurantService.getItem(this.param) ? this.restaurantService.getItem(this.param) : this.restaurantService.getRestaurants()[0];
-        this.dishes = this.dishService.findAll();
-        this.findAll();
+        this.radiusmiles = 1;
+        this.minmaxprice = {
+            upper: 500,
+            lower: 10
+        };
     }
-    RestaurantDetailPage.prototype.findAll = function () {
-        var _this = this;
-        this.serviceBackend.getRestAndPlatosByRestaurantId(this.param)
-            .then(function (data) {
-            _this.restanddishes = data;
-            _this.restRestaurant = _this.restanddishes.restaurant;
-            _this.restId = _this.restRestaurant._id;
-            _this.restLabel = _this.restRestaurant.label;
-            _this.restPicture1 = _this.restRestaurant.picture1;
-            _this.restPicture2 = _this.restRestaurant.picture2;
-            _this.restPicture3 = _this.restRestaurant.picture3;
-            _this.restName = _this.restRestaurant.name;
-            _this.restDishes = _this.restanddishes.gigs;
-        });
+    RestaurantFilterPage.prototype.closeModal = function () {
+        this.navCtrl.pop();
     };
-    RestaurantDetailPage.prototype.openDishDetail = function (dish) {
-        this.navCtrl.push('page-dish-detail', {
-            'id': dish._id
-        });
-    };
-    RestaurantDetailPage.prototype.favorite = function (restaurantId) {
-        if (this.serviceBackend.getIduserlogin() == '0') {
-            this.navCtrl.push('page-auth');
-        }
-        else {
-            this.serviceBackend.addRestaurantToFavorite(restaurantId);
-            var toast = this.toastCtrl.create({
-                message: 'Restaurante adicionado',
-                cssClass: 'mytoast',
-                duration: 2000
-            });
-            toast.present(toast);
-        }
-    };
-    RestaurantDetailPage.prototype.share = function (restaurant) {
-        var actionSheet = this.actionSheetCtrl.create({
-            title: 'Share via',
-            buttons: [
-                {
-                    text: 'Twitter',
-                    handler: function () { return console.log('share via twitter'); }
-                },
-                {
-                    text: 'Facebook',
-                    handler: function () { return console.log('share via facebook'); }
-                },
-                {
-                    text: 'Email',
-                    handler: function () { return console.log('share via email'); }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () { return console.log('cancel share'); }
-                }
-            ]
-        });
-        actionSheet.present();
-    };
-    RestaurantDetailPage.prototype.openCart = function () {
-        this.navCtrl.push('page-cart');
-    };
-    RestaurantDetailPage = __decorate([
+    RestaurantFilterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-restaurant-detail',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\restaurant-detail\restaurant-detail.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      <span ion-text>Restaurante</span>\n    </ion-title>\n\n    <ion-buttons end>\n      <button ion-button (click)="favorite(restId)">\n        <ion-icon name="heart"></ion-icon>\n      </button>\n      <button ion-button (click)="share(restaurant)">\n          <ion-icon name="share"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n  <ion-card *ngIf="restaurant.id" class="full-width" no-margin>\n  	<div class="card-img-wrap">\n      <span ion-text class="card-img-status fw700 text-white" [ngClass]="{\'closed\': restaurant.label === \'closed\', \'open\': restaurant.label === \'open\'}">\n        {{ restLabel }}\n      </span>\n		  <ion-slides class="to-top primary-bg" pager>\n		    <ion-slide>\n		      <img src="../../assets/img/uploads/restaurant/{{restPicture1}}" alt="">\n		    </ion-slide>\n		  </ion-slides>\n		</div>\n    <!-- <img src="{{restaurant.picture}}"> -->\n    <ion-card-content>\n      <h1 ion-text color="dark" class="card-title fw700" text-center>\n      	{{restName}}\n     	</h1>\n      <p ion-text color="primary" text-center>1 mile<sup>sq</sup> • 30 - 60min • price</p>\n      <div text-center>\n		<ion-badge color="secondary">tags</ion-badge>\n      	<ion-badge color="dark" class="text-11x">\n					<ion-icon name="star"></ion-icon>\n					<!-- {{ restaurant.rating | number:\'1.1\' }} -->\n					ratings\n        </ion-badge>\n			</div>\n    </ion-card-content>\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n			  <ion-segment [(ngModel)]="restaurantopts" padding-horizontal>\n			    <ion-segment-button value="menu">\n			      Menu\n			    </ion-segment-button>\n			    <ion-segment-button value="reviews">\n			      Opiniones\n			    </ion-segment-button>\n			    <ion-segment-button value="info">\n			      Informacion\n			    </ion-segment-button>\n			  </ion-segment>\n\n				<div [ngSwitch]="restaurantopts" padding>\n					<div *ngSwitchCase="\'menu\'">\n						<ion-list>\n							<ion-item no-padding *ngFor="let restDish of restDishes" (click)="openDishDetail(restDish)">\n								<ion-thumbnail item-start>\n						      <img src="../../assets/img/uploads/gig/{{restDish.picture1}}">\n								</ion-thumbnail>\n								<h2 ion-text color="dark" class="fw500">{{restDish.title}}</h2>\n								<p ion-text color="primary" class="text-11x">ingredientes</p>\n								<button ion-button clear class="green-bg text-white" item-end>{{ restDish.price | currency }}</button>\n							</ion-item>\n						</ion-list>\n\n						<br><br><br><br>\n\n					</div>\n					<div *ngSwitchCase="\'reviews\'" class="tab-reviews">\n\n					  <!--list of reviews-->\n					  <ion-list class="list-full-border">\n					    <ion-item *ngFor="let review of restaurant.reviews" margin-bottom text-wrap>\n\n				        <h2 class="fw700">\n					      	<ion-badge color="secondary" class="text-1x">\n										<ion-icon name="star"></ion-icon>\n					        	{{ review.rating | number:\'1.1\' }}\n					        </ion-badge>\n				        {{ review.title }}</h2>\n\n					      <p ion-text>\n					        {{ review.content }}\n					      </p>\n					      <span ion-text class="author text-11x">{{ review.username }} from {{ review.from }}</span>\n\n					    </ion-item>\n					  </ion-list>\n					  <br><br>\n\n					</div>\n					<div *ngSwitchCase="\'info\'">\n					  <!-- Show map here -->\n					  <div id="map-detail" margin-bottom>\n							<agm-map [latitude]="restaurant.lat" [longitude]="restaurant.long" [zoom]="12">\n								<agm-marker [latitude]="restaurant.lat" [longitude]="restaurant.long">\n								</agm-marker>\n							</agm-map>\n						</div>\n						<p ion-text text-center color="dark" class="fw700">{{restaurant.address}}, {{restaurant.city}} {{restaurant.state}}</p>\n						<hr margin-bottom>\n\n						<h2>\n							<span ion-text class="fw700">About</span>\n						</h2>\n						<p ion-text margin-bottom>{{ restaurant.description }}</p>\n\n						<h2>\n							<span ion-text class="fw700">Hours</span>\n						</h2>\n						<p ion-text margin-bottom>Open 11AM • Closes 11PM</p>\n\n						<h2>\n							<span ion-text class="fw700">Phone</span>\n						</h2>\n						<p ion-text margin-bottom>+1 (212) 999 0001</p>\n\n						<br><br>\n					</div>\n				</div>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-card>\n\n  <ion-fab bottom right>\n    <button ion-fab round icon-only color="dark" (click)="openCart()">\n      <ion-icon name="cart" class="text-white"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\restaurant-detail\restaurant-detail.html"*/
+            selector: 'page-restaurant-filter',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\restaurant-filter\restaurant-filter.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-buttons start>\n        <button ion-button round (click)="closeModal()">\n            <ion-icon name="close"></ion-icon>\n        </button>\n    </ion-buttons>\n    <ion-title>\n    	<span ion-text>Filtros de busqueda</span>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item margin-bottom>\n    <ion-label color="primary" stacked>\n    	<span ion-text color="dark" class="fw500">Codigo Zip</span>\n    </ion-label>\n    <ion-input type="number" placeholder="Entra el codigo zip del area de preferencia"></ion-input>\n  </ion-item>\n\n	<ion-item>\n	  <ion-label class="no-margin-bottom">\n	  	<span ion-text color="dark" class="fw500">Radius:</span> <span ion-text color="primary"> {{radiusmiles}} Milla(s)</span></ion-label>\n	  <ion-range min="1" max="50" step="1" value="1" class="no-padding-top" [(ngModel)]="radiusmiles">\n	  </ion-range>\n	</ion-item>\n\n	<ion-item>\n	  <ion-label class="fw500" color="dark">Organizar por</ion-label>\n	  <ion-select [(ngModel)]="organizeby">\n	    <ion-option>Mayor relevancia</ion-option>\n	    <ion-option>Cercano</ion-option>\n	    <ion-option>Precios bajos</ion-option>\n	    <ion-option>Precios altos</ion-option>\n	    <ion-option>Bajos tiempos de entrega</ion-option>\n	    <ion-option>Ranquiado</ion-option>\n	  </ion-select>\n	</ion-item>\n\n	<ion-item>\n	  <ion-label class="fw500" color="dark">Tipo de plato</ion-label>\n	  <ion-select [(ngModel)]="dishtype" multiple="true">\n	    <ion-option>Health Food</ion-option>\n	    <ion-option>Veggie</ion-option>\n	    <ion-option>Pasta</ion-option>\n	    <ion-option>Barbecue</ion-option>\n	    <ion-option>Casual Dining</ion-option>\n	    <ion-option>Fine Dining</ion-option>\n	    <ion-option>Street Food</ion-option>\n	    <ion-option>Fast Food</ion-option>\n	    <ion-option>Pizza</ion-option>\n	  </ion-select>\n	</ion-item>\n\n	<ion-item>\n	  <ion-label class="fw500" color="dark">Nacionalidades</ion-label>\n	  <ion-select [(ngModel)]="dishnationality" multiple="true">\n	    <ion-option>Alemana</ion-option>\n	    <ion-option>Japonesa</ion-option>\n	    <ion-option>Koreana</ion-option>\n	    <ion-option>India</ion-option>\n	    <ion-option>Arabe</ion-option>\n	    <ion-option>Italiana</ion-option>\n	    <ion-option>China</ion-option>\n	    <ion-option>Brazilera</ion-option>\n	    <ion-option>Thai</ion-option>\n	  </ion-select>\n	</ion-item>\n\n	<ion-item margin-bottom>\n	  <ion-label class="no-margin-bottom">\n	  	<span ion-text color="dark" class="fw500">Precio Min/Max:</span> <span ion-text color="primary"> $ {{minmaxprice.lower}} to $ {{minmaxprice.upper}}</span></ion-label>\n	  	<ion-range dualKnobs="true" [(ngModel)]="minmaxprice" min="10" max="1000" step="10" class="no-padding-top"></ion-range>\n	</ion-item>\n\n	<button ion-button block color="primary" (click)="closeModal()">Resultado del filtrado</button>\n</ion-content>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\restaurant-filter\restaurant-filter.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_cart_service_mock__["a" /* CartService */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_restaurant_service_mock__["a" /* RestaurantService */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_dish_service_mock__["a" /* DishService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_rest_backend__["a" /* RestBackendProvider */]])
-    ], RestaurantDetailPage);
-    return RestaurantDetailPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]])
+    ], RestaurantFilterPage);
+    return RestaurantFilterPage;
 }());
 
-//# sourceMappingURL=restaurant-detail.js.map
+//# sourceMappingURL=restaurant-filter.js.map
 
 /***/ })
 

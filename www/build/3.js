@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 740:
+/***/ 739:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsPageModule", function() { return SettingsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SugerenciaPageModule", function() { return SugerenciaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings__ = __webpack_require__(763);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sugerencia__ = __webpack_require__(763);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,26 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SettingsPageModule = /** @class */ (function () {
-    function SettingsPageModule() {
+var SugerenciaPageModule = /** @class */ (function () {
+    function SugerenciaPageModule() {
     }
-    SettingsPageModule = __decorate([
+    SugerenciaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__settings__["a" /* SettingsPage */]
+                __WEBPACK_IMPORTED_MODULE_2__sugerencia__["a" /* SugerenciaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__settings__["a" /* SettingsPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__sugerencia__["a" /* SugerenciaPage */]),
             ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_2__settings__["a" /* SettingsPage */]
-            ]
         })
-    ], SettingsPageModule);
-    return SettingsPageModule;
+    ], SugerenciaPageModule);
+    return SugerenciaPageModule;
 }());
 
-//# sourceMappingURL=settings.module.js.map
+//# sourceMappingURL=sugerencia.module.js.map
 
 /***/ }),
 
@@ -45,9 +42,11 @@ var SettingsPageModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SugerenciaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dish_service_mock__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_rest_backend__ = __webpack_require__(164);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,20 +58,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var SettingsPage = /** @class */ (function () {
-    function SettingsPage(nav) {
-        this.nav = nav;
+
+
+var SugerenciaPage = /** @class */ (function () {
+    function SugerenciaPage(navCtrl, dishService, serviceBackend) {
+        this.navCtrl = navCtrl;
+        this.dishService = dishService;
+        this.serviceBackend = serviceBackend;
+        this.dishes = this.dishService.findAll();
+        this.getDishesRest();
     }
-    SettingsPage = __decorate([
+    SugerenciaPage.prototype.getDishesRest = function () {
+        var _this = this;
+        this.serviceBackend.findSugerenciaDishes()
+            .then(function (data) {
+            _this.dishesRest = data;
+            _this.dishesRest = _this.dishesRest.gigs;
+        });
+    };
+    SugerenciaPage.prototype.openDishDetail = function (dishID) {
+        this.navCtrl.push('page-dish-detail', {
+            'id': dishID
+        });
+    };
+    SugerenciaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-settings',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\settings\settings.html"*/'<!-- -->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <span ion-text>Configuracion</span>\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="common-bg">\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n				<!-- User settings-->\n				<ion-item-group>\n					<ion-item-divider color="dark" class="bold">Configuracion de usuario</ion-item-divider>\n					<ion-item>\n						<ion-label>Idioma</ion-label>\n						<ion-select [(ngModel)]="language" cancelText="Cancel" okText="OK">\n							<ion-option value="en-US" selected="true">English (US)</ion-option>\n							<ion-option value="en-GB">English (UK)</ion-option>\n							<ion-option value="en-CA">English (CA)</ion-option>\n							<ion-option value="en-AU">English (AU)</ion-option>\n							<ion-option value="en-IN">English (IN)</ion-option>\n							<ion-option value="pt-BR">Portuguese (BR)</ion-option>\n							<ion-option value="pt-PT">Portuguese (PT)</ion-option>\n							<ion-option value="es-ES">Spanish (ES)</ion-option>\n							<ion-option value="es-AR">Spanish (AR)</ion-option>\n							<ion-option value="es-CO">Spanish (CO)</ion-option>\n							<ion-option value="es-CL">Spanish (CL)</ion-option>\n							<ion-option value="es-MX">Spanish (MX)</ion-option>\n							<ion-option value="zh-CN">Chinese (CN)</ion-option>\n							<ion-option value="zh-TW">Chinese (TW)</ion-option>\n						</ion-select>\n					</ion-item>\n					<ion-item>\n						<ion-label>Moneda</ion-label>\n						<ion-select [(ngModel)]="currency" cancelText="Cancel" okText="OK">\n							<ion-option value="USD" selected="true">U.S Dollar (US$)</ion-option>\n							<ion-option value="EUR">Euro (€)</ion-option>\n							<ion-option value="GBP">Pound (£)</ion-option>\n							<ion-option value="BRL">Brazilian Real (R$)</ion-option>\n							<ion-option value="CNY">Chinese Yuan</ion-option>\n						</ion-select>\n					</ion-item>\n					<ion-item>\n						<ion-label>Unidades</ion-label>\n						<ion-select [(ngModel)]="munits" cancelText="Cancel" okText="OK">\n							<ion-option value="M" selected="true">Foots (ft²)</ion-option>\n							<ion-option value="K">Meters (m²)</ion-option>\n						</ion-select>\n					</ion-item>\n					<ion-item>\n						<ion-label>Mensajes de perfil?</ion-label>\n						<ion-toggle checked="true"></ion-toggle>\n					</ion-item>\n				</ion-item-group>\n				<!-- App settings-->\n				<ion-item-group>\n					<ion-item-divider color="dark" class="bold">App Settings</ion-item-divider>\n					<ion-item>\n						<span>Limpiar datos privados</span>\n					</ion-item>\n					<ion-item>\n						<ion-label>Subir notificaciones?</ion-label>\n						<ion-toggle checked="false"></ion-toggle>\n					</ion-item>\n					<ion-item>\n						<span>Politicas privadas</span>\n					</ion-item>\n				</ion-item-group>\n\n				<!--sign out button-->\n				<!-- <button ion-button color="primary" full tappable (click)="logout()">LOG OUT</button> -->\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\settings\settings.html"*/
+            selector: 'page-sugerencia',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\sugerencia\sugerencia.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			<span ion-text>Sugerencias</span>\n		</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n				<ion-list>\n					<ion-item *ngFor="let dish of dishesRest" tapplable (click)="openDishDetail(dish._id)">\n					<ion-thumbnail item-start>\n						<img src="../../assets/img/uploads/gig/{{dish.picture1}}">\n					</ion-thumbnail>\n					<h2 ion-text color="dark" class="fw500">{{dish.title}}</h2>\n					<p ion-text color="primary" class="text-11x">ingredientes</p>\n					<button ion-button clear class="green-bg text-white" item-end>{{ dish.price | currency }}</button>\n					</ion-item>\n\n				</ion-list>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\sugerencia\sugerencia.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]])
-    ], SettingsPage);
-    return SettingsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_dish_service_mock__["a" /* DishService */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_rest_backend__["a" /* RestBackendProvider */]])
+    ], SugerenciaPage);
+    return SugerenciaPage;
 }());
 
-//# sourceMappingURL=settings.js.map
+//# sourceMappingURL=sugerencia.js.map
 
 /***/ })
 

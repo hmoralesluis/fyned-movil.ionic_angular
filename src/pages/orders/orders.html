@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content class="lightest-bg">
-	
+
 	<ion-grid no-padding fixed>
 		<ion-row no-padding>
 			<ion-col>
@@ -23,7 +23,7 @@
 
 				<ion-card *ngFor="let order of orderrest">
 					<ion-card-header text-center class="primary-bg">
-						<p ion-text class="text-18x text-light fw300"># Orden: <span ion-text class="fw700 text-white">123456789</span></p>
+						<p ion-text class="text-18x text-light fw300"># Orden: <span ion-text class="fw700 text-white">{{order._id}}</span></p>
 					</ion-card-header>
 					<ion-card-content no-padding>
 

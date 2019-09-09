@@ -1,14 +1,14 @@
 webpackJsonp([8],{
 
-/***/ 735:
+/***/ 742:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsPageModule", function() { return NotificationsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersPageModule", function() { return OrdersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notifications__ = __webpack_require__(758);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(766);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NotificationsPageModule = /** @class */ (function () {
-    function NotificationsPageModule() {
+var OrdersPageModule = /** @class */ (function () {
+    function OrdersPageModule() {
     }
-    NotificationsPageModule = __decorate([
+    OrdersPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]
+                __WEBPACK_IMPORTED_MODULE_2__orders__["a" /* OrdersPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__orders__["a" /* OrdersPage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]
+                __WEBPACK_IMPORTED_MODULE_2__orders__["a" /* OrdersPage */]
             ]
         })
-    ], NotificationsPageModule);
-    return NotificationsPageModule;
+    ], OrdersPageModule);
+    return OrdersPageModule;
 }());
 
-//# sourceMappingURL=notifications.module.js.map
+//# sourceMappingURL=orders.module.js.map
 
 /***/ }),
 
-/***/ 758:
+/***/ 766:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_orders_service_mock__ = __webpack_require__(371);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_rest_backend__ = __webpack_require__(164);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,28 +61,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var NotificationsPage = /** @class */ (function () {
-    function NotificationsPage(navCtrl, viewCtrl) {
+
+
+var OrdersPage = /** @class */ (function () {
+    function OrdersPage(navCtrl, navParams, ordersService, serviceBackend) {
         this.navCtrl = navCtrl;
-        this.viewCtrl = viewCtrl;
+        this.navParams = navParams;
+        this.ordersService = ordersService;
+        this.serviceBackend = serviceBackend;
+        this.lastOrders = [];
+        this.getOrdersRest();
     }
-    NotificationsPage.prototype.close = function () {
-        this.viewCtrl.dismiss();
+    OrdersPage.prototype.getOrdersRest = function () {
+        var _this = this;
+        this.serviceBackend.getorderbyuser()
+            .then(function (data) {
+            _this.responseRest = data;
+            _this.responseRest = _this.responseRest.res;
+            if (_this.responseRest == true) {
+                _this.orderrest = data;
+                _this.orderrest = _this.orderrest.orders;
+            }
+        });
     };
-    NotificationsPage.prototype.messages = function () {
-        this.navCtrl.push('page-message-list');
-        // this.navCtrl.setRoot('page-message-list');
+    OrdersPage.prototype.ionViewWillEnter = function () {
+        this.getOrdersRest();
     };
-    NotificationsPage = __decorate([
+    OrdersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-notifications',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\notifications\notifications.html"*/'<ion-list class="no-margin">\n  <ion-list-header class="no-margin">\n  	<ion-icon name="notifications" color="primary"></ion-icon>\n  	<span ion-text color="primary" class="bold">Notificaciones</span>\n  </ion-list-header>\n  <button ion-item color="primary" class="text-11x" (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	New Offer 25% OFF 1\n  </button>\n  <button ion-item class="text-11x" (click)="messages()">\n  	<ion-icon name="mail-open"></ion-icon>\n  	New Offer 15% OFF by month!\n  </button>\n  <button ion-item class="text-11x" (click)="messages()">\n  	<ion-icon name="mail-open"></ion-icon>\n  	Visit our office today!\n  </button>\n  <button ion-item color="primary" class="text-11x" (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	You New property\n  </button>\n</ion-list>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\notifications\notifications.html"*/
+            selector: 'page-orders',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\orders\orders.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n        	<span ion-text>Ordenes</span>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n\n				<ion-card *ngIf="!responseRest" class="primary-bg" margin-top>\n					<ion-card-content>\n						<p text-center class="text-white">No cuenta con ordenes pasadas.</p>\n					</ion-card-content>\n				</ion-card>\n\n				<ion-card *ngFor="let order of orderrest">\n					<ion-card-header text-center class="primary-bg">\n						<p ion-text class="text-18x text-light fw300"># Orden: <span ion-text class="fw700 text-white">{{order._id}}</span></p>\n					</ion-card-header>\n					<ion-card-content no-padding>\n\n						<ion-list *ngFor="let item of order.items" no-margin>\n							<div ion-item>\n								<ion-thumbnail item-left>\n										<img src="../../assets/img/uploads/gig/{{item.picture}}"/>\n								</ion-thumbnail>\n									<h2 ion-text color="dark" class="fw700">{{item.title}}</h2>\n									<p ion-text color="primary">Quantity: <span class="fw700">{{item.quantity}}</span></p>\n									<ion-badge color="primary">{{ item.price * item.quantity | currency }}</ion-badge>\n							</div>\n						</ion-list>\n\n						<ion-grid padding>\n							<ion-row>\n								<ion-col>\n									<ion-card class="green-bg full-width" no-margin text-center>\n										<ion-card-content>\n											<span ion-text class="text-white">Total</span>\n											<h2 ion-text no-margin class="fw700 text-white">{{ order.total | currency }}</h2>\n										</ion-card-content>\n									</ion-card>\n								</ion-col>\n							</ion-row>\n						</ion-grid>\n					</ion-card-content>\n				</ion-card>\n\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\orders\orders.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */]])
-    ], NotificationsPage);
-    return NotificationsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_orders_service_mock__["a" /* OrdersService */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_rest_backend__["a" /* RestBackendProvider */]])
+    ], OrdersPage);
+    return OrdersPage;
 }());
 
-//# sourceMappingURL=notifications.js.map
+//# sourceMappingURL=orders.js.map
 
 /***/ })
 

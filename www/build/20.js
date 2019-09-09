@@ -1,14 +1,14 @@
 webpackJsonp([20],{
 
-/***/ 723:
+/***/ 724:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartPageModule", function() { return CartPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryPageModule", function() { return CategoryPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart__ = __webpack_require__(746);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__category__ = __webpack_require__(748);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CartPageModule = /** @class */ (function () {
-    function CartPageModule() {
+var CategoryPageModule = /** @class */ (function () {
+    function CategoryPageModule() {
     }
-    CartPageModule = __decorate([
+    CategoryPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */]
+                __WEBPACK_IMPORTED_MODULE_2__category__["a" /* CategoryPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__category__["a" /* CategoryPage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */]
+                __WEBPACK_IMPORTED_MODULE_2__category__["a" /* CategoryPage */]
             ]
         })
-    ], CartPageModule);
-    return CartPageModule;
+    ], CategoryPageModule);
+    return CategoryPageModule;
 }());
 
-//# sourceMappingURL=cart.module.js.map
+//# sourceMappingURL=category.module.js.map
 
 /***/ }),
 
-/***/ 746:
+/***/ 748:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_cart_service_mock__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_category_service_mock__ = __webpack_require__(373);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_rest_backend__ = __webpack_require__(164);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -63,81 +63,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var CartPage = /** @class */ (function () {
-    function CartPage(navCtrl, navParams, cartService, serviceBackend) {
+var CategoryPage = /** @class */ (function () {
+    function CategoryPage(navCtrl, navParams, service, serviceBackend) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.cartService = cartService;
+        this.service = service;
         this.serviceBackend = serviceBackend;
-        // orders: Array<any> = [];
-        this.totalVal = 0;
-        // this.getOrders();
-        this.getOrderRest();
+        this.findAll();
+        this.findAllRest();
     }
-    CartPage.prototype.getOrderRest = function () {
+    CategoryPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CategoryPage');
+    };
+    CategoryPage.prototype.findAllRest = function () {
         var _this = this;
-        this.serviceBackend.getCartByUserId()
+        this.serviceBackend.getcategories()
             .then(function (data) {
-            _this.orderRest = data;
-            _this.totalVal = _this.orderRest.cart.total;
-            var aux = _this.orderRest.cart.items.length;
-            _this.itemsLength = aux;
-            _this.orderRest = _this.orderRest.cart.items;
+            _this.catergoriesRest = data;
+            _this.catergoriesRest = _this.catergoriesRest.categories;
         });
     };
-    CartPage.prototype.removeOrder = function (itemId) {
+    CategoryPage.prototype.findAll = function () {
         var _this = this;
-        this.serviceBackend.deleteItemFromCart(itemId)
-            .then(function () {
-            _this.getOrderRest();
-        })
-            .catch(function (error) { return alert(JSON.stringify(error)); });
+        this.service.findAll()
+            .then(function (data) { return _this.categories = data; })
+            .catch(function (error) { return alert(error); });
     };
-    // getOrders () {
-    //   this.cartService.getOrders().then(orders => {
-    //   	this.orders = orders
-    //   	this.totalVal = 0;
-    //   	this.orders.forEach((val, i) => {
-    //   		this.totalVal = this.totalVal + (val.order.price * val.qtd)
-    //   	});
-    //   });
-    // }
-    // minus adult when click minus button
-    CartPage.prototype.minusQtd = function (itemId, qty) {
-        var _this = this;
-        var aux = qty - 1;
-        this.serviceBackend.modifyItemFromCartQty(itemId, aux)
-            .then(function () {
-            _this.getOrderRest();
-        })
-            .catch(function (error) { return alert(JSON.stringify(error)); });
+    CategoryPage.prototype.openRestaurantListPage = function (proptype) {
+        this.navCtrl.push('page-restaurant-list', { 'proptype': proptype });
     };
-    // plus adult when click plus button
-    CartPage.prototype.plusQtd = function (itemId, qty) {
-        var _this = this;
-        var aux = qty + 1;
-        this.serviceBackend.modifyItemFromCartQty(itemId, aux)
-            .then(function () {
-            _this.getOrderRest();
-        })
-            .catch(function (error) { return alert(JSON.stringify(error)); });
-    };
-    CartPage.prototype.openCheckout = function () {
-        this.navCtrl.push('page-checkout');
-    };
-    CartPage = __decorate([
+    CategoryPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cart',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\cart\cart.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n        	<span ion-text>Carro</span>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content class="lightest-bg">\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n				<ion-card *ngIf="itemsLength < 1" class="primary-bg" margin-top>\n					<ion-card-content>\n						<p text-center class="text-white">Sin elementos</p>\n					</ion-card-content>\n				</ion-card>\n\n				<ion-list no-margin>\n					<ion-item-sliding *ngFor="let order of orderRest">\n							<div ion-item>\n								<!-- (click)="itemTapped(favorite)" -->\n									<ion-thumbnail item-left>\n											<img src="../../assets/img/uploads/gig/{{order.picture}}"/>\n									</ion-thumbnail>\n										<h2 ion-text color="dark" class="fw700">{{order.title}} ${{order.price}}</h2>\n										<ion-grid class="filters" no-padding>\n											<ion-row>\n												<ion-col text-center col-2>\n													<ion-icon name="remove-circle" class="text-22x" tappable (click)="minusQtd(order._id, order.quantity)" [hidden]="order.quantity < 2"\n																		color="secondary"></ion-icon>\n												</ion-col>\n												<ion-col text-center col-3>\n													<h2 ion-text color="primary" class="text-18x">\n														<span>{{ order.quantity }}</span>\n													</h2>\n												</ion-col>\n												<ion-col text-center col-2>\n													<ion-icon name="add-circle" class="text-22x" tappable (click)="plusQtd(order._id, order.quantity)" color="secondary"></ion-icon>\n												</ion-col>\n											</ion-row>\n										</ion-grid>\n									<div item-right>\n										<ion-badge>{{ order.price * order.quantity | currency }}</ion-badge>\n									</div>\n							</div>\n							<ion-item-options>\n									<button ion-button color="danger" (click)="removeOrder(order._id)">Eliminar</button>\n							</ion-item-options>\n					</ion-item-sliding>\n				</ion-list>\n\n				<ion-card class="primary-bg" *ngIf="itemsLength > 0">\n					<ion-card-content>\n						<p ion-text color="light">Impuesto entrega (30 - 60min): <span class="fw700">Gratis</span></p>\n\n						<hr>\n\n						<p ion-text color="light">Valor total Orden</p>\n						<h2 ion-text class="text-white fw700">{{ totalVal | currency }}</h2>\n					</ion-card-content>\n				</ion-card>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-content>\n\n<ion-footer *ngIf="itemsLength > 0" class="no-padding">\n	<button ion-button full large color="dark" no-margin icon-right (click)="openCheckout()">\n		Pago en Caja\n		<ion-icon name="card"></ion-icon>\n	</button>\n</ion-footer>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_3\src\pages\cart\cart.html"*/,
+            selector: 'page-category',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\category\category.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Categorias</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>	\n	<div class="card-background-page">\n\n	<ion-grid no-padding>\n		<ion-row no-padding>\n			<ion-col col-12 col-md-6 *ngFor="let category of catergoriesRest">\n				<ion-card tappable (click)="openRestaurantListPage(category.name)">\n					<img src="../../assets/img/uploads/category/{{category.picture}}" />\n					<div class="card-title">{{category.name}}</div>\n					<div class="card-subtitle">Cantida de Restaurants</div>\n				</ion-card>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n	</div>\n\n</ion-content>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\category\category.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_cart_service_mock__["a" /* CartService */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_category_service_mock__["a" /* CategoryService */],
             __WEBPACK_IMPORTED_MODULE_3__providers_rest_backend__["a" /* RestBackendProvider */]])
-    ], CartPage);
-    return CartPage;
+    ], CategoryPage);
+    return CategoryPage;
 }());
 
-//# sourceMappingURL=cart.js.map
+//# sourceMappingURL=category.js.map
 
 /***/ })
 

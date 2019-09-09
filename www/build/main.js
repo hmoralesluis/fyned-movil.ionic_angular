@@ -1,4 +1,4 @@
-webpackJsonp([23],{
+webpackJsonp([24],{
 
 /***/ 164:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -42,6 +42,16 @@ var RestBackendProvider = /** @class */ (function () {
     };
     RestBackendProvider.prototype.getIsLogging = function () {
         return this.isLoggin;
+    };
+    RestBackendProvider.prototype.test = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.post(__WEBPACK_IMPORTED_MODULE_2__config__["a" /* api */].SERVER_URL + 'apitest', { todo: 'Hamlet' }).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
     };
     RestBackendProvider.prototype.checkUserByEmail = function (email) {
         var _this = this;
@@ -144,6 +154,16 @@ var RestBackendProvider = /** @class */ (function () {
         var _this = this;
         return new Promise(function (resolve) {
             _this.http.get(__WEBPACK_IMPORTED_MODULE_2__config__["a" /* api */].SERVER_URL + 'apigigs').subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                console.log(err);
+            });
+        });
+    };
+    RestBackendProvider.prototype.findSugerenciaDishes = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(__WEBPACK_IMPORTED_MODULE_2__config__["a" /* api */].SERVER_URL + 'apigigssugerencia').subscribe(function (data) {
                 resolve(data);
             }, function (err) {
                 console.log(err);
@@ -314,90 +334,94 @@ webpackEmptyAsyncContext.id = 175;
 var map = {
 	"../pages/about/about.module": [
 		721,
-		22
+		23
 	],
 	"../pages/auth/auth.module": [
 		722,
-		21
+		22
 	],
 	"../pages/cart/cart.module": [
 		723,
-		20
+		21
 	],
 	"../pages/category/category.module": [
 		724,
-		19
+		20
 	],
 	"../pages/checkout/checkout.module": [
 		725,
-		18
+		19
 	],
 	"../pages/dish-detail/dish-detail.module": [
 		726,
-		17
+		18
 	],
 	"../pages/dish-list/dish-list.module": [
+		728,
+		17
+	],
+	"../pages/favorite-dish/favorite-dish.module": [
 		727,
 		16
 	],
-	"../pages/favorite-dish/favorite-dish.module": [
-		728,
+	"../pages/favorite-list/favorite-list.module": [
+		731,
 		15
 	],
-	"../pages/favorite-list/favorite-list.module": [
+	"../pages/home/home.module": [
 		729,
 		14
 	],
-	"../pages/home/home.module": [
+	"../pages/message-detail/message-detail.module": [
 		730,
 		13
 	],
-	"../pages/message-detail/message-detail.module": [
-		731,
+	"../pages/message-list/message-list.module": [
+		734,
 		12
 	],
-	"../pages/message-list/message-list.module": [
+	"../pages/my-account/my-account.module": [
 		732,
 		11
 	],
-	"../pages/my-account/my-account.module": [
-		733,
+	"../pages/nearby/nearby.module": [
+		737,
 		10
 	],
-	"../pages/nearby/nearby.module": [
-		734,
+	"../pages/notifications/notifications.module": [
+		733,
 		9
 	],
-	"../pages/notifications/notifications.module": [
-		735,
+	"../pages/orders/orders.module": [
+		742,
 		8
 	],
-	"../pages/orders/orders.module": [
-		737,
+	"../pages/restaurant-detail/restaurant-detail.module": [
+		735,
 		7
 	],
-	"../pages/restaurant-detail/restaurant-detail.module": [
+	"../pages/restaurant-filter/restaurant-filter.module": [
 		736,
 		6
 	],
-	"../pages/restaurant-filter/restaurant-filter.module": [
-		738,
+	"../pages/restaurant-list/restaurant-list.module": [
+		744,
 		5
 	],
-	"../pages/restaurant-list/restaurant-list.module": [
-		739,
+	"../pages/settings/settings.module": [
+		738,
 		4
 	],
-	"../pages/settings/settings.module": [
-		740,
+	"../pages/sugerencia/sugerencia.module": [
+		739,
 		3
 	],
 	"../pages/support/support.module": [
-		741,
+		740,
 		2
 	],
 	"../pages/walkthrough/walkthrough.module": [
-		742,
+		741,
 		1
 	],
 	"../pages/your-restaurant/your-restaurant.module": [
@@ -427,7 +451,8 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return api; });
 var api = {
-    SERVER_URL: 'http://164.68.116.40:3003/',
+    // SERVER_URL: 'http://164.68.116.40:3003/',
+    SERVER_URL: 'http://localhost:3003/',
     countriesApi: 'https://restcountries.eu/rest/v2/all'
 };
 //# sourceMappingURL=config.js.map
@@ -435,6 +460,66 @@ var api = {
 /***/ }),
 
 /***/ 367:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DishService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_dishes__ = __webpack_require__(402);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var DishService = /** @class */ (function () {
+    function DishService() {
+        this.favoriteCounter = 0;
+        this.favorites = [];
+        this.dishes = __WEBPACK_IMPORTED_MODULE_1__mock_dishes__["a" /* default */];
+    }
+    DishService.prototype.findAll = function () {
+        return this.dishes;
+    };
+    DishService.prototype.findById = function (id) {
+        return Promise.resolve(this.dishes[id - 1]);
+    };
+    DishService.prototype.getItem = function (id) {
+        for (var i = 0; i < this.dishes.length; i++) {
+            if (this.dishes[i].id === parseInt(id)) {
+                return this.dishes[i];
+            }
+        }
+        return null;
+    };
+    DishService.prototype.getFavorites = function () {
+        return Promise.resolve(this.favorites);
+    };
+    DishService.prototype.favorite = function (dish) {
+        this.favoriteCounter = this.favoriteCounter + 1;
+        this.favorites.push({ id: this.favoriteCounter, dish: dish });
+        return Promise.resolve();
+    };
+    DishService.prototype.unfavorite = function (favorite) {
+        var index = this.favorites.indexOf(favorite);
+        if (index > -1) {
+            this.favorites.splice(index, 1);
+        }
+        return Promise.resolve();
+    };
+    DishService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
+    ], DishService);
+    return DishService;
+}());
+
+//# sourceMappingURL=dish-service-mock.js.map
+
+/***/ }),
+
+/***/ 368:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -503,7 +588,7 @@ var RestaurantService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 368:
+/***/ 369:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -594,66 +679,6 @@ var CartService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=cart-service-mock.js.map
-
-/***/ }),
-
-/***/ 369:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DishService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock_dishes__ = __webpack_require__(402);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var DishService = /** @class */ (function () {
-    function DishService() {
-        this.favoriteCounter = 0;
-        this.favorites = [];
-        this.dishes = __WEBPACK_IMPORTED_MODULE_1__mock_dishes__["a" /* default */];
-    }
-    DishService.prototype.findAll = function () {
-        return this.dishes;
-    };
-    DishService.prototype.findById = function (id) {
-        return Promise.resolve(this.dishes[id - 1]);
-    };
-    DishService.prototype.getItem = function (id) {
-        for (var i = 0; i < this.dishes.length; i++) {
-            if (this.dishes[i].id === parseInt(id)) {
-                return this.dishes[i];
-            }
-        }
-        return null;
-    };
-    DishService.prototype.getFavorites = function () {
-        return Promise.resolve(this.favorites);
-    };
-    DishService.prototype.favorite = function (dish) {
-        this.favoriteCounter = this.favoriteCounter + 1;
-        this.favorites.push({ id: this.favoriteCounter, dish: dish });
-        return Promise.resolve();
-    };
-    DishService.prototype.unfavorite = function (favorite) {
-        var index = this.favorites.indexOf(favorite);
-        if (index > -1) {
-            this.favorites.splice(index, 1);
-        }
-        return Promise.resolve();
-    };
-    DishService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
-    ], DishService);
-    return DishService;
-}());
-
-//# sourceMappingURL=dish-service-mock.js.map
 
 /***/ }),
 
@@ -790,59 +815,12 @@ var CategoryService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export pipes */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__term_search__ = __webpack_require__(690);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__capitalize_pipe__ = __webpack_require__(691);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__orderby_pipe__ = __webpack_require__(692);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shorten_pipe__ = __webpack_require__(693);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__temperature_pipe__ = __webpack_require__(694);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-var pipes = [
-    __WEBPACK_IMPORTED_MODULE_1__term_search__["a" /* TermSearchPipe */],
-    __WEBPACK_IMPORTED_MODULE_2__capitalize_pipe__["a" /* CapitalizePipe */],
-    __WEBPACK_IMPORTED_MODULE_3__orderby_pipe__["a" /* OrderByPipe */],
-    __WEBPACK_IMPORTED_MODULE_4__shorten_pipe__["a" /* ShortenStringPipe */],
-    __WEBPACK_IMPORTED_MODULE_5__temperature_pipe__["a" /* TemperaturePipe */],
-];
-var PipesModule = /** @class */ (function () {
-    function PipesModule() {
-    }
-    PipesModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            declarations: [pipes],
-            exports: [pipes]
-        })
-    ], PipesModule);
-    return PipesModule;
-}());
-
-//# sourceMappingURL=pipes.module.js.map
-
-/***/ }),
-
-/***/ 375:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(316);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_restauran_model__ = __webpack_require__(695);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_restauran_model__ = __webpack_require__(690);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -912,6 +890,53 @@ var TestProvider = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 375:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export pipes */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__term_search__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__capitalize_pipe__ = __webpack_require__(692);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__orderby_pipe__ = __webpack_require__(693);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shorten_pipe__ = __webpack_require__(694);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__temperature_pipe__ = __webpack_require__(695);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+var pipes = [
+    __WEBPACK_IMPORTED_MODULE_1__term_search__["a" /* TermSearchPipe */],
+    __WEBPACK_IMPORTED_MODULE_2__capitalize_pipe__["a" /* CapitalizePipe */],
+    __WEBPACK_IMPORTED_MODULE_3__orderby_pipe__["a" /* OrderByPipe */],
+    __WEBPACK_IMPORTED_MODULE_4__shorten_pipe__["a" /* ShortenStringPipe */],
+    __WEBPACK_IMPORTED_MODULE_5__temperature_pipe__["a" /* TemperaturePipe */],
+];
+var PipesModule = /** @class */ (function () {
+    function PipesModule() {
+    }
+    PipesModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [pipes],
+            exports: [pipes]
+        })
+    ], PipesModule);
+    return PipesModule;
+}());
+
+//# sourceMappingURL=pipes.module.js.map
+
+/***/ }),
+
 /***/ 376:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -942,18 +967,18 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(713);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__agm_core__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(715);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipes_pipes_module__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipes_pipes_module__ = __webpack_require__(375);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_message_service_mock__ = __webpack_require__(372);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_restaurant_service_mock__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_restaurant_service_mock__ = __webpack_require__(368);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_restaurant_service_rest__ = __webpack_require__(719);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_dish_service_mock__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_dish_service_mock__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_category_service_mock__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_cart_service_mock__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_cart_service_mock__ = __webpack_require__(369);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_orders_service_mock__ = __webpack_require__(371);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_status_bar__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_splash_screen__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_keyboard__ = __webpack_require__(720);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_test_test__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_test_test__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_rest_backend__ = __webpack_require__(164);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1005,23 +1030,24 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/category/category.module#CategoryPageModule', name: 'page-category', segment: 'category', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'page-checkout', segment: 'checkout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/dish-detail/dish-detail.module#DishDetailPageModule', name: 'page-dish-detail', segment: 'dish/:id', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/dish-list/dish-list.module#DishListPageModule', name: 'page-dish-list', segment: 'dish-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/favorite-dish/favorite-dish.module#FavoriteDishPageModule', name: 'page-favorite-dish', segment: 'favoritedish', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/favorite-list/favorite-list.module#FavoriteListPageModule', name: 'page-favorite-list', segment: 'favorites', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/dish-list/dish-list.module#DishListPageModule', name: 'page-dish-list', segment: 'dish-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'page-home', segment: 'home', priority: 'high', defaultHistory: [] },
                         { loadChildren: '../pages/message-detail/message-detail.module#MessageDetailPageModule', name: 'page-message-detail', segment: 'message/:id', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/message-list/message-list.module#MessageListPageModule', name: 'page-message-list', segment: 'message-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/favorite-list/favorite-list.module#FavoriteListPageModule', name: 'page-favorite-list', segment: 'favorites', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/my-account/my-account.module#MyAccountPageModule', name: 'page-my-account', segment: 'my-account', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/nearby/nearby.module#NearbyPageModule', name: 'page-nearby', segment: 'nearby', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notifications/notifications.module#NotificationsPageModule', name: 'page-notifications', segment: 'notifications', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/message-list/message-list.module#MessageListPageModule', name: 'page-message-list', segment: 'message-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/restaurant-detail/restaurant-detail.module#RestaurantDetailPageModule', name: 'page-restaurant-detail', segment: 'restaurant/:id', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'page-orders', segment: 'orders', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/restaurant-filter/restaurant-filter.module#RestaurantFilterPageModule', name: 'page-restaurant-filter', segment: 'restaurant-filter', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/restaurant-list/restaurant-list.module#RestaurantListPageModule', name: 'page-restaurant-list', segment: 'restaurant-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/nearby/nearby.module#NearbyPageModule', name: 'page-nearby', segment: 'nearby', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'page-settings', segment: 'settings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/sugerencia/sugerencia.module#SugerenciaPageModule', name: 'page-sugerencia', segment: 'sugerencia', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'page-support', segment: 'support', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/walkthrough/walkthrough.module#WalkthroughPageModule', name: 'page-walkthrough', segment: 'walkthrough', priority: 'high', defaultHistory: [] },
-                        { loadChildren: '../pages/your-restaurant/your-restaurant.module#YourRestaurantPageModule', name: 'page-your-restaurant', segment: 'your-restaurant', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'page-orders', segment: 'orders', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/your-restaurant/your-restaurant.module#YourRestaurantPageModule', name: 'page-your-restaurant', segment: 'your-restaurant', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/restaurant-list/restaurant-list.module#RestaurantListPageModule', name: 'page-restaurant-list', segment: 'restaurant-list', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["a" /* IonicStorageModule */].forRoot({
@@ -2125,6 +2151,27 @@ var messages = [
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Restaurant; });
+var Restaurant = /** @class */ (function () {
+    function Restaurant(id, name, picture, direction, label, description) {
+        this.id = id;
+        this.name = name;
+        this.picture = picture;
+        this.direction = direction;
+        this.label = label;
+        this.description = description;
+    }
+    return Restaurant;
+}());
+
+//# sourceMappingURL=restauran.model.js.map
+
+/***/ }),
+
+/***/ 691:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TermSearchPipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2162,7 +2209,7 @@ var TermSearchPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 691:
+/***/ 692:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2200,7 +2247,7 @@ var CapitalizePipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 692:
+/***/ 693:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2331,7 +2378,7 @@ var OrderByPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 693:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2370,7 +2417,7 @@ var ShortenStringPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 694:
+/***/ 695:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2401,27 +2448,6 @@ var TemperaturePipe = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=temperature.pipe.js.map
-
-/***/ }),
-
-/***/ 695:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Restaurant; });
-var Restaurant = /** @class */ (function () {
-    function Restaurant(id, name, picture, direction, label, description) {
-        this.id = id;
-        this.name = name;
-        this.picture = picture;
-        this.direction = direction;
-        this.label = label;
-        this.description = description;
-    }
-    return Restaurant;
-}());
-
-//# sourceMappingURL=restauran.model.js.map
 
 /***/ }),
 
@@ -2466,6 +2492,7 @@ var foodIonicApp = /** @class */ (function () {
         this.restaurantsNearItem = { component: 'page-nearby', icon: 'compass' };
         this.restaurantsCatItem = { component: 'page-category', icon: 'albums' };
         this.platosItem = { component: 'page-dish-list', icon: 'pizza' };
+        this.sugerenciaItem = { component: 'page-sugerencia', icon: 'pizza' };
         this.ultimasOrdItem = { component: 'page-orders', icon: 'list-box' };
         this.carroItem = { component: 'page-cart', icon: 'cart' };
         this.favRestItem = { component: 'page-favorite-list', icon: 'heart' };
@@ -2475,6 +2502,7 @@ var foodIonicApp = /** @class */ (function () {
             { title: '- Cercanos', component: 'page-nearby', icon: 'compass' },
             { title: '- Por categorias', component: 'page-category', icon: 'albums' },
             { title: 'Platos', component: 'page-dish-list', icon: 'pizza' },
+            { title: 'Sugerencias', component: 'page-sugerencia', icon: 'pizza' },
             { title: 'Ultimas ordenes', component: 'page-orders', icon: 'list-box' },
             { title: 'Carro', component: 'page-cart', icon: 'cart' },
             { title: 'Restaurantes Favoritos', component: 'page-favorite-list', icon: 'heart' },
@@ -2519,7 +2547,7 @@ var foodIonicApp = /** @class */ (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Nav */])
     ], foodIonicApp.prototype, "nav", void 0);
     foodIonicApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_3\src\app\app.html"*/'<ion-split-pane when="lg">\n\n	<ion-menu side="left" id="authenticated" [content]="content" class="menu-bg">\n\n	  <ion-header>\n	    <ion-toolbar class="user-profile">\n\n	      <div class="user-profile">\n	        <ion-list no-margin>\n	          <ion-item>\n\n	            <ion-avatar item-left>\n	              <img src="assets/img/avatar.jpeg">\n	            </ion-avatar>\n\n	            <h2 ion-text class="text-white fw700 text-15x">\n	              Hamlet Morales\n	            </h2>\n	            <p ion-text color="light">La Habana, Cuba</p>\n\n					    <button  ion-button icon-left round color="primary" menuClose (click)="openPage(accountMenuItems[1])">\n					      <ion-icon [name]="accountMenuItems[1].icon"></ion-icon>\n					      {{accountMenuItems[1].title}}\n					    </button>\n\n	          </ion-item>\n	        </ion-list>\n	      </div>\n\n	    </ion-toolbar>\n	  </ion-header>\n\n	  <ion-content color="dark" class="profile-bg">\n	    <button *ngIf="isLogging()" ion-button icon-left full color="secondary" no-margin menuClose (click)="openPage(accountMenuItems[2])">\n	      <ion-icon [name]="accountMenuItems[2].icon"></ion-icon>\n	      {{accountMenuItems[2].title}}\n	    </button>\n\n	    <ion-list class="user-list">\n	      <button menuClose ion-item (click)="openPage(homeItem)">\n	        <ion-icon item-left name="browsers"></ion-icon>\n	        Inicio\n	      </button>\n\n	      <button *ngIf="isLogging()" menuClose ion-item (click)="openPage(messagesItem)">\n	        <ion-icon item-left name="mail"></ion-icon>\n	        Mensajes\n	        <ion-badge color="dark">\n	          2\n	        </ion-badge>\n	      </button>\n	    </ion-list>\n\n\n	    <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Menu</span>\n	      </ion-list-header>\n	      <button menuClose ion-item (click)="openPage(restaurantsItem)">\n	        <ion-icon item-left [name]="restaurantsItem.icon"></ion-icon>\n	        Restaurantes\n				</button>\n				<button menuClose ion-item (click)="openPage(restaurantsNearItem)">\n						<ion-icon item-left [name]="restaurantsNearItem.icon"></ion-icon>\n						- Cercanos\n					</button>\n				<button menuClose ion-item (click)="openPage(restaurantsCatItem)">\n						<ion-icon item-left [name]="restaurantsCatItem.icon"></ion-icon>\n						- Por categorias\n					</button>\n				<button menuClose ion-item (click)="openPage(platosItem)">\n						<ion-icon item-left [name]="platosItem.icon"></ion-icon>\n						Platos\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(ultimasOrdItem)">\n						<ion-icon item-left [name]="ultimasOrdItem.icon"></ion-icon>\n						Ultimas ordenes\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(carroItem)">\n						<ion-icon item-left [name]="carroItem.icon"></ion-icon>\n						Carro\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favRestItem)">\n						<ion-icon item-left [name]="favRestItem.icon"></ion-icon>\n						Restaurantes Favoritos\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favPlatoItem)">\n						<ion-icon item-left [name]="favPlatoItem.icon"></ion-icon>\n						Platos Favoritos\n					</button>	\n	    </ion-list>\n\n	    <!-- <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Your Restaurant</span>\n	      </ion-list-header>\n	      <button menuClose ion-item *ngFor="let menuItem of yourRestaurantMenuItems" (click)="openPage(menuItem)">\n	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>\n	        {{menuItem.title}}\n	      </button>\n	    </ion-list> -->\n\n	    <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Contacto - Configuracion</span>\n	      </ion-list-header>\n	      <button menuClose ion-item *ngFor="let menuItem of helpMenuItems" (click)="openPage(menuItem)">\n	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>\n	        {{menuItem.title}}\n	      </button>\n	    </ion-list>\n\n	  </ion-content>\n\n	</ion-menu>\n\n	<ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n\n</ion-split-pane>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_3\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\app\app.html"*/'<ion-split-pane when="lg">\n\n	<ion-menu side="left" id="authenticated" [content]="content" class="menu-bg">\n\n	  <ion-header>\n	    <ion-toolbar class="user-profile">\n\n	      <div class="user-profile">\n	        <ion-list no-margin>\n	          <ion-item>\n\n	            <ion-avatar item-left>\n	              <img src="assets/img/avatar.jpeg">\n	            </ion-avatar>\n\n	            <h2 ion-text class="text-white fw700 text-15x">\n	              Hamlet Morales\n	            </h2>\n	            <p ion-text color="light">La Habana, Cuba</p>\n\n					    <button  ion-button icon-left round color="primary" menuClose (click)="openPage(accountMenuItems[1])">\n					      <ion-icon [name]="accountMenuItems[1].icon"></ion-icon>\n					      {{accountMenuItems[1].title}}\n					    </button>\n\n	          </ion-item>\n	        </ion-list>\n	      </div>\n\n	    </ion-toolbar>\n	  </ion-header>\n\n	  <ion-content color="dark" class="profile-bg">\n	    <button *ngIf="isLogging()" ion-button icon-left full color="secondary" no-margin menuClose (click)="openPage(accountMenuItems[2])">\n	      <ion-icon [name]="accountMenuItems[2].icon"></ion-icon>\n	      {{accountMenuItems[2].title}}\n	    </button>\n\n	    <ion-list class="user-list">\n	      <button menuClose ion-item (click)="openPage(homeItem)">\n	        <ion-icon item-left name="browsers"></ion-icon>\n	        Inicio\n	      </button>\n\n	      <button *ngIf="isLogging()" menuClose ion-item (click)="openPage(messagesItem)">\n	        <ion-icon item-left name="mail"></ion-icon>\n	        Mensajes\n	        <ion-badge color="dark">\n	          2\n	        </ion-badge>\n	      </button>\n	    </ion-list>\n\n\n	    <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Menu</span>\n	      </ion-list-header>\n	      <button menuClose ion-item (click)="openPage(restaurantsItem)">\n	        <ion-icon item-left [name]="restaurantsItem.icon"></ion-icon>\n	        Restaurantes\n				</button>\n				<button menuClose ion-item (click)="openPage(restaurantsNearItem)">\n						<ion-icon item-left [name]="restaurantsNearItem.icon"></ion-icon>\n						- Cercanos\n					</button>\n				<button menuClose ion-item (click)="openPage(restaurantsCatItem)">\n						<ion-icon item-left [name]="restaurantsCatItem.icon"></ion-icon>\n						- Por categorias\n					</button>\n				<button menuClose ion-item (click)="openPage(platosItem)">\n						<ion-icon item-left [name]="platosItem.icon"></ion-icon>\n						Platos\n					</button>	\n					<button menuClose ion-item (click)="openPage(sugerenciaItem)">\n						<ion-icon item-left [name]="sugerenciaItem.icon"></ion-icon>\n						Sugerencias\n					</button>\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(ultimasOrdItem)">\n						<ion-icon item-left [name]="ultimasOrdItem.icon"></ion-icon>\n						Ultimas ordenes\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(carroItem)">\n						<ion-icon item-left [name]="carroItem.icon"></ion-icon>\n						Carro\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favRestItem)">\n						<ion-icon item-left [name]="favRestItem.icon"></ion-icon>\n						Restaurantes Favoritos\n					</button>	\n				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(favPlatoItem)">\n						<ion-icon item-left [name]="favPlatoItem.icon"></ion-icon>\n						Platos Favoritos\n					</button>	\n	    </ion-list>\n\n	    <!-- <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Your Restaurant</span>\n	      </ion-list-header>\n	      <button menuClose ion-item *ngFor="let menuItem of yourRestaurantMenuItems" (click)="openPage(menuItem)">\n	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>\n	        {{menuItem.title}}\n	      </button>\n	    </ion-list> -->\n\n	    <ion-list class="user-list">\n	      <ion-list-header no-margin>\n	        <span ion-text color="light" class="fw500">Contacto - Configuracion</span>\n	      </ion-list-header>\n	      <button menuClose ion-item *ngFor="let menuItem of helpMenuItems" (click)="openPage(menuItem)">\n	        <ion-icon item-left [name]="menuItem.icon"></ion-icon>\n	        {{menuItem.title}}\n	      </button>\n	    </ion-list>\n\n	  </ion-content>\n\n	</ion-menu>\n\n	<ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n\n</ion-split-pane>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],

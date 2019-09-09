@@ -72,6 +72,10 @@
 						<ion-icon item-left [name]="platosItem.icon"></ion-icon>
 						Platos
 					</button>	
+					<button menuClose ion-item (click)="openPage(sugerenciaItem)">
+						<ion-icon item-left [name]="sugerenciaItem.icon"></ion-icon>
+						Sugerencias
+					</button>
 				<button *ngIf="isLogging()" menuClose ion-item (click)="openPage(ultimasOrdItem)">
 						<ion-icon item-left [name]="ultimasOrdItem.icon"></ion-icon>
 						Ultimas ordenes
