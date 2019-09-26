@@ -34,7 +34,9 @@ export class RestaurantDetailPage {
 	restPicture3: string;
 
 	//-----Datos de los platos ---//
-    restDishes: any;
+	restDishes: any;
+	imagesRestUrl: string;
+	imagesDishUrl: string;
 
     constructor(
         public actionSheetCtrl: ActionSheetController,
@@ -49,7 +51,9 @@ export class RestaurantDetailPage {
 		this.param = this.navParams.get('id');
 		this.restaurant = this.restaurantService.getItem(this.param) ? this.restaurantService.getItem(this.param) : this.restaurantService.getRestaurants()[0];
         this.dishes = this.dishService.findAll();
-        this.findAll();
+		this.findAll();
+		this.imagesRestUrl = this.serviceBackend.getImgRestUrl();
+		this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
     }
 
     findAll() {

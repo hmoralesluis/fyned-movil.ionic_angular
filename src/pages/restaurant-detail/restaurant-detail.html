@@ -23,7 +23,8 @@
       </span>
 		  <ion-slides class="to-top primary-bg" pager>
 		    <ion-slide>
-		      <img src="../../assets/img/uploads/restaurant/{{restPicture1}}" alt="">
+					<!-- <img src="../../assets/img/uploads/restaurant/{{restPicture1}}" alt=""> -->
+					<img src="{{imagesRestUrl}}{{restPicture1}}" alt="">
 		    </ion-slide>
 		  </ion-slides>
 		</div>
@@ -63,7 +64,8 @@
 						<ion-list>
 							<ion-item no-padding *ngFor="let restDish of restDishes" (click)="openDishDetail(restDish)">
 								<ion-thumbnail item-start>
-						      <img src="../../assets/img/uploads/gig/{{restDish.picture1}}">
+									<!-- <img src="../../assets/img/uploads/gig/{{restDish.picture1}}"> -->
+									<img src="{{imagesDishUrl}}{{restDish.picture1}}">
 								</ion-thumbnail>
 								<h2 ion-text color="dark" class="fw500">{{restDish.title}}</h2>
 								<p ion-text color="primary" class="text-11x">ingredientes</p>

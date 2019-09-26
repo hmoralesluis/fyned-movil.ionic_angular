@@ -17,14 +17,16 @@ export class FavoriteDishPage {
 
     // favorites: Array<any> = [];
     favoritesRest: any;
-    private itemsQty: number = 0;
+	private itemsQty: number = 0;
+	imagesDishUrl: string;
 
-    constructor(public navCtrl: NavController, 
+    constructor(public navCtrl: NavController,
         public service: DishService,
         public serviceBackend: RestBackendProvider,
         ) {
         // this.getFavorites();
-        this.getfavoritesRest();
+		this.getfavoritesRest();
+		this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
 
     }
 
@@ -35,7 +37,7 @@ export class FavoriteDishPage {
             this.favoritesRest = this.favoritesRest.lovedgig;
             let aux = this.favoritesRest.items.length;
             this.itemsQty = aux;
-            this.favoritesRest = this.favoritesRest.items;                                   
+            this.favoritesRest = this.favoritesRest.items;
         })
         .catch(error => alert(JSON.stringify(error)));
     }

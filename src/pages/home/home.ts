@@ -19,21 +19,23 @@ export class HomePage {
 
   restaurants: Array<any>;
   searchKey: string = "";
-  yourLocation: string = "463 Beacon Street Guest House";  
-  restaurantsRest: any;
+  yourLocation: string = "463 Beacon Street Guest House";
+	restaurantsRest: any;
+	imagesRestUrl: string;
 
-  constructor(public navCtrl: NavController, 
-    public menuCtrl: MenuController, 
-    public popoverCtrl: PopoverController, 
-    public locationCtrl: AlertController, 
-    public modalCtrl: ModalController, 
-    public toastCtrl: ToastController, 
+  constructor(public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public popoverCtrl: PopoverController,
+    public locationCtrl: AlertController,
+    public modalCtrl: ModalController,
+    public toastCtrl: ToastController,
     public service: RestaurantService,
     public serviceBackend: RestBackendProvider) {
 		this.menuCtrl.swipeEnable(true, 'authenticated');
 		this.menuCtrl.enable(true);
-    this.findAll();   
-    this.findAllRest();    
+    this.findAll();
+		this.findAllRest();
+		this.imagesRestUrl = this.serviceBackend.getImgRestUrl();
   }
 
   openRestaurantListPage(proptype) {
@@ -87,19 +89,19 @@ export class HomePage {
 	    this.findAll();
 	}
 
-	findAll() {    
+	findAll() {
 	    this.service.findAll()
 	        .then(data => this.restaurants = data)
 	        .catch(error => alert(error));
   }
-  
+
   findAllRest(){
     this.serviceBackend.findAllRestaurants()
             .then(
                 data => {
-                    this.restaurantsRest = data;   
-                    this.restaurantsRest = this.restaurantsRest.restaurants;             
-                }                    
+                    this.restaurantsRest = data;
+                    this.restaurantsRest = this.restaurantsRest.restaurants;
+                }
             )
             .catch(error => alert(error));
   }
@@ -142,7 +144,7 @@ export class HomePage {
     changeLocation.present();
   }
 
-  presentNotifications(myEvent) {    
+  presentNotifications(myEvent) {
     console.log(myEvent);
     let popover = this.popoverCtrl.create('page-notifications');
     popover.present({

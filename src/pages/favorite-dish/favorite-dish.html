@@ -25,7 +25,7 @@
 						<ion-item-sliding *ngFor="let favorite of favoritesRest">
 								<button ion-item (click)="itemTapped(favorite)">
 										<ion-thumbnail item-left>
-												<img src="../../assets/img/uploads/gig/{{favorite.picture}}"/>
+												<img src="{{imagesDishUrl}}{{favorite.picture}}"/>
 										</ion-thumbnail>
 										<h2>{{favorite.title}}</h2>
 										<p>ingredientes</p>

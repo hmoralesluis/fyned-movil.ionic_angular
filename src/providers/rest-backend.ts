@@ -15,10 +15,29 @@ let restaurantsURL = api.SERVER_URL + 'apirestaurants';
 export class RestBackendProvider {
 
   private isLoggin: boolean = false;
-  private idUserlogin: string = '0';
+	private idUserlogin: string = '0';
+	// private imagesRestUrl = 'http://localhost:3003/images/uploads/restaurant/';
+	// private imagesDishUrl = 'http://localhost:3003/images/uploads/gig/';
+	// private imagesCathUrl = 'http://localhost:3003/images/uploads/category/';
+
+	private imagesRestUrl = 'http://164.68.116.40:3003/images/uploads/restaurant/';
+	private imagesDishUrl = 'http://164.68.116.40:3003/images/uploads/gig/';
+	private imagesCathUrl = 'http://164.68.116.40:3003/images/uploads/category/';
 
   constructor(public http: HttpClient) {
-  }
+	}
+
+	getImgRestUrl() {
+		return this.imagesRestUrl;
+	}
+
+	getImgDishUrl() {
+		return this.imagesDishUrl;
+	}
+
+	getImgCatUrl() {
+		return this.imagesCathUrl;
+	}
 
   setIduserlogin(userId: string) {
     this.idUserlogin = userId;

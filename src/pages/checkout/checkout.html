@@ -17,9 +17,9 @@
 
 						<ion-list no-margin>
 							<div ion-item *ngFor="let order of orderRest">
-								
+
 									<ion-thumbnail item-left>
-											<img src="../../assets/img/uploads/gig/{{order.picture}}"/>
+											<img src="{{imagesDishUrl}}{{order.picture}}"/>
 									</ion-thumbnail>
 										<h2 ion-text color="dark" class="fw700">{{order.title}}</h2>
 										<p ion-text color="primary">ingredientes</p>
@@ -55,7 +55,7 @@
 					</ion-card-content>
 				</ion-card>
 
-				
+
 				<div padding>
 					<h3>Metodos de pago</h3>
 
@@ -84,7 +84,7 @@
 									<ion-col>
 										<ion-item no-padding>
 											<ion-input type="text" placeholder="Card Holder"></ion-input>
-				
+
 										</ion-item>
 									</ion-col>
 								</ion-row>
@@ -159,7 +159,7 @@
 
 					</ion-card>
 
-					
+
 					<button ion-button color="secondary" margin-top icon-right full tappable (click)="send()">
 						Confirmar
 						<ion-icon name="cash"></ion-icon>

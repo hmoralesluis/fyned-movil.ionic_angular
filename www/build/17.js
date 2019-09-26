@@ -1,6 +1,6 @@
 webpackJsonp([17],{
 
-/***/ 728:
+/***/ 727:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DishListPageModule", function() { return DishListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dish_list__ = __webpack_require__(752);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dish_list__ = __webpack_require__(751);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var DishListPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 752:
+/***/ 751:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70,6 +70,7 @@ var DishListPage = /** @class */ (function () {
         this.serviceBackend = serviceBackend;
         this.dishes = this.dishService.findAll();
         this.getDishesRest();
+        this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
     }
     DishListPage.prototype.getDishesRest = function () {
         var _this = this;
@@ -86,7 +87,7 @@ var DishListPage = /** @class */ (function () {
     };
     DishListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-dish-list',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\dish-list\dish-list.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			<span ion-text>Lista de platos</span>\n		</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n				<ion-list>\n					<ion-item *ngFor="let dish of dishesRest" tapplable (click)="openDishDetail(dish._id)">\n					<ion-thumbnail item-start>\n						<img src="../../assets/img/uploads/gig/{{dish.picture1}}">\n					</ion-thumbnail>\n					<h2 ion-text color="dark" class="fw500">{{dish.title}}</h2>\n					<p ion-text color="primary" class="text-11x">ingredientes</p>\n					<button ion-button clear class="green-bg text-white" item-end>{{ dish.price | currency }}</button>\n					</ion-item>\n\n				</ion-list>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\dish-list\dish-list.html"*/
+            selector: 'page-dish-list',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\dish-list\dish-list.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<button ion-button menuToggle>\n			<ion-icon name="menu"></ion-icon>\n		</button>\n		<ion-title>\n			<span ion-text>Lista de platos</span>\n		</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n				<ion-list>\n					<ion-item *ngFor="let dish of dishesRest" tapplable (click)="openDishDetail(dish._id)">\n					<ion-thumbnail item-start>\n						<img src="{{imagesDishUrl}}{{dish.picture1}}">\n					</ion-thumbnail>\n					<h2 ion-text color="dark" class="fw500">{{dish.title}}</h2>\n					<p ion-text color="primary" class="text-11x">ingredientes</p>\n					<button ion-button clear class="green-bg text-white" item-end>{{ dish.price | currency }}</button>\n					</ion-item>\n\n				</ion-list>\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\dish-list\dish-list.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_dish_service_mock__["a" /* DishService */],

@@ -1,0 +1,7 @@
+{
+  "appId": "com.fyneddelivery.android",
+  "appName": "foodIonic",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

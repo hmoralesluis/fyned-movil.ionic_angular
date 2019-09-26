@@ -16,7 +16,7 @@
 				<ion-list>
 					<ion-item *ngFor="let dish of dishesRest" tapplable (click)="openDishDetail(dish._id)">
 					<ion-thumbnail item-start>
-						<img src="../../assets/img/uploads/gig/{{dish.picture1}}">
+						<img src="{{imagesDishUrl}}{{dish.picture1}}">
 					</ion-thumbnail>
 					<h2 ion-text color="dark" class="fw500">{{dish.title}}</h2>
 					<p ion-text color="primary" class="text-11x">ingredientes</p>

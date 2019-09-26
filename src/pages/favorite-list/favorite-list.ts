@@ -17,14 +17,16 @@ export class FavoriteListPage {
 
     // favorites: Array<any> = [];
     favoritesRest: any;
-    private itemsQty: number = 0;
+	private itemsQty: number = 0;
+	imagesRestUrl: string;
 
-    constructor(public navCtrl: NavController, 
+    constructor(public navCtrl: NavController,
         public service: RestaurantService,
-        public serviceBackend: RestBackendProvider) {            
+        public serviceBackend: RestBackendProvider) {
         // this.getFavorites();
         this.getfavoritesRest();
-        // console.log(this.favorites);
+		// console.log(this.favorites);
+		this.imagesRestUrl = this.serviceBackend.getImgRestUrl();
     }
 
     getfavoritesRest() {
@@ -34,7 +36,7 @@ export class FavoriteListPage {
             this.favoritesRest = this.favoritesRest.lovedrest;
             let aux = this.favoritesRest.items.length;
             this.itemsQty = aux;
-            this.favoritesRest = this.favoritesRest.items;                                   
+            this.favoritesRest = this.favoritesRest.items;
         });
     }
 
@@ -45,7 +47,7 @@ export class FavoriteListPage {
     }
 
     deleteItem(favorite) {
-        
+
         this.serviceBackend.delFavoriteRestaurantByUserId(favorite._id)
         .then(data => {
             this.getfavoritesRest();

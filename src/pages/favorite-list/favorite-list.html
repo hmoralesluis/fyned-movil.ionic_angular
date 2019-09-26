@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content class="lightest-bg">
-	
+
 	<ion-grid no-padding fixed>
 		<ion-row no-padding>
 			<ion-col>
@@ -25,7 +25,7 @@
 						<ion-item-sliding *ngFor="let favorite of favoritesRest">
 								<button ion-item (click)="itemTapped(favorite)">
 										<ion-thumbnail item-left>
-												<img src="../../assets/img/uploads/restaurant/{{favorite.picture}}"/>
+												<img src="{{imagesRestUrl}}{{favorite.picture}}"/>
 										</ion-thumbnail>
 										<h2>{{favorite.name}}</h2>
 										<p>direccion y precio</p>

@@ -19,15 +19,17 @@ export class CartPage {
 	// orders: Array<any> = [];
   totalVal: number = 0;
   orderRest: any;
-  itemsLength: number;
+	itemsLength: number;
+	imagesDishUrl: string;
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
     public cartService: CartService,
     public serviceBackend: RestBackendProvider,
     ) {
     // this.getOrders();
-    this.getOrderRest();
+		this.getOrderRest();
+		this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
   }
 
   getOrderRest() {
@@ -60,12 +62,12 @@ export class CartPage {
   // }
 
   // minus adult when click minus button
-  minusQtd(itemId:string, qty: number) {    
+  minusQtd(itemId:string, qty: number) {
     let aux = qty - 1;
     this.serviceBackend.modifyItemFromCartQty(itemId, aux)
-    .then(() => {      
+    .then(() => {
       this.getOrderRest();
-    })    
+    })
     .catch(error => alert(JSON.stringify(error)));
   }
 
@@ -73,9 +75,9 @@ export class CartPage {
   plusQtd(itemId:string, qty: number) {
 		let aux = qty + 1;
     this.serviceBackend.modifyItemFromCartQty(itemId, aux)
-    .then(() => {      
+    .then(() => {
       this.getOrderRest();
-    })    
+    })
     .catch(error => alert(JSON.stringify(error)));
   }
 

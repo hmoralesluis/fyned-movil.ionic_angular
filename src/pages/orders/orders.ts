@@ -17,13 +17,15 @@ export class OrdersPage {
 
   lastOrders: Array<any> = [];
   orderrest: any;
-  responseRest: any;
+	responseRest: any;
+	imagesDishUrl: string;
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
     public ordersService: OrdersService,
     public serviceBackend: RestBackendProvider) {
-    this.getOrdersRest();
+		this.getOrdersRest();
+		this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
   }
 
   getOrdersRest() {
@@ -31,7 +33,7 @@ export class OrdersPage {
     .then(data => {
       this.responseRest = data;
       this.responseRest = this.responseRest.res;
-      
+
       if(this.responseRest == true){
         this.orderrest = data;
         this.orderrest = this.orderrest.orders;
@@ -41,6 +43,6 @@ export class OrdersPage {
 
   ionViewWillEnter() {
     this.getOrdersRest();
-  }  
+  }
 
 }

@@ -1,3 +1,5 @@
+
+
 <ion-content class="primary-bg">
 	<ion-grid no-padding fixed>
 		<ion-row no-padding>
@@ -18,7 +20,11 @@
 				      <button ion-button round block color="secondaryfyned" margin-top icon-end (click)="onSlideNext()">
 				      	Siguiente
 				      	<ion-icon name="arrow-round-forward" color="light"></ion-icon>
-				    	</button>
+							</button>
+							<div>
+								<p>Este es el mapa</p>
+								<div class="map" #map id="map" style="width: 600px; height: 400px"></div>
+							</div>
 			    	</div>
 			    </ion-slide>
 			    <ion-slide>

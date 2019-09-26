@@ -17,19 +17,21 @@ export class CategoryPage {
 
 	categories: Array<any>;
 	catergoriesRest: any;
+	imagesCatUrl: string;
 
-	constructor(public navCtrl: NavController, 
-		public navParams: NavParams, 
+	constructor(public navCtrl: NavController,
+		public navParams: NavParams,
 		public service: CategoryService,
 		public serviceBackend: RestBackendProvider) {
 		this.findAll();
 		this.findAllRest();
+		this.imagesCatUrl = this.serviceBackend.getImgCatUrl();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoryPage');
 	}
-	
+
 	findAllRest() {
 		this.serviceBackend.getcategories()
 		.then(data => {

@@ -26,6 +26,8 @@
         "@angular/http": "5.2.11",
         "@angular/platform-browser": "5.2.11",
         "@angular/platform-browser-dynamic": "5.2.11",
+        "@capacitor/android": "^1.2.1",
+        "@capacitor/core": "1.2.1",
         "@ionic-native/core": "4.20.0",
         "@ionic-native/device": "4.20.0",
         "@ionic-native/keyboard": "4.20.0",
@@ -50,6 +52,7 @@
         "zone.js": "0.8.26"
     },
     "devDependencies": {
+        "@capacitor/cli": "1.2.1",
         "@ionic/app-scripts": "3.2.3",
         "@ionic/lab": "1.0.15",
         "html-minifier": "^3.5.5",

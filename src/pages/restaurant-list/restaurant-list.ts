@@ -25,22 +25,24 @@ export class RestaurantListPage {
 	lat: number = 42.35663;
     lng: number = -71.11095;
     restaurantsRest: any;
-    catergoriesRest: any;
+	catergoriesRest: any;
+	imagesRestUrl: string;
 
     constructor(
-        public navCtrl: NavController, 
-        public navParams: NavParams, 
-        public service: RestaurantService,         
-        public toastCtrl: ToastController, 
-        public modalCtrl: ModalController, 
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public service: RestaurantService,
+        public toastCtrl: ToastController,
+        public modalCtrl: ModalController,
         public config: Config,
         public serviceBackend: RestBackendProvider,
-        ) 
+        )
         {
             console.log('el id es 0' +  this.serviceBackend.getIduserlogin());
         this.findAll();
         this.proptype = this.navParams.get('proptype') || "";
-        this.from = this.navParams.get('from') || "";
+		this.from = this.navParams.get('from') || "";
+		this.imagesRestUrl = this.serviceBackend.getImgRestUrl();
         // console.log(this.proptype);
     }
 
@@ -56,7 +58,7 @@ export class RestaurantListPage {
     }
 
     favorite(restaurant) {
-        
+
         if(this.serviceBackend.getIduserlogin() == '0') {
             this.navCtrl.push('page-auth');
         }else{
@@ -70,7 +72,7 @@ export class RestaurantListPage {
         }
     }
 
-    onInput(event) {                
+    onInput(event) {
         this.service.findByName(this.searchKey)
             .then(data => {
                 this.restaurants = data;
@@ -90,13 +92,13 @@ export class RestaurantListPage {
         this.findAll();
     }
 
-    findAll() {      
+    findAll() {
             this.serviceBackend.findAllRestaurants()
             .then(
                 data => {
-                    this.restaurantsRest = data;   
-                    this.restaurantsRest = this.restaurantsRest.restaurants;             
-                }                    
+                    this.restaurantsRest = data;
+                    this.restaurantsRest = this.restaurantsRest.restaurants;
+                }
             )
             .catch(error => alert(error));
 
@@ -106,7 +108,7 @@ export class RestaurantListPage {
 			this.catergoriesRest = this.catergoriesRest.categories;
 		});
 
-           
+
     }
 
 }

@@ -14,21 +14,23 @@ import { RestBackendProvider } from '../../providers/rest-backend';
 export class SugerenciaPage {
 
   dishes: Array<any>;
-    dishesRest: any;
+		dishesRest: any;
+		imagesDishUrl: string;
 
-    constructor(public navCtrl: NavController, 
+    constructor(public navCtrl: NavController,
         public dishService: DishService,
-        public serviceBackend: RestBackendProvider) 
+        public serviceBackend: RestBackendProvider)
         {
         this.dishes = this.dishService.findAll();
-        this.getDishesRest();
+				this.getDishesRest();
+				this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
     }
 
     getDishesRest() {
         this.serviceBackend.findSugerenciaDishes()
         .then(data => {
             this.dishesRest = data;
-            this.dishesRest = this.dishesRest.gigs;            
+            this.dishesRest = this.dishesRest.gigs;
         });
     }
 

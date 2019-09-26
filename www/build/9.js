@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 733:
+/***/ 735:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsPageModule", function() { return NotificationsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notifications__ = __webpack_require__(757);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notifications__ = __webpack_require__(759);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var NotificationsPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 757:
+/***/ 759:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73,7 +73,7 @@ var NotificationsPage = /** @class */ (function () {
     };
     NotificationsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-notifications',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\notifications\notifications.html"*/'<ion-list class="no-margin">\n  <ion-list-header class="no-margin">\n  	<ion-icon name="notifications" color="primary"></ion-icon>\n  	<span ion-text color="primary" class="bold">Notificaciones</span>\n  </ion-list-header>\n  <button ion-item color="primary" class="text-11x" (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	New Offer 25% OFF 1\n  </button>\n  <button ion-item class="text-11x" (click)="messages()">\n  	<ion-icon name="mail-open"></ion-icon>\n  	New Offer 15% OFF by month!\n  </button>\n  <button ion-item class="text-11x" (click)="messages()">\n  	<ion-icon name="mail-open"></ion-icon>\n  	Visit our office today!\n  </button>\n  <button ion-item color="primary" class="text-11x" (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	You New property\n  </button>\n</ion-list>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\notifications\notifications.html"*/
+            selector: 'page-notifications',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\notifications\notifications.html"*/'<ion-list class="no-margin">\n  <ion-list-header class="no-margin">\n  	<ion-icon name="notifications" color="primary"></ion-icon>\n  	<span ion-text color="primary" class="bold">Notificaciones</span>\n  </ion-list-header>\n  <button ion-item color="primary" class="text-11x" (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	New Offer 25% OFF 1\n  </button>\n  <button ion-item class="text-11x" (click)="messages()">\n  	<ion-icon name="mail-open"></ion-icon>\n  	New Offer 15% OFF by month!\n  </button>\n  <button ion-item class="text-11x" (click)="messages()">\n  	<ion-icon name="mail-open"></ion-icon>\n  	Visit our office today!\n  </button>\n  <button ion-item color="primary" class="text-11x" (click)="messages()">\n  	<ion-icon name="mail"></ion-icon>\n  	You New property\n  </button>\n</ion-list>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\notifications\notifications.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* ViewController */]])
     ], NotificationsPage);

@@ -18,13 +18,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="lightest-bg">	
+<ion-content class="lightest-bg">
 
 	<ion-list *ngIf="from !== 'home'" no-margin>
 	  <ion-item>
 	    <ion-label class="fw700">Tipo de Restaurante</ion-label>
 	    <ion-select [(ngModel)]="proptype">
-				<ion-option value="" >All categories</ion-option>	      
+				<ion-option value="" >All categories</ion-option>
 	      <ion-option *ngFor="let cat of catergoriesRest" value="{{cat.code}}">{{cat.name}}</ion-option>
 	      <!-- <ion-option value="Bistro">Bistro</ion-option>
 	      <ion-option value="Casual Dining">Casual Dining</ion-option>
@@ -54,21 +54,22 @@
 	  </ion-segment>
 	</div>
 
-  <div *ngIf="viewMode === 'list'">		
+  <div *ngIf="viewMode === 'list'">
 
 		<ion-grid no-padding>
 			<ion-row no-padding>
 				<!-- <ion-col col-12 col-md-6 *ngFor="let restaurant of restaurantsRest | termSearch:proptype:'tags' | termSearch:label:'label'"> -->
-					<ion-col col-12 col-md-6 *ngFor="let restaurant of restaurantsRest">						
+					<ion-col col-12 col-md-6 *ngFor="let restaurant of restaurantsRest">
 
-		      <ion-card margin-bottom>							
+		      <ion-card margin-bottom>
 		        <div class="card-img-wrap">
 		          <ion-fab bottom right edge>
 		            <button ion-fab mini (click)="favorite(restaurant)">
 		              <ion-icon name="heart"></ion-icon>
 		            </button>
 		          </ion-fab>
-		          <img src="../../assets/img/uploads/restaurant/{{restaurant.picture1}}" tappable (click)="openRestaurantDetail(restaurant)">
+							<!-- <img src="../../assets/img/uploads/restaurant/{{restaurant.picture1}}" tappable (click)="openRestaurantDetail(restaurant)"> -->
+							<img src="{{imagesRestUrl}}{{restaurant.picture1}}" tappable (click)="openRestaurantDetail(restaurant)">
 		          <span ion-text class="card-img-price fw700 text-black">
 								<!-- {{ restaurant.tags }} -->
 								{{ restaurant.label }}
@@ -97,7 +98,7 @@
     		</ion-col>
     	</ion-row>
     </ion-grid>
-	
+
 
 			<!-- Grid original conservar como referencia -->
 		<!-- <ion-grid no-padding>

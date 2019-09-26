@@ -27,6 +27,7 @@ export class DishDetailPage {
 	restPrecio: number;
 	restDetails: string;
 	restTitle: string;
+	imagesDishUrl: string;
 
   constructor(
 		public navCtrl: NavController,
@@ -40,6 +41,7 @@ export class DishDetailPage {
 		this.dishId = this.navParams.get('id');
 		this.dish = this.dishService.getItem(this.param) ? this.dishService.getItem(this.param) : this.dishService.findAll()[0];
 		this.findDish();
+		this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
 	}
 
 	findDish() {

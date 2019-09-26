@@ -1,6 +1,6 @@
 webpackJsonp([16],{
 
-/***/ 727:
+/***/ 728:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FavoriteDishPageModule", function() { return FavoriteDishPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__favorite_dish__ = __webpack_require__(751);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__favorite_dish__ = __webpack_require__(752);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -42,7 +42,7 @@ var FavoriteDishPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 751:
+/***/ 752:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72,6 +72,7 @@ var FavoriteDishPage = /** @class */ (function () {
         this.itemsQty = 0;
         // this.getFavorites();
         this.getfavoritesRest();
+        this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
     }
     FavoriteDishPage.prototype.getfavoritesRest = function () {
         var _this = this;
@@ -100,7 +101,7 @@ var FavoriteDishPage = /** @class */ (function () {
     };
     FavoriteDishPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-favorite-dish',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\favorite-dish\favorite-dish.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n        	<span ion-text>Platos favoritos</span>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n\n				<ion-card *ngIf="itemsQty < 1" class="primary-bg" margin-top>\n					<ion-card-content>\n						<p text-center class="text-white">No cuenta con platos favoritos.</p>\n					</ion-card-content>\n				</ion-card>\n\n				<ion-list>\n						<ion-item-sliding *ngFor="let favorite of favoritesRest">\n								<button ion-item (click)="itemTapped(favorite)">\n										<ion-thumbnail item-left>\n												<img src="../../assets/img/uploads/gig/{{favorite.picture}}"/>\n										</ion-thumbnail>\n										<h2>{{favorite.title}}</h2>\n										<p>ingredientes</p>\n								</button>\n								<ion-item-options>\n										<button ion-button color="danger" (click)="deleteItem(favorite)">Eliminar</button>\n								</ion-item-options>\n						</ion-item-sliding>\n				</ion-list>\n\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_3\src\pages\favorite-dish\favorite-dish.html"*/
+            selector: 'page-favorite-dish',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\favorite-dish\favorite-dish.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n        	<span ion-text>Platos favoritos</span>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n\n				<ion-card *ngIf="itemsQty < 1" class="primary-bg" margin-top>\n					<ion-card-content>\n						<p text-center class="text-white">No cuenta con platos favoritos.</p>\n					</ion-card-content>\n				</ion-card>\n\n				<ion-list>\n						<ion-item-sliding *ngFor="let favorite of favoritesRest">\n								<button ion-item (click)="itemTapped(favorite)">\n										<ion-thumbnail item-left>\n												<img src="{{imagesDishUrl}}{{favorite.picture}}"/>\n										</ion-thumbnail>\n										<h2>{{favorite.title}}</h2>\n										<p>ingredientes</p>\n								</button>\n								<ion-item-options>\n										<button ion-button color="danger" (click)="deleteItem(favorite)">Eliminar</button>\n								</ion-item-options>\n						</ion-item-sliding>\n				</ion-list>\n\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\favorite-dish\favorite-dish.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_dish_service_mock__["a" /* DishService */],

@@ -18,20 +18,22 @@ export class CheckoutPage {
   checkoutData: any;
   paymethods: string = 'creditcard';
   totalVal: number = 0;
-  orderNumber: number = Math.floor(Math.random() * 10000);  
+  orderNumber: number = Math.floor(Math.random() * 10000);
   orderRest: any;
-  itemsLength: number;
+	itemsLength: number;
+	imagesDishUrl: string;
 
-  constructor(public nav: NavController, 
-    public navParams: NavParams, 
-    public ordersService: OrdersService, 
-    public cartService: CartService, 
-    public loadingCtrl: LoadingController, 
+  constructor(public nav: NavController,
+    public navParams: NavParams,
+    public ordersService: OrdersService,
+    public cartService: CartService,
+    public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     public serviceBackend: RestBackendProvider,
-    ) 
+    )
     {
-      this.getOrderRest();
+			this.getOrderRest();
+			this.imagesDishUrl = this.serviceBackend.getImgDishUrl();
     }
 
   getOrderRest() {
@@ -64,7 +66,7 @@ export class CheckoutPage {
     setTimeout(() => {
       loader.dismiss();
       toast.present();
-      this.serviceBackend.createorderandcleancart();      
+      this.serviceBackend.createorderandcleancart();
       // this.ordersService.saveOrder(this.checkoutData, this.totalVal, this.orderNumber).then(data => {
       // 	toast.present();
       // 	this.cartService.cleanCart();

@@ -49,7 +49,8 @@
 		<ion-list ion-row padding-horizontal>
 		  <button ion-item ion-col *ngFor="let restaurant of restaurantsRest" (click)="openRestaurantDetail(restaurant)" col-12 col-md-6>
 		    <ion-thumbnail item-start>
-		        <img src="../../assets/img/uploads/restaurant/{{restaurant.picture1}}">
+						<!-- <img src="../../assets/img/uploads/restaurant/{{restaurant.picture1}}"> -->
+						<img src="{{imagesRestUrl}}{{restaurant.picture1}}">
 		    </ion-thumbnail>
 		    <h3 ion-text color="dark" class="fw500">{{restaurant.name}}</h3>
 		    <p ion-text class="text-12x"><span ion-text color="secondary" class="fw700">{{restaurant.label}}</span> ∙ <span ion-text color="primary"></span></p>
