@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 744:
+/***/ 743:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WalkthroughPageModule", function() { return WalkthroughPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__walkthrough__ = __webpack_require__(768);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__walkthrough__ = __webpack_require__(767);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var WalkthroughPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 768:
+/***/ 767:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -110,13 +110,13 @@ var WalkthroughPage = /** @class */ (function () {
             googleMaps.event.addListenerOnce(map, 'idle', function () {
                 _this.renderer.addClass(mapEl, 'visible');
             });
-            map.addListener('click', function (event) {
-                var selectedCoords = {
-                    lat: event.latLng.lat(),
-                    lng: event.latLng.lng()
-                };
-                _this.modalCtrl.dismiss(selectedCoords);
-            });
+            // map.addListener('click', event => {
+            //   const selectedCoords = {
+            //     lat: event.latLng.lat(),
+            //     lng: event.latLng.lng()
+            //   };
+            //   this.modalCtrl.dismiss(selectedCoords);
+            // });
         })
             .catch(function (err) {
             console.log(err);
@@ -131,7 +131,7 @@ var WalkthroughPage = /** @class */ (function () {
         return new Promise(function (resolve, reject) {
             var script = document.createElement('script');
             script.src =
-                'https://maps.googleapis.com/maps/api/js?key=AIzaSyB3P1U1KZYcRvql3VMXl2-g5GQlaK6AVlQ';
+                'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9xndXu6gNfgqDxxEGwuRzUxAT-QqfWXM';
             script.async = true;
             script.defer = true;
             document.body.appendChild(script);
@@ -175,20 +175,22 @@ var WalkthroughPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], WalkthroughPage.prototype, "mapElementRef", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Slides */]),
-        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Slides */]) === "function" && _b || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Slides */])
     ], WalkthroughPage.prototype, "slides", void 0);
     WalkthroughPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-walkthrough',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\walkthrough\walkthrough.html"*/'\n\n<ion-content class="primary-bg">\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n			  <ion-slides pager="true" dir="{{dir}}">\n			    <ion-slide *ngFor="let slide of slideList">\n			      <ion-toolbar fixed>\n			        <!-- <ion-buttons end>\n			          <button ion-button color="light" (click)="onLastSlide()">Skip</button>\n			        </ion-buttons> -->\n						</ion-toolbar>\n						<div style="margin: 0px 40px 40px;  padding-top: 20px; border-bottom: 2px solid #fff">\n							<img [src]="slide.image" class="slide-image">\n						</div>\n			      <h3 class="slide-title text-white" [innerHTML]="slide.title"></h3>\n						<p [innerHTML]="slide.description" class="text-white"></p>\n						<div padding>\n				      <button ion-button round block color="secondaryfyned" margin-top icon-end (click)="onSlideNext()">\n				      	Siguiente\n				      	<ion-icon name="arrow-round-forward" color="light"></ion-icon>\n							</button>\n							<div>\n								<p>Este es el mapa</p>\n								<div class="map" #map id="map" style="width: 600px; height: 400px"></div>\n							</div>\n			    	</div>\n			    </ion-slide>\n			    <ion-slide>\n			      <ion-toolbar>\n						</ion-toolbar>\n						<div style="margin: 0px 40px 40px;  padding-top: 20px; border-bottom: 2px solid #fff">\n							<img src="assets/img/logo.svg" class="slide-image">\n						</div>\n			      <h2 class="slide-title text-white">Inicie la busqueda de nuestros platos!</h2>\n\n			      <div padding style="margin-top: 96px">\n			        <button ion-button block round color="secondary" margin-top (click)="openAuthPage()">\n			          Entre / Registrese\n			        </button>\n			        <button ion-button block round color="dark" margin-top (click)="openHomePage()">\n			          Iniciar Busqueda\n			        </button>\n			      </div>\n			    </ion-slide>\n			  </ion-slides>\n\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\walkthrough\walkthrough.html"*/,
+            selector: 'page-walkthrough',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\walkthrough\walkthrough.html"*/'\n\n<ion-content class="primary-bg">\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n			  <ion-slides pager="true" dir="{{dir}}">\n			    <ion-slide *ngFor="let slide of slideList">\n			      <ion-toolbar fixed>\n			        <!-- <ion-buttons end>\n			          <button ion-button color="light" (click)="onLastSlide()">Skip</button>\n			        </ion-buttons> -->\n						</ion-toolbar>\n						<div style="margin: 0px 40px 40px;  padding-top: 20px; border-bottom: 2px solid #fff">\n							<img [src]="slide.image" class="slide-image">\n						</div>\n			      <h3 class="slide-title text-white" [innerHTML]="slide.title"></h3>\n						<p [innerHTML]="slide.description" class="text-white"></p>\n						<div padding>\n				      <button ion-button round block color="secondaryfyned" margin-top icon-end (click)="onSlideNext()">\n				      	Siguiente\n				      	<ion-icon name="arrow-round-forward" color="light"></ion-icon>\n							</button>\n							<div>\n								<p>Este es el mapa</p>\n								<div class="map" #map></div>\n							</div>\n			    	</div>\n			    </ion-slide>\n			    <ion-slide>\n			      <ion-toolbar>\n						</ion-toolbar>\n						<div style="margin: 0px 40px 40px;  padding-top: 20px; border-bottom: 2px solid #fff">\n							<img src="assets/img/logo.svg" class="slide-image">\n						</div>\n			      <h2 class="slide-title text-white">Inicie la busqueda de nuestros platos!</h2>\n\n			      <div padding style="margin-top: 96px">\n			        <button ion-button block round color="secondary" margin-top (click)="openAuthPage()">\n			          Entre / Registrese\n			        </button>\n			        <button ion-button block round color="dark" margin-top (click)="openHomePage()">\n			          Iniciar Busqueda\n			        </button>\n			      </div>\n			    </ion-slide>\n			  </ion-slides>\n\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\walkthrough\walkthrough.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_test_test__["a" /* TestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_test_test__["a" /* TestProvider */]) === "function" && _e || Object, Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_test_test__["a" /* TestProvider */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Renderer2 */]])
     ], WalkthroughPage);
     return WalkthroughPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=walkthrough.js.map

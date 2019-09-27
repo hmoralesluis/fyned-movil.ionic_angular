@@ -349,95 +349,99 @@ webpackEmptyAsyncContext.id = 175;
 var map = {
 	"../pages/about/about.module": [
 		721,
-		48
+		23
 	],
 	"../pages/auth/auth.module": [
 		722,
-		47
+		22
 	],
 	"../pages/cart/cart.module": [
 		723,
-		46
+		21
 	],
 	"../pages/category/category.module": [
 		724,
-		45
+		20
 	],
 	"../pages/checkout/checkout.module": [
 		725,
-		44
+		19
 	],
 	"../pages/dish-detail/dish-detail.module": [
 		726,
-		43
+		18
 	],
 	"../pages/dish-list/dish-list.module": [
 		727,
-		42
+		17
 	],
 	"../pages/favorite-dish/favorite-dish.module": [
 		728,
-		41
+		16
 	],
 	"../pages/favorite-list/favorite-list.module": [
-		730,
-		40
+		729,
+		15
 	],
 	"../pages/home/home.module": [
-		729,
-		39
+		730,
+		14
 	],
 	"../pages/message-detail/message-detail.module": [
 		731,
-		38
+		13
 	],
 	"../pages/message-list/message-list.module": [
 		732,
-		37
+		12
 	],
 	"../pages/my-account/my-account.module": [
 		733,
-		36
+		11
 	],
 	"../pages/nearby/nearby.module": [
 		734,
-		35
+		10
 	],
 	"../pages/notifications/notifications.module": [
 		735,
-		34
+		9
 	],
 	"../pages/orders/orders.module": [
 		736,
-		33
+		8
 	],
 	"../pages/restaurant-detail/restaurant-detail.module": [
 		737,
-		32
+		7
 	],
 	"../pages/restaurant-filter/restaurant-filter.module": [
 		738,
-		31
+		6
 	],
 	"../pages/restaurant-list/restaurant-list.module": [
 		739,
-		30
+		5
 	],
 	"../pages/settings/settings.module": [
 		740,
-		29
+		4
 	],
 	"../pages/sugerencia/sugerencia.module": [
 		741,
-		28
+		3
 	],
 	"../pages/support/support.module": [
 		742,
-		27
+		2
+	],
+	"../pages/walkthrough/walkthrough.module": [
+		743,
+		1
 	],
 	"../pages/your-restaurant/your-restaurant.module": [
-		743,
-		26
+		744,
+		0
 	]
 };
 function webpackAsyncContext(req) {
@@ -1043,8 +1047,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/dish-detail/dish-detail.module#DishDetailPageModule', name: 'page-dish-detail', segment: 'dish/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/dish-list/dish-list.module#DishListPageModule', name: 'page-dish-list', segment: 'dish-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/favorite-dish/favorite-dish.module#FavoriteDishPageModule', name: 'page-favorite-dish', segment: 'favoritedish', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'page-home', segment: 'home', priority: 'high', defaultHistory: [] },
                         { loadChildren: '../pages/favorite-list/favorite-list.module#FavoriteListPageModule', name: 'page-favorite-list', segment: 'favorites', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'page-home', segment: 'home', priority: 'high', defaultHistory: [] },
                         { loadChildren: '../pages/message-detail/message-detail.module#MessageDetailPageModule', name: 'page-message-detail', segment: 'message/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/message-list/message-list.module#MessageListPageModule', name: 'page-message-list', segment: 'message-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/my-account/my-account.module#MyAccountPageModule', name: 'page-my-account', segment: 'my-account', priority: 'low', defaultHistory: [] },
@@ -1057,6 +1061,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'page-settings', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sugerencia/sugerencia.module#SugerenciaPageModule', name: 'page-sugerencia', segment: 'sugerencia', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'page-support', segment: 'support', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/walkthrough/walkthrough.module#WalkthroughPageModule', name: 'page-walkthrough', segment: 'walkthrough', priority: 'high', defaultHistory: [] },
                         { loadChildren: '../pages/your-restaurant/your-restaurant.module#YourRestaurantPageModule', name: 'page-your-restaurant', segment: 'your-restaurant', priority: 'low', defaultHistory: [] }
                     ]
                 }),

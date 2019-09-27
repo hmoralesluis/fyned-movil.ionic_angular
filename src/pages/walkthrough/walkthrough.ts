@@ -79,6 +79,13 @@ export class WalkthroughPage implements OnInit, AfterViewInit {
           this.renderer.addClass(mapEl, 'visible');
         });
 
+        // map.addListener('click', event => {
+        //   const selectedCoords = {
+        //     lat: event.latLng.lat(),
+        //     lng: event.latLng.lng()
+        //   };
+        //   this.modalCtrl.dismiss(selectedCoords);
+        // });
       })
       .catch(err => {
         console.log(err);
@@ -94,7 +101,7 @@ export class WalkthroughPage implements OnInit, AfterViewInit {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src =
-        'https://maps.googleapis.com/maps/api/js?key=AIzaSyB3P1U1KZYcRvql3VMXl2-g5GQlaK6AVlQ';
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyC9xndXu6gNfgqDxxEGwuRzUxAT-QqfWXM';
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);

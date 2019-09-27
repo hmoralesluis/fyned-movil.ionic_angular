@@ -24134,6 +24134,20 @@ page-walkthrough p b {
   color: #000000;
 }
 
+page-walkthrough .map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  opacity: 0;
+  -webkit-transition: opacity 150ms ease-in;
+  transition: opacity 150ms ease-in;
+}
+
+page-walkthrough .map.visible {
+  opacity: 1;
+}
+
 .your-restaurant .item {
   padding-left: 0;
 }
