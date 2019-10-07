@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-buttons start>
+          <button ion-button round (click)="closeModal()">
+              <ion-icon name="close"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title>
+        <span ion-text>Seleccion en el mapa</span>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <div>
+        <p>Este es el mapa</p>
+        <ion-buttons>
+          <button ion-button block round color="secondary" margin-top (click)="selectPruebaOffline()">Location</button>
+        </ion-buttons>
+        <div class="map" #map></div>
+      </div>
+</ion-content>

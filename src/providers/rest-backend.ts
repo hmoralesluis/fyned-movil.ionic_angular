@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { api } from './config';
 
 let urluserbymail = api.SERVER_URL + 'apiuserbyemail';
-let restaurantsURL = api.SERVER_URL + 'apirestaurants';
 
 /*
   Generated class for the RestBackendProvider provider.
@@ -16,13 +15,17 @@ export class RestBackendProvider {
 
   private isLoggin: boolean = false;
 	private idUserlogin: string = '0';
-	// private imagesRestUrl = 'http://localhost:3003/images/uploads/restaurant/';
-	// private imagesDishUrl = 'http://localhost:3003/images/uploads/gig/';
-	// private imagesCathUrl = 'http://localhost:3003/images/uploads/category/';
+	private imagesRestUrl = 'http://localhost:3003/images/uploads/restaurant/';
+	private imagesDishUrl = 'http://localhost:3003/images/uploads/gig/';
+	private imagesCathUrl = 'http://localhost:3003/images/uploads/category/';
 
-	private imagesRestUrl = 'http://164.68.116.40:3003/images/uploads/restaurant/';
-	private imagesDishUrl = 'http://164.68.116.40:3003/images/uploads/gig/';
-	private imagesCathUrl = 'http://164.68.116.40:3003/images/uploads/category/';
+	// private imagesRestUrl = 'http://164.68.116.40:3003/images/uploads/restaurant/';
+	// private imagesDishUrl = 'http://164.68.116.40:3003/images/uploads/gig/';
+	// private imagesCathUrl = 'http://164.68.116.40:3003/images/uploads/category/';
+
+	private latitude: number = 0;
+	private longitude: number = 0;
+	private haveCordenadas: Boolean = false;
 
   constructor(public http: HttpClient) {
 	}
@@ -51,6 +54,31 @@ export class RestBackendProvider {
     return this.isLoggin;
 	}
 
+	getLatitude() {
+		return this.latitude;
+	}
+
+	setLatitude(lat: number) {
+		this.latitude = lat;
+	}
+
+	getLongitude() {
+		return this.longitude;
+	}
+
+	setLongitude(lon: number) {
+		this.longitude = lon;
+	}
+
+	getHaveCordenadas() {
+		return this.haveCordenadas;
+	}
+
+	setHaveCordenadas(haveC: Boolean) {
+		this.haveCordenadas = haveC;
+	}
+
+	
 	test() {
 		return new Promise(resolve => {
       this.http.post(api.SERVER_URL+'apitest', {todo: 'Hamlet'}).subscribe(data => {
@@ -154,7 +182,7 @@ export class RestBackendProvider {
 
   findAllRestaurants() {
     return new Promise(resolve => {
-      this.http.get(restaurantsURL).subscribe(data => {
+      this.http.get(api.SERVER_URL+'apirestaurants').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -306,6 +334,16 @@ export class RestBackendProvider {
   getcategories() {
     return new Promise(resolve => {
       this.http.get(api.SERVER_URL+'apicategories').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getsysdistance() {
+    return new Promise(resolve => {
+      this.http.get(api.SERVER_URL+'apigetdistance').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

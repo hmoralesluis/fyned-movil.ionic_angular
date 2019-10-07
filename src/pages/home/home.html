@@ -47,27 +47,45 @@
 		</ion-row>
 
 		<ion-list ion-row padding-horizontal>
-		  <button ion-item ion-col *ngFor="let restaurant of restaurantsRest" (click)="openRestaurantDetail(restaurant)" col-12 col-md-6>
-		    <ion-thumbnail item-start>
-						<!-- <img src="../../assets/img/uploads/restaurant/{{restaurant.picture1}}"> -->
-						<img src="{{imagesRestUrl}}{{restaurant.picture1}}">
-		    </ion-thumbnail>
-		    <h3 ion-text color="dark" class="fw500">{{restaurant.name}}</h3>
-		    <p ion-text class="text-12x"><span ion-text color="secondary" class="fw700">{{restaurant.label}}</span> ∙ <span ion-text color="primary"></span></p>
-		    <p ion-text class="text-12x">1 mile<sup>sq</sup> ∙ 30 - 60min</p>
-				<ion-badge class="white-bg text-secondary" item-end>
-					<ion-icon name="star"></ion-icon>
-					4.9
-				</ion-badge>
-		  </button>
+			<div *ngIf="haveCordenadas">
+				<div *ngIf="largeRestaurantes > 0">
+					<button ion-item ion-col *ngFor="let restaurant of restaurantsRest" (click)="openRestaurantDetail(restaurant)" col-12 col-md-6>
+						<ion-thumbnail item-start>
+								<!-- <img src="../../assets/img/uploads/restaurant/{{restaurant.picture1}}"> -->
+								<img src="{{imagesRestUrl}}{{restaurant.picture1}}">
+						</ion-thumbnail>
+						<h3 ion-text color="dark" class="fw500">{{restaurant.name}}</h3>
+						<p ion-text class="text-12x"><span ion-text color="secondary" class="fw700">{{restaurant.label}}</span> ∙ <span ion-text color="primary"></span></p>
+						<p ion-text class="text-12x">1 mile<sup>sq</sup> ∙ 30 - 60min</p>
+						<ion-badge class="white-bg text-secondary" item-end>
+							<ion-icon name="star"></ion-icon>
+							4.9
+						</ion-badge>
+					</button>
+				</div>
+
+				<div *ngIf="largeRestaurantes == 0">						
+					<ion-card class="primary-bg" margin-top>
+							<ion-card-content role="button" (click)="alertLocation()">
+								<p text-center class="text-white">No hay restaurantes cercas</p>
+							</ion-card-content>
+						</ion-card>								
+				</div>
+
+				<ion-row padding>
+						<button ion-button round block color="secondary" (click)="openRestaurantListPage()">
+							Ver todos
+						</button>
+					</ion-row>
+			</div>
+
+			<ion-card *ngIf="!haveCordenadas" class="primary-bg" margin-top>
+				<ion-card-content role="button" (click)="alertLocation()">
+					<p text-center class="text-white">Seleccione una Ubicacion</p>
+				</ion-card-content>
+			</ion-card>
+
 		</ion-list>
-
-	  <ion-row padding>
-	    <button ion-button round block color="secondary" (click)="openRestaurantListPage()">
-	      Ver todos
-	    </button>
-	  </ion-row>
-
 	</ion-grid>
 
 </ion-content>

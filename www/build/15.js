@@ -5,10 +5,10 @@ webpackJsonp([15],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FavoriteListPageModule", function() { return FavoriteListPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__favorite_list__ = __webpack_require__(753);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(754);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17,36 +17,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 
 
-// import { PipesModule } from '../../pipes/pipes.module';
 
-var FavoriteListPageModule = /** @class */ (function () {
-    function FavoriteListPageModule() {
+var HomePageModule = /** @class */ (function () {
+    function HomePageModule() {
     }
-    FavoriteListPageModule = __decorate([
+    HomePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__favorite_list__["a" /* FavoriteListPage */]
+                __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__favorite_list__["a" /* FavoriteListPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */])
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_2__favorite_list__["a" /* FavoriteListPage */]
+                __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]
             ]
         })
-    ], FavoriteListPageModule);
-    return FavoriteListPageModule;
+    ], HomePageModule);
+    return HomePageModule;
 }());
 
-//# sourceMappingURL=favorite-list.module.js.map
+//# sourceMappingURL=home.module.js.map
 
 /***/ }),
 
-/***/ 753:
+/***/ 754:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FavoriteListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_restaurant_service_mock__ = __webpack_require__(368);
@@ -64,52 +63,237 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var FavoriteListPage = /** @class */ (function () {
-    function FavoriteListPage(navCtrl, service, serviceBackend) {
+// import { Plugins, Capacitor } from '@capacitor/core';
+var HomePage = /** @class */ (function () {
+    function HomePage(navCtrl, menuCtrl, popoverCtrl, locationCtrl, modalCtrl, toastCtrl, service, serviceBackend, actionSheetCtrl) {
         this.navCtrl = navCtrl;
+        this.menuCtrl = menuCtrl;
+        this.popoverCtrl = popoverCtrl;
+        this.locationCtrl = locationCtrl;
+        this.modalCtrl = modalCtrl;
+        this.toastCtrl = toastCtrl;
         this.service = service;
         this.serviceBackend = serviceBackend;
-        this.itemsQty = 0;
-        // this.getFavorites();
-        this.getfavoritesRest();
-        // console.log(this.favorites);
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.searchKey = "";
+        this.yourLocation = "Sin ubicación";
+        this.restaurantsRest = [];
+        this.largeRestaurantes = 0;
+        this.haveCordenadas = false;
+        this.menuCtrl.swipeEnable(true, 'authenticated');
+        this.menuCtrl.enable(true);
+        this.haveCordenadas = this.serviceBackend.getHaveCordenadas();
         this.imagesRestUrl = this.serviceBackend.getImgRestUrl();
     }
-    FavoriteListPage.prototype.getfavoritesRest = function () {
-        var _this = this;
-        this.serviceBackend.getFavoriteRestaurantByUserId()
-            .then(function (data) {
-            _this.favoritesRest = data;
-            _this.favoritesRest = _this.favoritesRest.lovedrest;
-            var aux = _this.favoritesRest.items.length;
-            _this.itemsQty = aux;
-            _this.favoritesRest = _this.favoritesRest.items;
-        });
+    HomePage.prototype.openRestaurantListPage = function (proptype) {
+        this.navCtrl.push('page-restaurant-list', proptype);
     };
-    FavoriteListPage.prototype.itemTapped = function (favorite) {
+    HomePage.prototype.openRestaurantFilterPage = function () {
+        var modal = this.modalCtrl.create('page-restaurant-filter');
+        modal.present();
+    };
+    HomePage.prototype.openNearbyPage = function () {
+        this.navCtrl.push('page-nearby');
+    };
+    HomePage.prototype.openOrders = function () {
+        this.navCtrl.push('page-orders');
+    };
+    HomePage.prototype.openCart = function () {
+        this.navCtrl.push('page-cart');
+    };
+    HomePage.prototype.openRestaurantDetail = function (restaurant) {
         this.navCtrl.push('page-restaurant-detail', {
-            'id': favorite.item
+            'id': restaurant._id
         });
     };
-    FavoriteListPage.prototype.deleteItem = function (favorite) {
+    HomePage.prototype.openSettingsPage = function () {
+        this.navCtrl.push('page-settings');
+    };
+    HomePage.prototype.openNotificationsPage = function () {
+        this.navCtrl.push('page-notifications');
+    };
+    HomePage.prototype.openCategoryPage = function () {
+        this.navCtrl.push('page-category');
+    };
+    HomePage.prototype.onInput = function (event) {
         var _this = this;
-        this.serviceBackend.delFavoriteRestaurantByUserId(favorite._id)
+        this.service.findByName(this.searchKey)
             .then(function (data) {
-            _this.getfavoritesRest();
+            _this.restaurants = data;
+        })
+            .catch(function (error) { return alert(JSON.stringify(error)); });
+    };
+    HomePage.prototype.onCancel = function (event) {
+        this.findAll();
+    };
+    HomePage.prototype.findAll = function () {
+        var _this = this;
+        this.service.findAll()
+            .then(function (data) { return _this.restaurants = data; })
+            .catch(function (error) { return alert(error); });
+    };
+    HomePage.prototype.findSysDistance = function () {
+        var _this = this;
+        this.serviceBackend.getsysdistance()
+            .then(function (data) {
+            _this.sysdistance = data;
+            _this.sysdistance = _this.sysdistance.distance;
+        })
+            .catch();
+    };
+    HomePage.prototype.findAllRest = function () {
+        var _this = this;
+        this.restaurantsRest = [];
+        if (this.serviceBackend.getHaveCordenadas()) {
+            this.serviceBackend.findAllRestaurants()
+                .then(function (data) {
+                var temporal;
+                temporal = data;
+                temporal = temporal.restaurants;
+                var largo = temporal.length;
+                for (var i = 0; i < largo; i++) {
+                    if (_this.isInDistance(temporal[i].latitude, temporal[i].longitude)) {
+                        _this.restaurantsRest.push(temporal[i]);
+                    }
+                }
+                _this.largeRestaurantes = _this.restaurantsRest.length;
+            })
+                .catch(function (error) { return alert(error); });
+        }
+    };
+    HomePage.prototype.isInDistance = function (lat, lon) {
+        var datax = lat - this.serviceBackend.getLatitude();
+        var datay = lon - this.serviceBackend.getLongitude();
+        datax = Math.pow(datax, 2);
+        datay = Math.pow(datay, 2);
+        var datamix = datax + datay;
+        var dataend = Math.sqrt(datamix);
+        console.log('la distancia es ' + dataend);
+        if (dataend <= this.sysdistance)
+            return true;
+        return false;
+    };
+    HomePage.prototype.locateUser = function () {
+        this.serviceBackend.setLatitude(11);
+        this.serviceBackend.setLongitude(11);
+        this.serviceBackend.setHaveCordenadas(true);
+        this.haveCordenadas = true;
+        this.findAllRest();
+        this.yourLocation = 'Autolocalizado dir';
+        // if (!Capacitor.isPluginAvailable('Geolocation')) {
+        //   console.log('no tenemos a capacitor disponible');
+        //   return;
+        // }
+        // // this.isLoading = true;
+        // Plugins.Geolocation.getCurrentPosition()
+        //   .then(geoPosition => {
+        // 		this.serviceBackend.setLatitude(geoPosition.coords.latitude);
+        // 		this.serviceBackend.setLongitude(geoPosition.coords.longitude)
+        // 		this.serviceBackend.setHaveCordenadas(true);
+        // 		this.haveCordenadas = true;
+        // 		this.findAllRest();
+        // 		// this.isLoading = false;
+        // 		return;
+        //   })
+        //   .catch(err => {
+        //     // this.isLoading = false;
+        // 		// this.showErrorAlert();
+        // 		console.log('la funcion de la geolocalizacion dio un error');
+        // 		return;
+        //   });
+    };
+    HomePage.prototype.mapLocation = function () {
+        var modalmap = this.modalCtrl.create('page-modal-map');
+        modalmap.present();
+        // let changeLocation = this.locationCtrl.create({
+        //   title: 'Change Location',
+        //   message: "Type your Address to change restaurant list in that area.",
+        //   inputs: [
+        //     {
+        //       name: 'location',
+        //       placeholder: 'Enter your new Location',
+        //       type: 'text'
+        //     },
+        //   ],
+        //   buttons: [
+        //     {
+        //       text: 'Cancel',
+        //       handler: data => {
+        //         console.log('Cancel clicked');
+        //       }
+        //     },
+        //     {
+        //       text: 'Change',
+        //       handler: data => {
+        //         console.log('Change clicked', data);
+        //         this.yourLocation = data.location;
+        //         let toast = this.toastCtrl.create({
+        //           message: 'Location was change successfully',
+        //           duration: 3000,
+        //           position: 'top',
+        //           closeButtonText: 'OK',
+        //           showCloseButton: true
+        //         });
+        //         toast.present();
+        //       }
+        //     }
+        //   ]
+        // });
+        // changeLocation.present();
+    };
+    HomePage.prototype.alertLocation = function () {
+        var _this = this;
+        var actionSheet = this.actionSheetCtrl.create({
+            title: 'Location',
+            buttons: [
+                {
+                    text: 'Auto-localizacion',
+                    handler: function () { return _this.locateUser(); }
+                },
+                {
+                    text: 'Desde el mapa',
+                    handler: function () { return _this.mapLocation(); }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () { return console.log('cancel share'); }
+                }
+            ]
+        });
+        actionSheet.present();
+    };
+    HomePage.prototype.presentNotifications = function (myEvent) {
+        console.log(myEvent);
+        var popover = this.popoverCtrl.create('page-notifications');
+        popover.present({
+            ev: myEvent
         });
     };
-    FavoriteListPage = __decorate([
+    HomePage.prototype.ionViewWillEnter = function () {
+        this.navCtrl.canSwipeBack();
+        this.findSysDistance();
+        this.haveCordenadas = this.serviceBackend.getHaveCordenadas();
+        this.findAllRest();
+    };
+    HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-favorite-list',template:/*ion-inline-start:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\favorite-list\favorite-list.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n            <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>\n        	<span ion-text>Restaurantes Favoritos</span>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="lightest-bg">\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n\n				<ion-card *ngIf="itemsQty < 1" class="primary-bg" margin-top>\n					<ion-card-content>\n						<p text-center class="text-white">No cuenta con restaurantes favoritos.</p>\n					</ion-card-content>\n				</ion-card>\n\n				<ion-list>\n						<ion-item-sliding *ngFor="let favorite of favoritesRest">\n								<button ion-item (click)="itemTapped(favorite)">\n										<ion-thumbnail item-left>\n												<img src="{{imagesRestUrl}}{{favorite.picture}}"/>\n										</ion-thumbnail>\n										<h2>{{favorite.name}}</h2>\n										<p>direccion y precio</p>\n								</button>\n								<ion-item-options>\n										<button ion-button color="danger" (click)="deleteItem(favorite)">Eliminar</button>\n								</ion-item-options>\n						</ion-item-sliding>\n				</ion-list>\n\n			</ion-col>\n		</ion-row>\n	</ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"D:\Node App\Fyned App\Movil\foodionic_5\src\pages\favorite-list\favorite-list.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"D:\NodeApps\Fyned\Movil\foodionic_6\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n			<span ion-text class="fw700">Fy</span><span ion-text class="fw300">ned</span>\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="presentNotifications($event)">\n        <ion-icon name="notifications"></ion-icon>\n      </button>\n      <button ion-button (click)="openCart()">\n        <ion-icon name="cart"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n  <ion-toolbar color="primary">\n    <ion-searchbar placeholder="Buscar Restaurante" [(ngModel)]="searchKey" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"></ion-searchbar>\n    <ion-buttons end>\n      <button ion-button (click)="openRestaurantFilterPage()">\n        <ion-icon name="options"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<ion-col>\n\n				<ion-card no-margin margin-bottom>\n			    <ion-item class="lightest-bg">\n			      <h3 ion-text no-margin color="dark" class="fw500 no-margin">Restaurantes cerca:</h3>\n			      <span ion-text class="text-11x no-margin" color="primary">{{yourLocation}}</span>\n			      <button ion-button outline round item-end icon-right color="primary" (click)="alertLocation()">\n			      	Cambiar Ubicacion\n			      	<ion-icon name="locate"></ion-icon>\n			      </button>\n			    </ion-item>\n				</ion-card>\n\n			</ion-col>\n		</ion-row>\n\n		<ion-list ion-row padding-horizontal>\n			<div *ngIf="haveCordenadas">\n				<div *ngIf="largeRestaurantes > 0">\n					<button ion-item ion-col *ngFor="let restaurant of restaurantsRest" (click)="openRestaurantDetail(restaurant)" col-12 col-md-6>\n						<ion-thumbnail item-start>\n								<!-- <img src="../../assets/img/uploads/restaurant/{{restaurant.picture1}}"> -->\n								<img src="{{imagesRestUrl}}{{restaurant.picture1}}">\n						</ion-thumbnail>\n						<h3 ion-text color="dark" class="fw500">{{restaurant.name}}</h3>\n						<p ion-text class="text-12x"><span ion-text color="secondary" class="fw700">{{restaurant.label}}</span> ∙ <span ion-text color="primary"></span></p>\n						<p ion-text class="text-12x">1 mile<sup>sq</sup> ∙ 30 - 60min</p>\n						<ion-badge class="white-bg text-secondary" item-end>\n							<ion-icon name="star"></ion-icon>\n							4.9\n						</ion-badge>\n					</button>\n				</div>\n\n				<div *ngIf="largeRestaurantes == 0">						\n					<ion-card class="primary-bg" margin-top>\n							<ion-card-content role="button" (click)="alertLocation()">\n								<p text-center class="text-white">No hay restaurantes cercas</p>\n							</ion-card-content>\n						</ion-card>								\n				</div>\n\n				<ion-row padding>\n						<button ion-button round block color="secondary" (click)="openRestaurantListPage()">\n							Ver todos\n						</button>\n					</ion-row>\n			</div>\n\n			<ion-card *ngIf="!haveCordenadas" class="primary-bg" margin-top>\n				<ion-card-content role="button" (click)="alertLocation()">\n					<p text-center class="text-white">Seleccione una Ubicacion</p>\n				</ion-card-content>\n			</ion-card>\n\n		</ion-list>\n	</ion-grid>\n\n</ion-content>\n\n<ion-footer class="no-padding dark-bg">\n	<ion-grid no-padding fixed>\n		<ion-row no-padding>\n			<button ion-button icon-left block color="primary" (click)="openNearbyPage()" class="col col-4">\n        	<ion-icon name="compass" class="text-18x"></ion-icon>\n        	<span ion-text class="text-12x">Cercanos</span>\n			</button>\n			<button ion-button icon-left block color="primary" (click)="openCategoryPage()" class="col col-4">\n          <ion-icon name="albums" class="text-18x"></ion-icon>\n          <span ion-text class="text-12x">Categorias</span>\n			</button>\n			<button ion-button icon-left block color="primary" (click)="openOrders()" class="col col-4">\n        	<ion-icon name="list-box" class="text-18x"></ion-icon>\n        	<span ion-text class="text-12x">Ordenes</span>\n			</button>\n		</ion-row>\n	</ion-grid>\n\n</ion-footer>\n'/*ion-inline-end:"D:\NodeApps\Fyned\Movil\foodionic_6\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* PopoverController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_restaurant_service_mock__["a" /* RestaurantService */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_rest_backend__["a" /* RestBackendProvider */]])
-    ], FavoriteListPage);
-    return FavoriteListPage;
+            __WEBPACK_IMPORTED_MODULE_3__providers_rest_backend__["a" /* RestBackendProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]])
+    ], HomePage);
+    return HomePage;
 }());
 
-//# sourceMappingURL=favorite-list.js.map
+//# sourceMappingURL=home.js.map
 
 /***/ })
 
